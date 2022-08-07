@@ -1,5 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
 
-Admin dashboard here
+{% block content %}
+    <h1 class="display-4 text-success">It works!</h1>
+
+    Admin dashboard here
 
 <a class="btn btn-warning btn-lg mt-2 mb-2" href="{% url 'create_blog_post' %}">New Post</a>
 
@@ -20,6 +25,9 @@ Admin dashboard here
 <div class="d-flex justify-content-between">
     <section id="category-list" class="col-12">
 <section class="col-6">
+  
+    <h1>Tasks</h1>
+    {% include "blog/HTMXsnippets/categories-list.html" %}
 
    
 
@@ -30,4 +38,8 @@ Admin dashboard here
 
 
 </div>
+
+
+{% endblock %}
+
 

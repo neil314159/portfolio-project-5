@@ -35,7 +35,7 @@ class BlogCategoryList(generic.ListView):
 def blog_category_list(request):
     """ Creates a list of categories to be used by dropdown menu"""
     blog_category_list = Category.objects.all()
-    context = {"review_category_list": review_category_list, }
+    context = {"blog_category_list": blog_category_list, }
     return context
 
 
@@ -79,7 +79,7 @@ def add_category(request):
     # return template fragment with all the user's films
     categories = BlogPostCategory.objects.all()
 
-    return render(request, 'partials/categories-list.html', {'categories': categories})
+    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
 
 @require_http_methods(['DELETE'])
 @login_required
