@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'profiles',
     'blog',
     'home',
+    'dashboard',
     # other packages
     'crispy_forms',
 ]
