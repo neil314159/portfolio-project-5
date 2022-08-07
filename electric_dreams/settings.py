@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'home',
     'dashboard',
     'products',
+    'checkout',
     # other packages
     'crispy_forms',
 ]
