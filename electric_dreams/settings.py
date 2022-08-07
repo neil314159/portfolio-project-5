@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # site applications
     'profiles',
     'blog',
+    'home',
     # other packages
 ]
 
