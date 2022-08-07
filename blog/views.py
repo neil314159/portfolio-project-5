@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.views import generic, View
 from .models import BlogPost, BlogPostCategory
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_http_methods
 # Create your views here.
 
 
@@ -62,3 +64,30 @@ class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = BlogPost
     template_name = 'blog/blog_post_delete.html'
     success_url = reverse_lazy('blog')
+
+
+def add_category(request):
+    name = request.POST.get('categoryname')
+    
+    # add category
+    category = BlogPostCategory.objects.get_or_create(name=name)[0]
+    
+   
+    if not BlogPostCategory.objects.filter(name=name).exists():
+        BlogPostCategory.objects.create(name=name)
+
+    # return template fragment with all the user's films
+    categories = BlogPostCategory.objects.all()
+
+    return render(request, 'partials/categories-list.html', {'categories': categories})
+
+@require_http_methods(['DELETE'])
+@login_required
+def delete_category(request, pk):
+    
+    # remove the category
+    BlogPostCategory.objects.get(pk=pk).delete()
+
+    # return template fragment with all the user's films
+    films = BlogPostCategory.objects.all()
+    return render(request, 'partials/categories-list.html', {'categories': categories})
