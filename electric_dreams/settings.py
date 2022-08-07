@@ -34,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['electric-dreams.herokuapp.com', 'localhost']
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 # Application definition
 
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'checkout',
     # other packages
     'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 # all-auth settings
@@ -84,6 +85,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# crispy forms and add-on pack for bootstrap5 forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 # all-auth specific backend 
 AUTHENTICATION_BACKENDS = [
