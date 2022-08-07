@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'blog',
     'home',
     # other packages
+    'crispy_forms',
 ]
 
 # all-auth settings

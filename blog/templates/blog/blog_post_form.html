@@ -1,0 +1,42 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<!-- form to add new review -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-md-10 col-lg-7 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h3 class="text-center"><b>Create New Book Review</b></h3>
+          <br />
+          <p>Enter the details of the book you want to review here. All field with an asterisk* are mandatory. You can add a cover or purchase link if you choose. Happy reviewing!</p>
+            <form class="review-form" enctype="multipart/form-data" method="POST">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                <br />
+               <!-- inject crispy forms -->
+                {{ form|crispy }}
+              </fieldset>
+              <div class="form-group">
+                <!-- add review -->
+                <div class="d-grid">
+                  <button class="btn btn-primary btn-lg mt-3 mb-2" id="submitButton" type="submit">Submit</button>
+                </div>
+               <!-- cancel and return to reviews -->
+                <div class="d-grid">
+                  <a class="btn btn-warning btn-lg mt-2 mb-2" href="{% url 'dashboard' %}">Cancel</a>
+                </div>
+              </div>
+            </form>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

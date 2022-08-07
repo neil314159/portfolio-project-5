@@ -48,17 +48,17 @@ class BlogPostList(generic.ListView):
 class BlogPostDetail(generic.DetailView):
     """Class based view passing to template, form is automatically generated"""
     model = BlogPost
-    template_name = "blog_post_detail.html"
+    template_name = "blog/blog_post_detail.html"
 
 class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     """ Create a new blogpost """
     model = BlogPost
     """ Pass in all fields except post author"""
     fields = ['title', 'post_text', 'category']
-    template_name = "blog_post_form.html"
+    template_name = "blog/blog_post_form.html"
 
 class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     """ Delete a post from the site"""
     model = BlogPost
-    template_name = 'blog_post_delete.html'
+    template_name = 'blog/blog_post_delete.html'
     success_url = reverse_lazy('blog')
