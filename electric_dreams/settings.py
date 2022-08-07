@@ -68,6 +68,18 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_URL = '/accounts/login/'
 
+# sendgrid SMTP and email config settings
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = "projects@neilboland.com"
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 
 # all-auth specific backend 
 AUTHENTICATION_BACKENDS = [
