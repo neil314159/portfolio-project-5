@@ -4,6 +4,7 @@ from .models import BlogPost, BlogPostCategory
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.urls import reverse_lazy
 # Create your views here.
 
 
@@ -51,7 +52,13 @@ class BlogPostDetail(generic.DetailView):
 
 class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     """ Create a new blogpost """
-    model = Review
-    """ Pass in al fields except post author"""
+    model = BlogPost
+    """ Pass in all fields except post author"""
     fields = ['title', 'post_text', 'category']
     template_name = "blog_post_form.html"
+
+class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
+    """ Delete a post from the site"""
+    model = BlogPost
+    template_name = 'blog_post_delete.html'
+    success_url = reverse_lazy('blog')
