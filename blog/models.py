@@ -19,9 +19,7 @@ class BlogPost(models.Model):
     """Main model holding blog posts"""
     title = models.CharField(max_length=250, unique=True)
   
-    author = models.ForeignKey(
-        get_user_model(), on_delete=models.CASCADE, related_name="blogposts"
-    )
+   
 
   
     category = models.ForeignKey(
