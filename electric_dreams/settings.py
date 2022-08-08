@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     # allauth
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     'products',
     'checkout',
     # other packages
+    'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
