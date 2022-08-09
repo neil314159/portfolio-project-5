@@ -13,8 +13,12 @@ from django.views.decorators.http import require_http_methods
 
 def blog(request):
     """ A view to return the blog"""
+    categories = BlogPostCategory.objects.all()
+    posts = BlogPost.objects.all()
 
-    return render(request, 'blog/blogindex.html')
+    
+
+    return render(request, 'blog/blogindex.html', {'categories': categories, 'posts': posts})
 
 
 class BlogCategoryList(generic.ListView):
@@ -58,6 +62,7 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     """ Pass in all fields except post author"""
     fields = ['title', 'post_text', 'category']
     template_name = "blog/blog_post_form.html"
+    success_url = reverse_lazy('blog')
 
 class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     """ Delete a post from the site"""
@@ -89,5 +94,5 @@ def delete_category(request, pk):
     BlogPostCategory.objects.get(pk=pk).delete()
 
     # return template fragment with all the user's films
-    films = BlogPostCategory.objects.all()
-    return render(request, 'partials/categories-list.html', {'categories': categories})
+    categories = BlogPostCategory.objects.all()
+    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})

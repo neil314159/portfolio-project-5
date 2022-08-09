@@ -1,14 +1,16 @@
 
   
-  <div id="categories"
- >
+  <div id="categories" hx-confirm="Are you sure you want to delete this task?"
+  hx-target="#categories"
+  hx-swap="outerHTML">
   {% for category in categories %}
     <div>{{ forloop.counter }} {{ category.name  }}
-        <span 
-        style="cursor: pointer;"
-        hx-delete="{% url 'delete-category' category.id %}"
-        hx-target="#categories"
-        hx-confirm="Are you sure you wish to delete?">X</span>
+       
+        
+        <a class="block mr-2 hover:text-gray-600"
+        hx-delete="{% url 'delete-category' category.id %}">
+        Delete?
+      </a>
     </div>
   {% endfor %}
 </div>
