@@ -23,7 +23,7 @@ class BlogPost(models.Model):
 
   
     category = models.ForeignKey(
-        BlogPostCategory, on_delete=models.PROTECT,
+        BlogPostCategory, on_delete=models.SET_NULL, null=True,
         default=1, verbose_name="Blog Category")
     """ Main text of post """
     post_text = models.TextField()
