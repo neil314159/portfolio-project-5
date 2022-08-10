@@ -2,6 +2,7 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from django.db.models import Avg
 
 STAR_RATING = (
     (1, "⭐"),
@@ -48,9 +49,15 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    # need to check calculations
+    @property
+    def average_rating(self):
+        return self.reviews.all().aggregate(Avg('star_rating')).get('rating__avg', 0.00)
+        
+
 
 class Review(models.Model):
-    """ Blog comments model"""
+    """ Product review model"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
                                related_name="reviews")
     author = models.ForeignKey(
