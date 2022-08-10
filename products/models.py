@@ -1,6 +1,13 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
+STAR_RATING = (
+    (1, "⭐"),
+    (2, "⭐⭐"),
+    (3, "⭐⭐⭐"),
+    (4, "⭐⭐⭐⭐"),
+    (5, "⭐⭐⭐⭐⭐"),
+)
 
 class Category(models.Model):
 
@@ -38,3 +45,22 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    """ Blog comments model"""
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                               related_name="reviews")
+    author = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name="commentauthor"
+    )
+    """ Main text of comment"""
+    comment_text = models.TextField()
+    published_on = models.DateTimeField(auto_now_add=True)
+    star_rating = models.IntegerField(choices=STAR_RATING, default=5)
+
+    class Meta:
+        ordering = ["published_on"]
+
+    def __str__(self):
+        return self.comment_text
