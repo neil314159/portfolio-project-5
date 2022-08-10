@@ -1,13 +1,20 @@
-<div class="d-flex justify-content-end mb-4">
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div >
     {% csrf_token %}
     <input type="text"
-        hx-post="{% url 'search_products' %}" 
+        hx-post="{% url 'htmx_search' %}" 
         hx-target='#results'
-        hx-trigger="keyup changed delay:500ms"
+        hx-trigger="keyup changed delay:200ms"
         name="q"
         class="form-control-sm mr-2" 
-        placeholder="Search films..." />
+        placeholder="Search products..." />
     
     </form>
 </div>
 <div id="results"></div>
+{% endblock %}

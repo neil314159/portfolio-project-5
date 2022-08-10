@@ -138,27 +138,31 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
 
-def search_products(request):
+def htmx_search_products(request):
     
     products = Product.objects.all()
-
-    if request.htmx:
+    
+    
         
-        search_term = request.POST.get('search')
+    
 
-        products = Product.objects.all()
-        query = None
+    products = Product.objects.all()
+    query = None
        
 
-        query = request.GET['q']
-        queries = Q(name__icontains=query) | Q(description__icontains=query)
-        products = products.filter(queries)
+    query =  request.POST.get('q')
    
-        context = {"products": products}
-        return render(request, 'includes/search-results.html', context)
+    queries = Q(name__icontains=query) | Q(description__icontains=query)
+    products = products.filter(queries)
+   
+    
+    context = {"products": products}
+    return render(request, 'products/includes/search-results.html', context)
 
+def search_page(request):
+    """ A view to return the dashboard page """
 
-
+    
     return render(request, 'products/search.html')
 
 

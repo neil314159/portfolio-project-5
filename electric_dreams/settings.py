@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'products',
     'checkout',
     # other packages
+    'django_htmx',
     'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',

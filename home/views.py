@@ -23,6 +23,6 @@ def privacy_policy(request):
 
 def gallery(request):
     """ A view to return the dashboard page """
-    Products = Products.objects.all()
+    products = Product.objects.all()
     
-    return render(request, 'home/gallery.html', {'products': Products})           
+    return render(request, 'home/gallery.html', {'products': products})           
