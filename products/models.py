@@ -73,3 +73,8 @@ class Review(models.Model):
 
     def __str__(self):
         return self.comment_text
+
+class BoughtWithItem(models.Model):
+    main_item = Product
+    purchase_count = models.IntegerField()
+    also_bought = models.ForeignKey(Product, on_delete=models.CASCADE)
