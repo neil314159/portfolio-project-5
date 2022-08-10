@@ -18,3 +18,14 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+class WishlistItem(models.Model):
+    """ Item for wishlist stores user and product together"""
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                               related_name="wishlist")
+    author = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE,
+        related_name="wishlistowner"
+    )
+    
+    added_on = models.DateTimeField(auto_now_add=True)

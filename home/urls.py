@@ -7,4 +7,5 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('privacy/', views.privacy_policy, name='privacy'),
     path('gallery/', views.gallery, name='gallery'),
+    path('artrequest/', views.artwork_request, name='artrequest'),
 ]

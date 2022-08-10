@@ -21,6 +21,11 @@ def privacy_policy(request):
 
     return render(request, 'home/privacy.html')
 
+def artwork_request(request):
+    """ A view to return the dashboard page """
+
+    return render(request, 'home/artwork-request.html')
+
 def gallery(request):
     """ A view to return the dashboard page """
     products = Product.objects.all()
