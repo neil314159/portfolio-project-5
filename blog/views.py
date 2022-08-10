@@ -96,3 +96,30 @@ def delete_category(request, pk):
     # return template fragment with all the user's films
     categories = BlogPostCategory.objects.all()
     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+
+def edit_category(request, pk):
+    
+    # remove the category
+    BlogPostCategory.objects.get(pk=pk).delete()
+
+    # return template fragment with all the user's films
+    categories = BlogPostCategory.objects.all()
+    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+
+def student_edit_form(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+    form = StudentForm(instance=student)
+    context = {'student': student, 'form': form}
+    return render(request, 'core/partials/edit-student-form.html', context)
+
+def edit_todo(request, pk):
+    todo = Todo.objects.get(pk=pk)
+    blogcat = BlogPostCategory.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        blogcat.name = request.POST.get('name', '')
+        blogcat.save()
+
+        return render(request, 'blog/HTMXsnippets/categories-list.html', {'todo': todo})
+    
+    return render(request, 'blog/HTMXsnippets/categories-edit.html', {'cat': blogcat})

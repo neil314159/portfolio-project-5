@@ -137,3 +137,35 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+def search_products(request):
+    search_term = request.POST.get('search')
+
+    products = Product.objects.all()
+    query = None
+    categories = None
+    sort = None
+    direction = None
+
+    query = request.GET['q']
+    queries = Q(name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
+   
+    context = {"products": products}
+    return render(request, 'includes/search-results.html', context)
+
+
+
+    return render(request, 'products/products.html', context)
+
+
+def product_detail(request, product_id):
+    """ A view to show individual product details """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'products/product_detail.html', context)

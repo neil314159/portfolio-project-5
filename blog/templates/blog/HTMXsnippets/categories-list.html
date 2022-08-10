@@ -4,8 +4,8 @@
   hx-target="#categories"
   hx-swap="outerHTML">
   {% for category in categories %}
-    <div>{{ forloop.counter }} {{ category.name  }}
-       
+    <div id="ingredient-{{ object.id}}">{{ forloop.counter }} {{ category.name  }}
+      <button hx-trigger='click' hx-get="{% url 'edit-category' category.id %}" hx-target="#ingredient-{{ category.id}}" >Edit</button>
         
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
