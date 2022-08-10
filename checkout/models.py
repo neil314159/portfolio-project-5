@@ -12,7 +12,7 @@ from products.models import Product
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
-                                     get_user_model(),
+                                     settings.AUTH_USER_MODEL,
                                      on_delete=models.SET_NULL,
                                      null=True,
                                      blank=True,

@@ -1,5 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth import get_user_model
+from django.conf import settings
 
 STAR_RATING = (
     (1, "⭐"),
@@ -52,7 +54,7 @@ class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
                                related_name="reviews")
     author = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name="commentauthor"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="commentauthor"
     )
     """ Main text of comment"""
     comment_text = models.TextField()

@@ -1,11 +1,12 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 # Create your models here.
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django_countries.fields import CountryField
-from .models import Product, Category
+from products.models import Product, Category
+from django.conf import settings
 
 
 class CustomUser(AbstractUser):
@@ -25,7 +26,7 @@ class WishlistItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
                                related_name="wishlist")
     author = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE,
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
         related_name="wishlistowner"
     )
     
