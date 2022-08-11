@@ -6,6 +6,7 @@
       
     </ul>
     <ul class="nav">
+      {% if user.is_authenticated %}
       {% if user.is_superuser %}
  
       
@@ -23,7 +24,7 @@
           
         </ul>
       </li>
-
+      {% endif %}
       {% endif %}
       {% if user.is_authenticated %}
       <li><a href="{% url 'profile' %}" class="nav-link px-2 text-white">My Profile</a></li>
