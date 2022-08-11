@@ -24,7 +24,7 @@ def blog(request):
 class BlogCategoryList(generic.ListView):
     """Takes GET request, returns articles by category"""
     model = BlogPostCategory
-    template_name = "category.html"
+    template_name = "blog/categoryindex.html"
     context_object_name = 'categorylist'
 
     def get_queryset(self):

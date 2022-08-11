@@ -9,4 +9,5 @@ urlpatterns = [
     path('add-category/', views.add_category, name='add-category'),
     path('delete-category/<int:pk>/', views.delete_category, name='delete-category'),
     path('edit-category/<int:pk>/', views.edit_category, name='edit-category'),
+    path('category/<category>', views.BlogCategoryList.as_view(), name='category-view'),
 ]
