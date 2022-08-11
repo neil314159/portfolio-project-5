@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -25,6 +25,16 @@ class BlogPost(models.Model):
     category = models.ForeignKey(
         BlogPostCategory, on_delete=models.SET_NULL, null=True,
         default=1, verbose_name="Blog Category")
+
+    image= CloudinaryField(
+        'image',
+        blank=True,
+        transformation={
+            'width': '1000',
+            'height': '1000',
+            'crop': 'fill',
+            'gravity': "auto"},
+        default=("https://res.cloudinary.com/dpsodnurd/image/upload/v1652618629/zhtctppqjky78q8h760n.jpg"))
     """ Main text of post """
     post_text = models.TextField()
     """ Date of publication"""
