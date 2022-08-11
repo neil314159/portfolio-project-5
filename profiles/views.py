@@ -1,9 +1,18 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponse
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-# from .models import CustomUser
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
+from django.views import generic, View
+from .models import CustomUser
 # from .forms import CustomUserCreationForm
 from django.contrib.auth import get_user_model
+
+from django.contrib.auth import logout as auth_logout, get_user_model
+
+from django.http import HttpResponseRedirect
+from django.views.decorators.http import require_http_methods
 
 from checkout.models import Order
 from django.conf import settings
@@ -53,6 +62,41 @@ def profile(request):
 
     return render(request, template, {'profile': profile})
 
+# class UserDeleteView(generic.DeleteView):
+#     """ Allows user to delete their own account"""
+#     model = settings.AUTH_USER_MODEL
+#     template_name = 'user_delete.html'
+#     """ Redirect to home page after"""
+#     success_url = reverse_lazy('home')
+#     success_message = "Your account has been deleted"
+
+#     def test_func(self):
+#         """ Check for correct permissions to delete account"""
+#         obj = self.get_object()
+#         return obj.id == self.request.user.id
+
+# class UserDeleteView(LoginRequiredMixin,
+#                      UserPassesTestMixin, generic.DeleteView):
+#     """ Allows user to delete their own account"""
+#     model = settings.AUTH_USER_MODEL
+#     template_name = 'user_delete.html'
+#     """ Redirect to home page after"""
+#     success_url = reverse_lazy('home')
+#     success_message = "Your account has been deleted"
+
+#     def test_func(self):
+#         """ Check for correct permissions to delete account"""
+#         obj = self.get_object()
+#         return obj.id == self.request.user.id
+
+
+@login_required
+def remove_account(request):
+    user_pk = request.user.pk
+    auth_logout(request)
+    User = get_user_model()
+    User.objects.filter(pk=user_pk).delete()
+    return HttpResponseRedirect(reverse_lazy('home'))
 
 
 def order_history(request, order_number):
