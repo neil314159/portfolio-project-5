@@ -6,8 +6,8 @@ body {
 
 .hero-image {
     /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("photographer.jpg");
-  
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://res.cloudinary.com/dpsodnurd/image/upload/c_scale,w_1682/v1652532186/alfons-morales-YLSwjSy7stw-unsplash_l2atpj.jpg");
+   
     /* Set a specific height */
     height: 50%;
   
@@ -18,12 +18,3 @@ body {
     position: relative;
   }
   
-  /* Place text in the middle of the image */
-  .hero-text {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-  }
