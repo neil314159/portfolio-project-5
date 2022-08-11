@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic, View
-from .models import CustomUser
+from .models import CustomUser, WishlistItem
 # from .forms import CustomUserCreationForm
 from django.contrib.auth import get_user_model
 
@@ -114,3 +114,31 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+def user_wishlist(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, (
+        f'This is a past confirmation for order number {order_number}. '
+        'A confirmation email was sent on the order date.'
+    ))
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+
+    return render(request, template, context)
+
+class WishlistView(LoginRequiredMixin, generic.ListView):
+    """ Creates view of wishlist page for user"""
+    model = WishlistItem
+    context_object_name = 'wishlist'
+    template_name = 'wishlist_view.html'
+    """ Return all objects belonging to user in reverse chronological order"""
+
+    def get_queryset(self):
+        return WishlistItem.objects.filter(
+            author=self.request.user
+        ).order_by('-published_on')

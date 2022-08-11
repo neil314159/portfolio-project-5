@@ -14,6 +14,7 @@ from profiles.models import WishlistItem
 def all_products(request):
     """ A view to return the dashboard page """
     sorted_products = Product.objects.all()
+    sorted_products = sorted_products.order_by("price")
     return render(request, 'products/products.html', {"sorted_products": sorted_products})
 
 def products_ranking(request):
@@ -24,7 +25,9 @@ def products_ranking(request):
     direction = None
    
     sortkey = request.GET['ranking']
-    
+    sorted_products = sorted_products.order_by("price")
+        
+        
     
     if sortkey == "price_asc":
         sorted_products = sorted_products.order_by("price")

@@ -5,6 +5,8 @@ urlpatterns = [
     path('', views.profile, name='profile'),
     path('deleteprofile/',
          views.remove_account, name='remove-profile'),
+    path('wishlist/',
+         views.WishlistView.as_view(), name='wishlist'),    
     path('order_history/<order_number>',
          views.order_history,
          name='order_history'),
