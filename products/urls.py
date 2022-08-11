@@ -9,4 +9,5 @@ urlpatterns = [
     path('htmx-search/', views.htmx_search_products, name='htmx_search'),
     path('edit/<int:product_id>/', views.edit_product, name='edit_product'),
     path('delete/<int:product_id>/', views.delete_product, name='delete_product'),
+    path('add_to_wishlist/<int:id>', views.add_to_wishlist, name='add_to_wishlist'),
 ]

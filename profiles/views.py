@@ -49,7 +49,7 @@ from django.conf import settings
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(get_user_model(), pk=request.user.id)
-
+    wishlist = profile.wishlistowner.all()
    
 
     template = 'profiles/profile.html'
@@ -60,7 +60,7 @@ def profile(request):
     #     'on_profile_page': True
     # }
 
-    return render(request, template, {'profile': profile})
+    return render(request, template, {'profile': profile, 'wishlist': wishlist})
 
 # class UserDeleteView(generic.DeleteView):
 #     """ Allows user to delete their own account"""

@@ -7,6 +7,7 @@ from django.db.models import Avg
 
 from .models import Product, Category
 from .forms import ProductForm
+from profiles.models import WishlistItem
 
 # Create your views here.
 
@@ -185,3 +186,36 @@ def product_category_list(request):
     product_category_list = Category.objects.all()
     context = {"product_category_list": product_category_list, }
     return context
+
+
+def add_to_wishlist(request, id):
+    try:
+        product = Product.objects.get(id=id)
+    except BaseException:
+        """If not, return to the wishlist page """
+        return redirect(reverse('products'))
+    
+    if WishlistItem.objects.filter(author=request.user,
+                                   product=product).count() > 0:
+        WishlistItem.objects.filter(author=request.user,
+                                   product=product).delete()
+        return render( request, 'products/includes/wishlist_snippet.html', context={'product':product})
+
+    
+
+    """ Create the wishlist item and return the user to wishlist page"""
+    WishlistItem.objects.create(author=request.user, product=product)
+    return render( request, 'products/includes/wishlist_snippet.html', context={'product':product})
+    
+
+
+    # if request.method == "POST":
+    #     instance = Product.objects.get(id=id)
+    #     if not instance.likes.filter(id=request.user.id).exists():
+    #         instance.likes.add(request.user)
+    #         instance.save() 
+    #         return render( request, 'posts/partials/likes_area.html', context={'post':instance})
+    #     else:
+    #         instance.likes.remove(request.user)
+    #         instance.save() 
+    #         return render( request, 'posts/partials/likes_area.html', context={'post':instance})

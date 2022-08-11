@@ -8,5 +8,12 @@
    <button type="submit">delete account</button>
 </form>
    {{profile.email}}
+
+   <br>
+One
+   {% for wish in wishlist %}
+   {{wish.product.name}}
+   {% endfor %}
+Two
 {% endblock %}
 
