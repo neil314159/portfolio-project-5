@@ -177,3 +177,11 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+
+def product_category_list(request):
+    """ Creates a list of categories to be used by dropdown menu"""
+    product_category_list = Category.objects.all()
+    context = {"product_category_list": product_category_list, }
+    return context

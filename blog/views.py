@@ -38,7 +38,7 @@ class BlogCategoryList(generic.ListView):
 
 def blog_category_list(request):
     """ Creates a list of categories to be used by dropdown menu"""
-    blog_category_list = Category.objects.all()
+    blog_category_list = BlogPostCategory.objects.all()
     context = {"blog_category_list": blog_category_list, }
     return context
 
@@ -97,14 +97,14 @@ def delete_category(request, pk):
     categories = BlogPostCategory.objects.all()
     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
 
-def edit_category(request, pk):
+# def edit_category(request, pk):
     
-    # remove the category
-    BlogPostCategory.objects.get(pk=pk).delete()
+#     # remove the category
+#     BlogPostCategory.objects.get(pk=pk).delete()
 
-    # return template fragment with all the user's films
-    categories = BlogPostCategory.objects.all()
-    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+#     # return template fragment with all the user's films
+#     categories = BlogPostCategory.objects.all()
+#     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
 
 def student_edit_form(request, pk):
     student = get_object_or_404(Student, pk=pk)
@@ -112,8 +112,8 @@ def student_edit_form(request, pk):
     context = {'student': student, 'form': form}
     return render(request, 'core/partials/edit-student-form.html', context)
 
-def edit_todo(request, pk):
-    todo = Todo.objects.get(pk=pk)
+def edit_category(request, pk):
+   
     blogcat = BlogPostCategory.objects.get(pk=pk)
 
     if request.method == 'POST':
