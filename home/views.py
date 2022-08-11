@@ -26,8 +26,4 @@ def artwork_request(request):
 
     return render(request, 'home/artwork-request.html')
 
-def gallery(request):
-    """ A view to return the dashboard page """
-    products = Product.objects.all()
-    
-    return render(request, 'home/gallery.html', {'products': products})           
+      

@@ -7,13 +7,13 @@
     <div id="category-{{ category.id}}">{{ forloop.counter }} {{ category.name  }}
       <button hx-trigger='click' hx-swap="outerHTML" hx-get="{% url 'edit-category' category.id %}" hx-target="#category-{{ category.id}}" >Edit</button>
         
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ category.id}}">
         Launch demo modal
       </button>
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal-{{ category.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
