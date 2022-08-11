@@ -172,9 +172,16 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    added = False
+    if request.user.is_authenticated:
+        if WishlistItem.objects.filter(author=request.user, product=product).count() > 0:
+            added = True
+    
+
 
     context = {
         'product': product,
+        'added': added,
     }
 
     return render(request, 'products/product_detail.html', context)
