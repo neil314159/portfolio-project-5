@@ -199,13 +199,13 @@ def add_to_wishlist(request, id):
                                    product=product).count() > 0:
         WishlistItem.objects.filter(author=request.user,
                                    product=product).delete()
-        return render( request, 'products/includes/wishlist_snippet.html', context={'product':product})
+        return render( request, 'products/includes/wishlist-snippet.html', context={'product':product, 'added': False})
 
     
 
     """ Create the wishlist item and return the user to wishlist page"""
     WishlistItem.objects.create(author=request.user, product=product)
-    return render( request, 'products/includes/wishlist_snippet.html', context={'product':product})
+    return render( request, 'products/includes/wishlist-snippet.html', context={'product':product, 'added': True})
     
 
 

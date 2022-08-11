@@ -2,11 +2,13 @@
     <button hx-post="{% url 'add_to_wishlist' product.id %}" id="like-button" 
           hx-target="#likesarea" hx-swap="outerHTML">
           HERE
-          <!-- {% if request.user in post.likes.all %} -->
-            <i class="material-icons" style="font-size:16px;color:green;">check_box</i>
-          <!-- {% else %} -->
-          <!-- <i class="material-icons" style="font-size:16px;color:yellowgreen;">check_box_outline_blank</i> -->
-          <!-- {% endif %} -->
+        
+           TOO
+           {% if added %} YES
+           {% else %} NO
+           {% endif %}
+
+        
         </button>
     
 </div>
