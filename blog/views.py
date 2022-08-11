@@ -13,12 +13,12 @@ from django.views.decorators.http import require_http_methods
 
 def blog(request):
     """ A view to return the blog"""
-    categories = BlogPostCategory.objects.all()
+    # categories = BlogPostCategory.objects.all()
     posts = BlogPost.objects.all()
 
     
 
-    return render(request, 'blog/blogindex.html', {'categories': categories, 'posts': posts})
+    return render(request, 'blog/blogindex.html', {'posts': posts})
 
 
 class BlogCategoryList(generic.ListView):

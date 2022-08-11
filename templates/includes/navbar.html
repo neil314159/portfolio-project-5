@@ -6,7 +6,10 @@
       
     </ul>
     <ul class="nav">
-     
+      {% if user.is_superuser %}
+      <li><a href="{% url 'dashboard' %}" class="nav-link px-2 text-white">Management Dashboard</a></li>
+      
+      {% endif %}
       {% if user.is_authenticated %}
       <li><a href="{% url 'profile' %}" class="nav-link px-2 text-white">My Profile</a></li>
       <li><a href="{% url 'account_logout' %}" class="nav-link px-2 text-white">Log Out</a></li>
