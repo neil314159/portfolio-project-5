@@ -30,8 +30,7 @@ class BlogCategoryList(generic.ListView):
     def get_queryset(self):
         content = {
             'cat': self.kwargs['category'],
-            'posts': BlogPost.objects
-            .filter(category__name=self.kwargs['category'])
+            'posts': BlogPost.objects.filter(category__name=self.kwargs['category'])
         }
         return content
 
