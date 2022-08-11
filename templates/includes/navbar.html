@@ -7,8 +7,23 @@
     </ul>
     <ul class="nav">
       {% if user.is_superuser %}
-      <li><a href="{% url 'dashboard' %}" class="nav-link px-2 text-white">Management Dashboard</a></li>
+ 
       
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle px-2 text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Manage Site
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{% url 'blog' %}">Manage Products</a></li>
+          <li><a class="dropdown-item" href="{% url 'blog' %}">Manage Blog</a></li>
+          <li><a class="dropdown-item" href="{% url 'blog' %}">Customer Orders</a></li>
+          <li><a class="dropdown-item" href="{% url 'blog' %}">Custom Requests</a></li>
+         
+          
+        </ul>
+      </li>
+
       {% endif %}
       {% if user.is_authenticated %}
       <li><a href="{% url 'profile' %}" class="nav-link px-2 text-white">My Profile</a></li>
@@ -49,9 +64,7 @@
   
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Request Artwork</a>
-        </li>
+       
       
        
 
@@ -65,14 +78,32 @@
             <!-- get list of categories from database -->
             {% for category in blog_category_list %}
             <li><a class="dropdown-item" href="{% url 'category-view' category.name %}">
-              {{ category.name }}
-            </a>
-          </li>
+                {{ category.name }}
+              </a>
+            </li>
             {% endfor %}
           </ul>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="#">Request Artwork</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Wishlist</a>
+        </li>
        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            My Profile
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'blog' %}">My Orders</a></li>
+            <li><a class="dropdown-item" href="{% url 'blog' %}">My Details</a></li>
+           
+          </ul>
+        </li>
 
       </ul>
       <ul class="navbar-nav ms-auto">
