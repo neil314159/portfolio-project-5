@@ -1,13 +1,16 @@
 from django.shortcuts import render
-from blog.models import BlogPostCategory
+from blog.models import BlogPostCategory, BlogPost
 from products.models import Product
+
 
 # Create your views here.
 
 def index(request):
     """ A view to return the home page """
+    blogposts = BlogPost.objects.all().order_by('-id')[:3]
+    products = Product.objects.all()
 
-    return render(request, 'home/index.html')
+    return render(request, 'home/index.html', {'blogposts': blogposts, 'products': products})
 
 
 def dashboard(request):
