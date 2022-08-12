@@ -63,6 +63,15 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = "blog/blog_post_form.html"
     success_url = reverse_lazy('blog')
 
+class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
+    """ Edit a published review """
+    model = BlogPost
+    template_name = "post_edit.html"
+    fields = ['title', 'book_author', 'review_text', 'category', 'book_cover',
+              'purchase_link', 'star_rating']
+
+    
+
 class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     """ Delete a post from the site"""
     model = BlogPost
@@ -75,12 +84,23 @@ def delete_blog_post(request, id):
     blogpost = get_object_or_404(BlogPost, pk=id)
     if request.user.is_superuser:
         blogpost.delete()
-        messages.success(request, 'This post is deleted')
-        return redirect('blog')
+        # messages.success(request, 'This post is deleted')
+        posts = BlogPost.objects.all()
+        return render(request, 'blog/HTMXsnippets/post-list.html', {'posts': posts})
+        
     else:
         return redirect('home')
         messages.error(request, 'You do not have permission to do this')
-       
+
+
+def delete_category(request, pk):
+    
+    # remove the category
+    BlogPostCategory.objects.get(pk=pk).delete()
+
+    # return template fragment with all the categories
+    categories = BlogPostCategory.objects.all()
+    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
 
 
 def add_category(request):
