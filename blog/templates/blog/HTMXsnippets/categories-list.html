@@ -18,7 +18,7 @@
       <button hx-trigger='click' hx-swap="outerHTML" hx-get="{% url 'edit-category' category.id %}" hx-target="#category-{{ category.id}}" class="btn btn-warning m-1" >Edit</button>
   
       <button type="button" class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ category.id}}">
-        Delete Category
+        Delete
       </button>
     </div>
 
@@ -43,7 +43,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a class="btn btn-danger" hx-delete="{% url 'delete-category' category.id %}" data-bs-dismiss="modal">Delete Category</a>
+        <a class="btn btn-danger" hx-delete="{% url 'delete-category' category.id %}" data-bs-dismiss="modal">Delete</a>
       </div>
     </div>
   </div>
