@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from .models import Product, Category
 from .forms import ProductForm
 from profiles.models import WishlistItem
+from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 
@@ -258,3 +259,49 @@ def add_to_wishlist(request, id):
     #         instance.likes.remove(request.user)
     #         instance.save() 
     #         return render( request, 'posts/partials/likes_area.html', context={'post':instance})
+
+def add_product_category(request):
+    name = request.POST.get('categoryname')
+    
+    # add category
+    category = Category.objects.get_or_create(name=name)[0]
+    # BlogPostCategory.objects.create(name=name)
+   
+    if not Category.objects.filter(name=name).exists():
+        Category.objects.create(name=name)
+
+    
+    # return HttpResponse("")
+    categories = Category.objects.all()
+
+    return render(request, 'products/snippets/categories_list.html', {'categories': categories})
+
+def edit_product_category(request, id):
+   
+    category = get_object_or_404(Category, id=id)
+
+    if request.method == 'POST':
+        if request.POST.get('newname') == '':
+            return render(request, 'products/snippets/categories_item.html', {'category': category})
+        else:
+            category.name = request.POST.get('newname')
+       
+        
+        category.save()
+        product_category_list = Category.objects.all()
+        # return HttpResponse("here")
+        return render(request, 'products/snippets/categories_item.html', {'category': blogcat})
+    
+    return render(request, 'products/snippets/categories_edit.html', {'cat': blogcat})
+
+@require_http_methods(['DELETE'])
+@login_required
+def delete_product_category(request, pk):
+    
+    # remove the category
+    Category.objects.get(pk=pk).delete()
+
+    # return template fragment with all the categories
+    # categories = BlogPostCategory.objects.all()
+    # return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+    return HttpResponse("")

@@ -35,6 +35,12 @@ def manage_products(request):
     categories = Category.objects.all().order_by("name")
     return render(request, 'dashboard/manage_products.html', {"products": products, "categories": categories})
 
+def manage_requests(request):
+    """ A view to return the dashboard page """
+    products = Product.objects.all().order_by("name")
+    categories = Category.objects.all().order_by("name")
+    return render(request, 'dashboard/manage_requests.html', {"products": products, "categories": categories})
+
 
 def order_details(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
