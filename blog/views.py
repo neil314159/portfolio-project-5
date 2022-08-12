@@ -86,7 +86,7 @@ def delete_blog_post(request, id):
         blogpost.delete()
         # messages.success(request, 'This post is deleted')
         posts = BlogPost.objects.all()
-        return render(request, 'blog/HTMXsnippets/post-list.html', {'posts': posts})
+        return render(request, 'blog/HTMXsnippets/posts-list.html', {'posts': posts})
         
     else:
         return redirect('home')

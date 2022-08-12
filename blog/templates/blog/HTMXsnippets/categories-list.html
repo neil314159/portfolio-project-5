@@ -17,7 +17,7 @@
     <div id="category-{{ category.id }}" class = ""> <span class="px-3">{{ category.name  }}</span>
       <button hx-trigger='click' hx-swap="outerHTML" hx-get="{% url 'edit-category' category.id %}" hx-target="#category-{{ category.id}}" class="btn btn-warning m-1" >Edit</button>
   
-      <button type="button" class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ category.id}}">
+      <button type="button" class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ post.id}}">
         Delete
       </button>
     </div>
