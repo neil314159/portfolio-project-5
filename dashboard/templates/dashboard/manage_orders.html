@@ -3,15 +3,24 @@
 {% load cloudinary %}
 
 {% block content %}
-HERE
+<div class="container">
+
+    <div class="px-2 py-2 my-2 text-center">
+        
+        <h1 class="display-5 fw-bold">Manage Orders</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">Click each order to view the details , and mark each order as shipped when it is sent out.</p>
+         
+        </div>
+      </div>
 {% for order in orders %}
 
 {{ order.order_number }}
 
-<a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+<a href="{% url 'order_details' order.order_number %}" title="{{ order.order_number }}">
     {{ order.order_number|truncatechars:6 }}
 </a>
 
 {% endfor %}
-
+</div>
 {% endblock %}
