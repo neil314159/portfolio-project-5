@@ -6,13 +6,14 @@
 <div class="container">
 
     <div class="px-2 py-2 my-2 text-center">
-        
+
         <h1 class="display-5 fw-bold">Manage Orders</h1>
         <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">Click each order to view the details , and mark each order as shipped when it is sent out.</p>
-         
+            <p class="lead mb-4">Click each order to view the details , and mark each order as shipped when it is sent
+                out.</p>
+
         </div>
-      </div>
+    </div>
 
 
 
@@ -22,33 +23,20 @@
 
         <table class="table">
             <thead>
-              <tr>
-                <th scope="col">Order Number</th>
-                <th scope="col">Name</th>
-                <th scope="col">Shipped</th>
-              
-                <th scope="col">Mark Shipped</th>
-              </tr>
+                <tr>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Shipped</th>
+
+                    <th scope="col">Mark Shipped</th>
+                </tr>
             </thead>
             <tbody>
                 {% for order in orders %}
-              <tr>
-                <td scope="row">{{ order.date}}<a href="{% url 'order_details' order.order_number %}" class="btn btn-primary btn-light mx-2" tabindex="-1" role="button" >View Order Details</a> </th>
-                <td>{{ order.full_name }}</td>
-                <td 
-                {% if order.shipped %}
-                class="table-success">
-                Yes
-                {% else %}
-                class="table-danger">
-                No
-                {% endif %}
-            </td>
-                <td>@mdo</td>
-              </tr>
-              {% endfor %}
+                {% include "dashboard/snippets/order-detail-snippet.html" %}
+                {% endfor %}
             </tbody>
-          </table>
+        </table>
 
 
     </div>

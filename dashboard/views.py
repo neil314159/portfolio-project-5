@@ -4,6 +4,8 @@ from blog.models import BlogPostCategory, BlogPost
 from products.models import Product
 from checkout.models import Order
 from django.views import generic, View
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -34,3 +36,16 @@ def order_details(request, order_number):
     }
 
     return render(request, template, context)
+
+@login_required
+def mark_order_shipped(request, id):
+    """ Toggles the boolean value to show if a book is read/unread"""
+    try:
+        order = Order.objects.get(id=id)
+    except BaseException:
+        return HttpResponseRedirect(reverse_lazy('manage_orders'))
+    order.order_shipped = not order.order_shipped
+    order.save()
+    """ Returns to page that made request"""
+    # return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return render( request, 'dashboard/snippets/order-detail-snippet.html', context={'order':order})

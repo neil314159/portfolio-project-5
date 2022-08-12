@@ -1,0 +1,29 @@
+<tr hx-target="this" hx-swap="outerHTML">
+    <td scope="row">{{ order.date}}<a href="{% url 'order_details' order.order_number %}"
+            class="btn btn-primary btn-light mx-2" tabindex="-1" role="button">View Order Details</a>
+        </th>
+    <td>{{ order.full_name }}</td>
+    <td 
+        {% if order.order_shipped %} class="table-success">
+        Yes
+        {% else %}
+        class="table-danger">
+        No
+        {% endif %}
+    </td>
+
+    <td>
+        
+            <button hx-get="{% url 'mark_order_shipped' order.id %}" class="btn btn-primary">
+                {% if order.order_shipped %}
+               
+                Mark As Unshipped
+                {% else %}
+                Mark As Shipped
+                {% endif %}
+                </button>
+
+
+    </td>
+
+</tr>
