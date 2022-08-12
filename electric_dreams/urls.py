@@ -28,5 +28,6 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
     path('blog/', include('blog.urls')),
+    path('dashboard/', include('dashboard.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 handler404 = 'electric_dreams.views.handler404'
