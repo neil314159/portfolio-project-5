@@ -59,7 +59,7 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     """ Create a new blogpost """
     model = BlogPost
     """ Pass in all fields except post author"""
-    fields = ['title', 'post_text', 'category']
+    fields = ['title', 'post_text', 'category', 'image']
     template_name = "blog/blog_post_form.html"
     success_url = reverse_lazy('blog')
 

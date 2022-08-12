@@ -31,7 +31,7 @@ class BlogPost(models.Model):
         blank=True,
         transformation={
             'width': '1000',
-            'height': '1000',
+            'height': '500',
             'crop': 'fill',
             'gravity': "auto"},
         default=("https://res.cloudinary.com/dpsodnurd/image/upload/v1652618629/zhtctppqjky78q8h760n.jpg"))
