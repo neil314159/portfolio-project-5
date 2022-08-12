@@ -24,8 +24,8 @@
     {% endblock %}
 
     <script src="https://unpkg.com/htmx.org@1.8.0" integrity="sha384-cZuAZ+ZbwkNRnrKi05G/fjBX+azI9DNOkNYysZ0I/X5ZFgsmMiBXgDZof30F5ofc" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    
+    <script src="https://js.stripe.com/v3/"></script>
     <title>Electric Dreams</title>
 
 </head>
@@ -67,11 +67,14 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
    
-    <script src="https://js.stripe.com/v3/"></script>
+   
     {% block extra_js %}
     {% endblock %}
 
-   
+    {% block postloadjs %}
+    
+    {% endblock %}
+
     
 
 
