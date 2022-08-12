@@ -160,8 +160,9 @@ def edit_category(request, id):
         
         blogcat.save()
         blog_category_list = BlogPostCategory.objects.all()
-
+        # return HttpResponse("here")
         return render(request, 'blog/HTMXsnippets/categories-item.html', {'category': blogcat})
     
     return render(request, 'blog/HTMXsnippets/categories-edit.html', {'cat': blogcat})
+    # return HttpResponse("here2")
 

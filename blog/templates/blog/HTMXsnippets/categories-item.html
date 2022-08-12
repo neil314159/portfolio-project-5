@@ -1,11 +1,17 @@
 
-    
-    <div id="category-{{ category.id }}"> 
-      <td>{{ category.name  }}
-      <button hx-trigger='click' hx-swap="outerHTML" hx-get="{% url 'edit-category' category.id %}" hx-target="#category-{{ category.id}}" class="btn btn-warning" >Edit</button>
-        
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ category.id}}">
-    Delete Category
-  </button>
-</td>
-    </div>
+
+<tr>
+  <td>{{ category.name}}</td>
+ 
+  
+  <td>
+      <button class="btn btn-warning btn-sm " hx-confirm="unset" hx-get="{% url 'edit-category' category.id %}">
+          Edit
+      </button>
+  </td>
+  <td>
+    <button class="btn btn-danger btn-sm" hx-confirm="unset" hx-delete="{% url 'delete-category' category.id %}">
+      Delete
+    </button>
+  </td>
+</tr>

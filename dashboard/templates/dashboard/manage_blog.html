@@ -35,7 +35,7 @@
                     </form>
                 </div>
 
-                <table class="table delete-row-example">
+                <table class="table" id="categories">
                     <thead>
                       <tr>
                         
@@ -50,9 +50,11 @@
                         <tr>
                             <td>{{ category.name}}</td>
                            
-                           
+                            
                             <td>
-                                <a class="btn btn-warning btn-sm" href="">Edit</a> 
+                                <button class="btn btn-warning btn-sm "hx-confirm="unset" hx-get="{% url 'edit-category' category.id %}">
+                                    Edit
+                                </button>
                             </td>
                             <td>
                               <button class="btn btn-danger btn-sm" hx-delete="{% url 'delete-category' category.id %}">

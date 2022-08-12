@@ -1,14 +1,16 @@
-<tr><td>
-
+<tr>
+<td>
 <form
 hx-post="{% url 'edit-category' cat.id %}"
-hx-target="this" hx-swap="outerHTML"
+hx-swap="outerHTML"
     hx-swap="outerHTML"
+    hx-confirm="unset"
     class="flex"
 >
-    <input class="flex-1 mr-4 px-6 text-xs text-gray-900 border-0" type="text" name="newname" value="{{ cat.name }}" autofocus>
+    <input class="" type="text" name="newname" value="{{ cat.name }}" autofocus>
 
-    <button class="text-sky-600 hover:text-sky-900" type="submit">Save</button>
+    <button class="btn btn-success btn-sm"  type="submit">Save</button>
+   
 </form>
-
-</td></tr>
+</td>
+</tr>
