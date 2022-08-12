@@ -3,7 +3,8 @@
 
 
 {% block content %}
-<div>
+<div class = "container">
+<div >
     <label >Make</label>
     <select name="ranking" hx-get="{% url 'products_ranking' %}" hx-target="#prod-list" hx-vals='{"category": "{{ product_category }}"}' >
         
@@ -16,12 +17,13 @@
        
     </select>
   </div>
+  <div>NUMBER: {{ sorted_products.count }}</div>
   <div id="prod-list">
    
     {% include "products/snippets/product-list.html" %}
 </div>
 
-
+</div>
    
    
 {% endblock %}
