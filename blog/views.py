@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -86,21 +87,22 @@ def delete_blog_post(request, id):
         blogpost.delete()
         # messages.success(request, 'This post is deleted')
         posts = BlogPost.objects.all()
-        return render(request, 'blog/HTMXsnippets/posts-list.html', {'posts': posts})
+        return HttpResponse("")
         
     else:
         return redirect('home')
         messages.error(request, 'You do not have permission to do this')
 
 
-def delete_category(request, pk):
+# def delete_category(request, pk):
     
-    # remove the category
-    BlogPostCategory.objects.get(pk=pk).delete()
+#     # remove the category
+#     BlogPostCategory.objects.get(pk=pk).delete()
 
-    # return template fragment with all the categories
-    categories = BlogPostCategory.objects.all()
-    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+#     # return template fragment with all the categories
+#     # categories = BlogPostCategory.objects.all()
+#     # return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+#     return HttpResponse("")
 
 
 def add_category(request):
@@ -126,8 +128,9 @@ def delete_category(request, pk):
     BlogPostCategory.objects.get(pk=pk).delete()
 
     # return template fragment with all the categories
-    categories = BlogPostCategory.objects.all()
-    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+    # categories = BlogPostCategory.objects.all()
+    # return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+    return HttpResponse("")
 
 # def edit_category(request, pk):
     

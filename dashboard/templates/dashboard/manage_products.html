@@ -20,22 +20,7 @@
 
 
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Order Number</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Shipped</th>
-
-                    <th scope="col">Mark Shipped</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for order in orders %}
-                {% include "dashboard/snippets/order-detail-snippet.html" %}
-                {% endfor %}
-            </tbody>
-        </table>
+       
 
 
 
@@ -48,6 +33,7 @@
             <th>Category</th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
@@ -56,9 +42,14 @@
                 <td>{{ product.name}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.category.name}}</td>
-                <td></td>
                 <td>
-                  <button class="btn btn-danger" hx-delete="{% url 'delete_product' product.id %}">
+                    <a class="btn btn-primary btn-sm" href="" role="button">View</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="#" role="button">Edit</a>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm" hx-delete="{% url 'delete_product' product.id %}">
                     Delete
                   </button>
                 </td>
