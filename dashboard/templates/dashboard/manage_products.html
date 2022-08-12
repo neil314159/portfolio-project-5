@@ -20,45 +20,124 @@
 
 
 
-       
 
 
 
 
-        <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
-            {% for product in products %}
-            <tr>
-                <td>{{ product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.category.name}}</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="{% url 'product_detail' product.id %}" role="button">View</a>
-                </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="#" role="button">Edit</a>
-                </td>
-                <td>
-                  <button class="btn btn-danger btn-sm" hx-delete="{% url 'delete_product' product.id %}">
-                    Delete
-                  </button>
-                </td>
-              </tr>
+
+  
 
 
-            {% endfor %}
-        </tbody>
-      </table>
+
+    </div>
+
+    <div class="m-2 p-2">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="display-6 fw-bold">Categories</h2>
+
+
+                <div class="tableform">
+
+
+
+                    <form hx-post="{% url 'add_product_category' %}" hx-target='#categories' class="">
+                        {% csrf_token %}
+                        <input type="text" id="category-input" name="categoryname" class="form-control-sm mr-2"
+                            placeholder="Category Name" />
+                        <button type="submit" class="btn btn-success btn-sm">Add Category</button>
+                    </form>
+
+                    <table class="table" id="categories">
+                        <thead>
+                            <tr>
+
+                                <th>Name</th>
+
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
+                            {% for category in categories %}
+                            <tr>
+                                <td>{{ category.name}}</td>
+
+
+                                <td>
+                                    <button class="btn btn-warning btn-sm " hx-confirm="unset"
+                                        hx-get="{% url 'edit_product_category' category.id %}">
+                                        Edit
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm"
+                                        hx-delete="{% url 'delete_product_category' category.id %}">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <h2 class="display-6 fw-bold">Products</h2>
+
+                <a class="btn btn-warning  mt-2 mb-1" href="{% url 'add_product' %}">New Product</a>
+
+
+
+
+                <table class="table delete-row-example">
+                    <thead>
+                        <tr>
+
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.name}}</td>
+
+                            <td>
+                                {{ product.price}}
+
+                            <td>
+                                <a class="btn btn-success btn-sm" href="{% url 'product_detail' product.id %}">View</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="">Edit</a>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" hx-delete="{% url 'delete_product' product.id %}">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+        </div>
+
+
 
 
 
