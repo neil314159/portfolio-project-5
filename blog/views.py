@@ -18,8 +18,6 @@ def blog(request):
     # categories = BlogPostCategory.objects.all()
     posts = BlogPost.objects.all()
 
-    
-
     return render(request, 'blog/blogindex.html', {'posts': posts})
 
 
@@ -116,9 +114,12 @@ def add_category(request):
         BlogPostCategory.objects.create(name=name)
 
     
+    # return HttpResponse("")
     categories = BlogPostCategory.objects.all()
 
     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
+
+
 
 @require_http_methods(['DELETE'])
 @login_required
@@ -166,3 +167,10 @@ def edit_category(request, id):
     return render(request, 'blog/HTMXsnippets/categories-edit.html', {'cat': blogcat})
     # return HttpResponse("here2")
 
+
+def categories_table(request):
+   
+    categories = BlogPostCategory.objects.all()
+    
+    return render(request, 'blog/HTMXsnippets/categories_table.html', {'categories': categories})
+    

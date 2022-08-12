@@ -26,6 +26,7 @@ def manage_blog(request):
     """ A view to return the dashboard page """
     posts = BlogPost.objects.all().order_by("-published_on")
     categories = BlogPostCategory.objects.all().order_by("name")
+    
     return render(request, 'dashboard/manage_blog.html', {"posts": posts, "categories": categories})
 
 def manage_products(request):
