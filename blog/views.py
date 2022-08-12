@@ -69,6 +69,19 @@ class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = 'blog/blog_post_delete.html'
     success_url = reverse_lazy('blog')
 
+@login_required
+def delete_blog_post(request, id):
+    
+    blogpost = get_object_or_404(BlogPost, pk=id)
+    if request.user.is_superuser:
+        blogpost.delete()
+        messages.success(request, 'This post is deleted')
+        return redirect('blog')
+    else:
+        return redirect('home')
+        messages.error(request, 'You do not have permission to do this')
+       
+
 
 def add_category(request):
     name = request.POST.get('categoryname')

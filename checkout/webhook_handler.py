@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
+from profiles.models import CustomUser
 from .models import Order, OrderLineItem
 from products.models import Product
 from django.core.mail import send_mail
@@ -62,7 +63,7 @@ class StripeWH_Handler:
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
-            profile = UserProfile.objects.get(user__username=username)
+            profile = CustomUser.objects.get(email=username)
             if save_info:
                 profile.default_phone_number = shipping_details.phone
                 profile.default_country = shipping_details.address.country
