@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -17,6 +18,17 @@ def all_products(request):
     sorted_products = sorted_products.order_by("price")
     return render(request, 'products/products.html', {"sorted_products": sorted_products})
 
+def category_products(request, category):
+    """ A view to return the dashboard page """
+    # newcategory = request.GET['category']
+    newcat = category
+    sorted_products = Product.objects.filter(category__name=newcat)
+    # sorted_products = Product.objects.all()
+
+    
+    sorted_products = sorted_products.order_by("price")
+    return render(request, 'products/products.html', {"sorted_products": sorted_products,"product_category":category})
+
 def products_ranking(request):
     """ A view to show all products, including sorting and search queries """
 
@@ -26,7 +38,14 @@ def products_ranking(request):
    
     sortkey = request.GET['ranking']
     sorted_products = sorted_products.order_by("price")
-        
+
+    search = request.GET.get('search')
+
+    if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            sorted_products = sorted_products.filter(category__name__in=categories)
+            # categories = Category.objects.filter(name__in=categories)
+    
         
     
     if sortkey == "price_asc":
@@ -44,10 +63,22 @@ def products_ranking(request):
     if sortkey == 'rating_desc':
         sorted_products = sorted_products.order_by("-rating")
         
-      
-    
 
     return render(request, 'products/snippets/product-list.html', {"sorted_products": sorted_products})
+
+
+class ProductCategoryList(generic.ListView):
+    """Takes GET request, returns articles by category"""
+    model = Product
+    template_name = "blog/categoryindex.html"
+    context_object_name = 'categorylist'
+
+    def get_queryset(self):
+        content = {
+            'cat': self.kwargs['category'],
+            'posts': Product.objects.filter(category__name=self.kwargs['category'])
+        }
+        return content
 
 
 def product_detail(request, product_id):

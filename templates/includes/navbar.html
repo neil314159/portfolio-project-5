@@ -57,7 +57,7 @@
             <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
            
             {% for product_category in product_category_list %}
-            <li><a class="dropdown-item" href="/category/{{ product_category.name}}">
+            <li><a class="dropdown-item" href="{% url 'product-category-view' product_category.name %}">
               {{ product_category.name }}
             </a>
           </li>
@@ -78,7 +78,7 @@
             <li><a class="dropdown-item" href="{% url 'blog' %}">All Posts</a></li>
             <!-- get list of categories from database -->
             {% for category in blog_category_list %}
-            <li><a class="dropdown-item" href="{% url 'category-view' category.name %}">
+            <li><a class="dropdown-item" href="{% url 'blog-category-view' category.name %}">
                 {{ category.name }}
               </a>
             </li>

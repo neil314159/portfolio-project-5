@@ -8,7 +8,7 @@ from products.models import Product
 def index(request):
     """ A view to return the home page """
     blogposts = BlogPost.objects.all().order_by('-id')[:3]
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-id')[:3]
 
     return render(request, 'home/index.html', {'blogposts': blogposts, 'products': products})
 

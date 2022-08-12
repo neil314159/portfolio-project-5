@@ -5,7 +5,7 @@
 {% block content %}
 <div>
     <label >Make</label>
-    <select name="ranking" hx-get="{% url 'products_ranking' %}" hx-target="#prod-list" >
+    <select name="ranking" hx-get="{% url 'products_ranking' %}" hx-target="#prod-list" hx-vals='{"category": "{{ product_category }}"}' >
         
         <option value="price_asc">Price (low to high)</option>
         <option value="price_desc" >Price (high to low)</option>
