@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.db.models import Avg
-
+from django.http import HttpResponse
 from .models import Product, Category
 from .forms import ProductForm
 from profiles.models import WishlistItem
@@ -158,7 +158,19 @@ def delete_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
-    return redirect(reverse('products'))
+    return HttpResponse("")
+
+
+# def delete_blog_post(request, id):
+    
+#     blogpost = get_object_or_404(BlogPost, pk=id)
+#     if request.user.is_superuser:
+#         blogpost.delete()
+#         # messages.success(request, 'This post is deleted')
+#         posts = BlogPost.objects.all()
+#         return render(request, 'blog/HTMXsnippets/posts-list.html', {'posts': posts})
+
+
 
 def htmx_search_products(request):
     

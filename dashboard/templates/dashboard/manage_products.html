@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}
+<div class="container">
+
+    <div class="px-2 py-2 my-2 text-center">
+
+        <h1 class="display-5 fw-bold">Manage Products</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Here you can add, edit and delete products on your site.</p>
+
+        </div>
+    </div>
+
+
+
+    <div class="m-2 p-2">
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Shipped</th>
+
+                    <th scope="col">Mark Shipped</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                {% include "dashboard/snippets/order-detail-snippet.html" %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+        <table class="table delete-row-example">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.category.name}}</td>
+                <td></td>
+                <td>
+                  <button class="btn btn-danger" hx-delete="{% url 'delete_product' product.id %}">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+
+
+            {% endfor %}
+        </tbody>
+      </table>
+
+
+
+    </div>
+
+</div>
+{% endblock %}
