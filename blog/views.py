@@ -1,4 +1,5 @@
-from django.shortcuts import render
+
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.views import generic, View
 from .models import BlogPost, BlogPostCategory
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -33,7 +34,6 @@ class BlogCategoryList(generic.ListView):
             'posts': BlogPost.objects.filter(category__name=self.kwargs['category'])
         }
         return content
-
 
 def blog_category_list(request):
     """ Creates a list of categories to be used by dropdown menu"""
@@ -88,12 +88,12 @@ def add_category(request):
     
     # add category
     category = BlogPostCategory.objects.get_or_create(name=name)[0]
-    
+    # BlogPostCategory.objects.create(name=name)
    
     if not BlogPostCategory.objects.filter(name=name).exists():
         BlogPostCategory.objects.create(name=name)
 
-    # return template fragment with all the user's films
+    
     categories = BlogPostCategory.objects.all()
 
     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
@@ -105,7 +105,7 @@ def delete_category(request, pk):
     # remove the category
     BlogPostCategory.objects.get(pk=pk).delete()
 
-    # return template fragment with all the user's films
+    # return template fragment with all the categories
     categories = BlogPostCategory.objects.all()
     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
 
@@ -124,14 +124,21 @@ def student_edit_form(request, pk):
     context = {'student': student, 'form': form}
     return render(request, 'core/partials/edit-student-form.html', context)
 
-def edit_category(request, pk):
+def edit_category(request, id):
    
-    blogcat = BlogPostCategory.objects.get(pk=pk)
+    blogcat = get_object_or_404(BlogPostCategory, id=id)
 
     if request.method == 'POST':
-        blogcat.name = request.POST.get('name', '')
+        if request.POST.get('newname') == '':
+            return render(request, 'blog/HTMXsnippets/categories-item.html', {'category': blogcat})
+        else:
+            blogcat.name = request.POST.get('newname')
+       
+        
         blogcat.save()
+        blog_category_list = BlogPostCategory.objects.all()
 
-        return render(request, 'blog/HTMXsnippets/categories-list.html', {'todo': todo})
+        return render(request, 'blog/HTMXsnippets/categories-item.html', {'category': blogcat})
     
     return render(request, 'blog/HTMXsnippets/categories-edit.html', {'cat': blogcat})
+

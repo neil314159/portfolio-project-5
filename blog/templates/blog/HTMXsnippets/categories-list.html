@@ -3,35 +3,54 @@
   <div id="categories"
   hx-target="#categories"
   hx-swap="outerHTML">
+
+  <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Category Name</th>
+           
+        </tr>
+    </thead>
+    <tbody>
   {% for category in categories %}
-    <div id="category-{{ category.id}}">{{ forloop.counter }} {{ category.name  }}
-      <button hx-trigger='click' hx-swap="outerHTML" hx-get="{% url 'edit-category' category.id %}" hx-target="#category-{{ category.id}}" >Edit</button>
-        
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ category.id}}">
-        Launch demo modal
+  <tr><td>
+    <div id="category-{{ category.id }}" class = ""> <span class="px-3">{{ category.name  }}</span>
+      <button hx-trigger='click' hx-swap="outerHTML" hx-get="{% url 'edit-category' category.id %}" hx-target="#category-{{ category.id}}" class="btn btn-warning m-1" >Edit</button>
+  
+      <button type="button" class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ category.id}}">
+        Delete Category
       </button>
     </div>
+
+  
+
+
+</td>
+</tr>
+
+
 
     <!-- Modal -->
 <div class="modal fade" id="exampleModal-{{ category.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete the blog category titled:</p>
-                <p>"<strong>{{ category.name }}</strong>"</p>
+        <p>Are you sure you want to delete the blog category?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a class="btn" hx-delete="{% url 'delete-category' category.id %}" data-bs-dismiss="modal">Delete Blog Post</a>
+        <a class="btn btn-danger" hx-delete="{% url 'delete-category' category.id %}" data-bs-dismiss="modal">Delete Category</a>
       </div>
     </div>
   </div>
 </div>
   {% endfor %}
+</tbody> 
+</table>
 </div>
 
 

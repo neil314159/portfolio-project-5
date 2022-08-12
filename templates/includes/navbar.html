@@ -77,9 +77,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{% url 'blog' %}">All Posts</a></li>
             <!-- get list of categories from database -->
-            {% for category in blog_category_list %}
-            <li><a class="dropdown-item" href="{% url 'blog-category-view' category.name %}">
-                {{ category.name }}
+            {% for blog_category in blog_category_list %}
+            <li><a class="dropdown-item" href="{% url 'blog_category_view' blog_category.name %}">
+                {{ blog_category.name }}
               </a>
             </li>
             {% endfor %}

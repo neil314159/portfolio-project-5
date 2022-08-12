@@ -16,11 +16,17 @@ from django.contrib.auth.decorators import login_required
 #     # paginate_by = 6
 #     template_name = "dashboard/manage_orders.html"
 
-def all_orders(request):
+def manage_orders(request):
     """ A view to return the dashboard page """
     orders = Order.objects.all().order_by("-date")
    
     return render(request, 'dashboard/manage_orders.html', {"orders": orders})
+
+def manage_blog(request):
+    """ A view to return the dashboard page """
+    posts = BlogPost.objects.all().order_by("-published_on")
+    categories = BlogPostCategory.objects.all().order_by("name")
+    return render(request, 'dashboard/manage_blog.html', {"posts": posts, "categories": categories})
 
 def order_details(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
