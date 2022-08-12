@@ -13,14 +13,45 @@
          
         </div>
       </div>
-{% for order in orders %}
 
-{{ order.order_number }}
 
-<a href="{% url 'order_details' order.order_number %}" title="{{ order.order_number }}">
-    {{ order.order_number|truncatechars:6 }}
-</a>
 
-{% endfor %}
+    <div class="m-2 p-2">
+
+
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Shipped</th>
+              
+                <th scope="col">Mark Shipped</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+              <tr>
+                <td scope="row">{{ order.date}}<a href="{% url 'order_details' order.order_number %}" class="btn btn-primary btn-light mx-2" tabindex="-1" role="button" >View Order Details</a> </th>
+                <td>{{ order.full_name }}</td>
+                <td 
+                {% if order.shipped %}
+                class="table-success">
+                Yes
+                {% else %}
+                class="table-danger">
+                No
+                {% endif %}
+            </td>
+                <td>@mdo</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+    </div>
+
 </div>
 {% endblock %}
