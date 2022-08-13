@@ -1,6 +1,6 @@
 <tr hx-target="this" hx-swap="outerHTML">
     <td scope="row">{{ order.date}}<a href="{% url 'order_details' order.order_number %}"
-            class="btn btn-primary btn-light mx-2" tabindex="-1" role="button">View Order Details</a>
+            class="btn btn-primary btn-warning mx-2" tabindex="-1" role="button">View Order Details</a>
         </th>
     <td>{{ order.full_name }}</td>
     <td 

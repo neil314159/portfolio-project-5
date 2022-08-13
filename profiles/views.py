@@ -13,9 +13,10 @@ from django.contrib.auth import logout as auth_logout, get_user_model
 
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
-
+from django.contrib.auth import get_user_model
 from checkout.models import Order
 from django.conf import settings
+from .models import CustomUser
 
 
 # @login_required
@@ -115,6 +116,41 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+def user_order_history(request):
+    # profile = get_object_or_404(get_user_model(), pk=request.user.id)
+    # orders = Order.objects.filter(user__profile.get_user_model().id==request.user.id)
+    orders = request.user.orders.all()
+    # User.objects.filter(pk=user_pk).delete()
+    # orders= Order.objects.all()
+    
+    # user_pk = request.user.pk
+    # auth_logout(request)
+    # User = get_user_model()
+    # User.objects.filter(pk=user_pk).delete()
+    # return HttpResponseRedirect(reverse_lazy('home'))
+
+    # template = 'checkout/checkout_success.html'
+    # context = {
+    #     'order': order,
+    #     'from_profile': True,
+    # }
+    return render(request, 'profiles/user_orders.html', {'orders': orders})
+
+def user_order_details(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    # messages.info(request, (
+    #     f'This is a past confirmation for order number {order_number}. '
+    #     'A confirmation email was sent on the order date.'
+    # ))
+
+    template = 'profiles/order_details.html'
+    context = {
+        'order': order,
+    }
+
+    return render(request, template, context)
+    
 def user_wishlist(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 

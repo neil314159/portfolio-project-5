@@ -27,7 +27,7 @@
       {% endif %}
       {% endif %}
       {% if user.is_authenticated %}
-      <li><a href="{% url 'profile' %}" class="nav-link px-2 text-white">My Profile</a></li>
+    
       <li><a href="{% url 'account_logout' %}" class="nav-link px-2 text-white">Log Out</a></li>
       {% else %}
       <li><a href="{% url 'account_login' %}" class="nav-link px-2 text-white">Log In</a></li>
@@ -100,7 +100,7 @@
             My Profile
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{% url 'blog' %}">My Orders</a></li>
+            <li><a class="dropdown-item" href="{% url 'my_orders' %}">My Orders</a></li>
             <li><a class="dropdown-item" href="{% url 'blog' %}">My Details</a></li>
            
           </ul>
