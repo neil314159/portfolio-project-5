@@ -65,7 +65,7 @@ def products_ranking(request):
     if sortkey == 'rating_desc':
         sorted_products = sorted_products.order_by("-rating")
 
-    return render(request, 'products/snippets/product-list.html',
+    return render(request, 'products/snippets/product_list.html',
                   {"sorted_products": sorted_products})
 
 
@@ -178,7 +178,7 @@ def htmx_search_products(request):
     products = products.filter(queries)
 
     context = {"products": products}
-    return render(request, 'products/includes/search-results.html', context)
+    return render(request, 'products/includes/search_results.html', context)
 
 
 def search_page(request):
@@ -226,7 +226,7 @@ def add_to_wishlist(request, id):
                                     product=product).delete()
         return render(
             request,
-            'products/includes/wishlist-snippet.html',
+            'products/includes/wishlist_snippet.html',
             context={
                 'product': product,
                 'added': False})
@@ -235,7 +235,7 @@ def add_to_wishlist(request, id):
     WishlistItem.objects.create(author=request.user, product=product)
     return render(
         request,
-        'products/includes/wishlist-snippet.html',
+        'products/includes/wishlist_snippet.html',
         context={
             'product': product,
             'added': True})

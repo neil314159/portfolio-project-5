@@ -25,169 +25,35 @@
 
 
 
-<div class="row">
 
 
-  <div class="col-lg-4 col-md-6 col-sm-6">
-    <div class="product__item">
-        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-            <ul class="product__hover">
-                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-                </li>
-                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-            </ul>
-        </div>
-        <div class="product__item__text">
-            <h6>Piqué Biker Jacket</h6>
-            <a href="#" class="add-cart">+ Add To Cart</a>
-            <div class="rating">
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <h5>$67.24</h5>
-            
-        </div>
+
+
+
+
+
+
+
+
+<div class="row row-cols-1 ow-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+{% for product in sorted_products %}
+  <div class="col">
+    <div class="card border-0">
+      <a href="{% url 'product_detail' product.id %}"><img src="{{ product.image.url }}" class="card-img-top rounded-0" alt="..."></a>
+      <div class="card-body px-0">
+        <h6 class="card-text mt-2">{{ product.name }}</h6>
+        <p class="card-text mb-1 text-warning"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
+        <h4 >€{{ product.price }}</h4>
+      </div>
     </div>
-</div>
-
-<div class="col-lg-4 col-md-6 col-sm-6">
-  <div class="product__item">
-      <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-          <ul class="product__hover">
-              <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-              <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-              </li>
-              <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-          </ul>
-      </div>
-      <div class="product__item__text">
-          <h6>Piqué Biker Jacket</h6>
-          <a href="#" class="add-cart">+ Add To Cart</a>
-          <div class="rating">
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-          </div>
-          <h5>$67.24</h5>
-          
-      </div>
   </div>
-</div>
-
-<div class="col-lg-4 col-md-6 col-sm-6">
-  <div class="product__item">
-      <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-          <ul class="product__hover">
-              <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-              <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-              </li>
-              <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-          </ul>
-      </div>
-      <div class="product__item__text">
-          <h6>Piqué Biker Jacket</h6>
-          <a href="#" class="add-cart">+ Add To Cart</a>
-          <div class="rating">
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-          </div>
-          <h5>$67.24</h5>
-          
-      </div>
-  </div>
-</div>
-
-<div class="col-lg-4 col-md-6 col-sm-6">
-  <div class="product__item">
-      <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-          <ul class="product__hover">
-              <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-              <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-              </li>
-              <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-          </ul>
-      </div>
-      <div class="product__item__text">
-          <h6>Piqué Biker Jacket</h6>
-          <a href="#" class="add-cart">+ Add To Cart</a>
-          <div class="rating">
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-          </div>
-          <h5>$67.24</h5>
-          
-      </div>
-  </div>
-</div>
-
-<div class="col-lg-4 col-md-6 col-sm-6">
-  <div class="product__item">
-      <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-          <ul class="product__hover">
-              <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-              <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-              </li>
-              <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-          </ul>
-      </div>
-      <div class="product__item__text">
-          <h6>Piqué Biker Jacket</h6>
-          <a href="#" class="add-cart">+ Add To Cart</a>
-          <div class="rating">
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-          </div>
-          <h5>$67.24</h5>
-          
-      </div>
-  </div>
-</div>
-
-
-<div class="col-lg-4 col-md-6 col-sm-6">
-  <div class="product__item">
-      <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-          <ul class="product__hover">
-              <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-              <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-              </li>
-              <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-          </ul>
-      </div>
-      <div class="product__item__text">
-          <h6>Piqué Biker Jacket</h6>
-          <a href="#" class="add-cart">+ Add To Cart</a>
-          <div class="rating">
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-              <i class="fa fa-star-o"></i>
-          </div>
-          <h5>$67.24</h5>
-          
-      </div>
-  </div>
-</div>
-
+{% endfor %}
 
 
 </div>
+
+
+
 
 </div>
    
