@@ -73,9 +73,10 @@
                     </td>
                    
                     <td>
-                        <button class="btn btn-danger btn-sm" hx-delete="">
-                            Remove
-                        </button>
+                        
+                        <button class="btn btn-danger btn-sm" hx-delete="{% url 'delete_wishlist_item' wish.id %}">
+                            Delete
+                          </button>
                     </td>
                 </tr>
 

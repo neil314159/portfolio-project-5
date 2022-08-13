@@ -249,6 +249,20 @@ def add_to_wishlist(request, id):
     
 
 
+@login_required
+def delete_wishlist_item(request, id):
+    
+    wish = get_object_or_404(WishlistItem, pk=id)
+    if wish.author.id == request.user.id:
+        wish.delete()
+        # messages.success(request, 'This post is deleted')
+       
+        return HttpResponse("")
+        
+    else:
+        return redirect('home')
+        messages.error(request, 'You do not have permission to do this')
+
     # if request.method == "POST":
     #     instance = Product.objects.get(id=id)
     #     if not instance.likes.filter(id=request.user.id).exists():
