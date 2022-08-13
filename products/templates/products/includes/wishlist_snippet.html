@@ -1,11 +1,9 @@
 <div class="list-group list-group-horizontal btn-group" id="likesarea" role="group">
-    <button hx-post="{% url 'add_to_wishlist' product.id %}" id="like-button" 
+    <button hx-post="{% url 'add_to_wishlist' product.id %}" id="like-button" class="btn btn-outline-dark mb-3"
           hx-target="#likesarea" hx-swap="outerHTML">
-          HERE
-        
-           TOO
-           {% if added %} YES
-           {% else %} NO
+          
+           {% if added %} Remove from wishlist
+           {% else %} Add to wishlist
            {% endif %}
 
         </button>
