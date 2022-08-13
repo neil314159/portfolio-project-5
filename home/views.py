@@ -3,7 +3,7 @@ from blog.models import BlogPostCategory, BlogPost
 from products.models import Product
 from mailchimp_marketing import Client
 from mailchimp_marketing.api_client import ApiClientError
-import env
+
 import os
 from django.contrib import messages
 from .models import ArtRequestFormMessage

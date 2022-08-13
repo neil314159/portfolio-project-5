@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic, View
 from .models import CustomUser, WishlistItem
-# from .forms import CustomUserCreationForm
+from .forms import UserProfileForm
 from django.contrib.auth import get_user_model
 
 from django.contrib.auth import logout as auth_logout, get_user_model
@@ -19,44 +19,47 @@ from django.conf import settings
 from .models import CustomUser
 
 
-# @login_required
-# def profile(request):
-#     """ Display the user's profile. """
-#     profile = get_object_or_404(get_user_model(), user=request.user)
-
-#     if request.method == 'POST':
-#         form = UserProfileForm(request.POST, instance=profile)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Profile updated successfully')
-#         else:
-#             messages.error(request,
-#                            ('Update failed. Please ensure '
-#                             'the form is valid.'))
-#     else:
-#         form = UserProfileForm(instance=profile)
-#     orders = profile.orders.all()
-
-#     template = 'profiles/profile.html'
-#     context = {
-#         'form': form,
-#         'orders': orders,
-#         'on_profile_page': True
-#     }
-
-#     return render(request, template, context)
-
 @login_required
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(get_user_model(), pk=request.user.id)
-    wishlist = profile.wishlistowner.all()
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+        else:
+            messages.error(request,
+                           ('Update failed. Please ensure '
+                            'the form is valid.'))
+    else:
+        form = UserProfileForm(instance=profile)
+    orders = profile.orders.all()
 
     template = 'profiles/profile.html'
+    context = {
+        'form': form,
+        'orders': orders,
+        'on_profile_page': True
+    }
 
-    return render(
-        request, template, {
-            'profile': profile, 'wishlist': wishlist})
+    return render(request, template, context)
+
+# @login_required
+# def profile(request):
+#     """ Display the user's profile. """
+#     profile = get_object_or_404(get_user_model(), pk=request.user.id)
+#     wishlist = profile.wishlistowner.all()
+
+#     template = 'profiles/profile.html'
+
+#     return render(
+#         request, template, {
+#             'profile': profile, 'wishlist': wishlist})
+
+
+
 
 # class UserDeleteView(generic.DeleteView):
 #     """ Allows user to delete their own account"""
