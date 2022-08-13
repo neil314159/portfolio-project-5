@@ -27,8 +27,8 @@ urlpatterns = [
         views.htmx_search_products,
         name='htmx_search'),
     path(
-        'edit/<int:product_id>/',
-        views.edit_product,
+        'edit/<int:pk>/',
+        views.ProductUpdateView.as_view(),
         name='edit_product'),
     path(
         'delete/<int:product_id>/',

@@ -332,8 +332,8 @@ class ProductCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
-    """ Edit a published review """
+    
     model = Product
     template_name = "products/product_form.html"
-    fields = ['title', 'category', 'image', 'post_text']
+    fields = ['name', 'sku', 'category', 'description', 'price', 'image']
     success_url = reverse_lazy('manage_products')
