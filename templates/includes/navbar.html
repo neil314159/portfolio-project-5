@@ -57,7 +57,7 @@
             <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
            
             {% for product_category in product_category_list %}
-            <li><a class="dropdown-item" href="{% url 'product-category-view' product_category.name %}">
+            <li><a class="dropdown-item" href="{% url 'product_category_view' product_category.name %}">
               {{ product_category.name }}
             </a>
           </li>

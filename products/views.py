@@ -10,6 +10,8 @@ from .models import Product, Category
 from .forms import ProductForm
 from profiles.models import WishlistItem
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -303,11 +305,11 @@ def edit_product_category(request, id):
         # return HttpResponse("here")
         return render(request,
                       'products/snippets/categories_item.html',
-                      {'category': blogcat})
+                      {'category': category})
 
     return render(request,
                   'products/snippets/categories_edit.html',
-                  {'cat': blogcat})
+                  {'cat': category})
 
 
 @require_http_methods(['DELETE'])
@@ -318,3 +320,20 @@ def delete_product_category(request, pk):
     Category.objects.get(pk=pk).delete()
 
     return HttpResponse("")
+
+
+class ProductCreateView(LoginRequiredMixin, generic.CreateView):
+    """ Create a new blogpost """
+    model = Product
+    """ Pass in all fields except post author"""
+    fields = ['name', 'sku', 'category', 'description', 'price', 'image']
+    template_name = "products/product_form.html"
+    success_url = reverse_lazy('manage_products')
+
+
+class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
+    """ Edit a published review """
+    model = Product
+    template_name = "products/product_form.html"
+    fields = ['title', 'category', 'image', 'post_text']
+    success_url = reverse_lazy('manage_products')

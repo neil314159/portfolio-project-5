@@ -16,7 +16,7 @@ urlpatterns = [
         name='product_detail'),
     path(
         'add/',
-        views.add_product,
+        views.ProductCreateView.as_view(),
         name='add_product'),
     path(
         'search/',
@@ -45,13 +45,13 @@ urlpatterns = [
     path(
         'category/<category>/',
         views.category_products,
-        name='product-category-view'),
+        name='product_category_view'),
     path(
         'add-category/',
         views.add_product_category,
         name='add_product_category'),
     path(
-        'edit-category/<int:id>/',
+        'edit_category/<int:id>/',
         views.edit_product_category,
         name='edit_product_category'),
     path(

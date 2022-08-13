@@ -1,0 +1,16 @@
+<tr>
+    <td>
+    <form
+    hx-post="{% url 'edit_product_category' cat.id %}"
+    hx-swap="outerHTML"
+        hx-swap="outerHTML"
+        hx-confirm="unset"
+        class="flex"
+    >
+        <input class="" type="text" name="newname" value="{{ cat.name }}" autofocus>
+    
+        <button class="btn btn-success btn-sm"  type="submit">Save</button>
+       
+    </form>
+    </td>
+    </tr>

@@ -18,51 +18,65 @@
 
             <h3>€{{product.price}}</h3>
 
-            <p class=" text-warning"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
+            <p class=" text-warning"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
 
-            <p>{{product.description}}</p>
-
-           
+            <p>{{product.description |linebreaks}}</p>
 
 
-            
-            
-           
-            
-          
-           
-       
-       
-                <div class="col-lg-6 d-grid gap-2">
+
+
+
+
+
+
+
+
+
+
+            <div class="col-lg-6 d-grid gap-2">
                 {% include "products/includes/wishlist_snippet.html" %}
 
-            <select class="form-select mb-3 " aria-label=".form-select-lg example">
-                <option selected>Choose Quantity</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-
-              </select>
-              <a class="btn btn-outline-success mb-3" href="#" role="button">Add to Cart</a>
-              <a class="btn btn-outline-dark mb-3" href="{% url 'products' %}" role="button">Continue Shopping</a>
-          
-              </div>
-            
+                <form class="form " action="{% url 'add_to_bag' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row col-lg-12 d-grid gap-2">
 
 
-            
-        
+                        <select class="form-select mb-3" name="quantity">
 
+                            <option selected value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
 
+                        </select>
+
+                        <input type="submit" class="btn btn-outline-success mb-3" value="Add to Cart">
+                    </div>
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    
+           
+            </form>
+            <a class="btn btn-outline-dark mb-3" href="{% url 'products' %}" role="button">Continue Shopping</a>
+           
+           
         </div>
+        </div>
+
+
+
+
+
+
+
     </div>
+</div>
 
 <!-- <div class="my-5  bg-light ">
     sdserg

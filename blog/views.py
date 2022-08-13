@@ -59,7 +59,7 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     """ Create a new blogpost """
     model = BlogPost
     """ Pass in all fields except post author"""
-    fields = ['title', 'post_text', 'category', 'image']
+    fields = ['title', 'category', 'image', 'post_text']
     template_name = "blog/blog_post_form.html"
     success_url = reverse_lazy('blog')
 
@@ -67,9 +67,8 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
 class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
     """ Edit a published review """
     model = BlogPost
-    template_name = "post_edit.html"
-    fields = ['title', 'book_author', 'review_text', 'category', 'book_cover',
-              'purchase_link', 'star_rating']
+    template_name = "blog/blog_post_form.html"
+    fields = ['title', 'category', 'image', 'post_text']
 
 
 class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
