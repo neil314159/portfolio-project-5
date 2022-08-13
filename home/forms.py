@@ -1,14 +1,13 @@
 from django import forms
 from django.db import models
-from .models import ArtRequestFormMessage
-from django.forms import ModelForm
 
 
 
-class RequestForm(forms.Form):
-    class Meta:
-        model = ArtRequestFormMessage
-        fields = '__all__'
+class ContactForm(forms.Form):
+    from_email = forms.EmailField(required=True)
+    # subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)
+
 
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import BlogPostCategory, BlogPost
 from products.models import Product
 from mailchimp_marketing import Client
@@ -7,9 +7,9 @@ import env
 import os
 from django.contrib import messages
 from .models import ArtRequestFormMessage
+from .forms import ContactForm
 
 
-from .forms import RequestForm
 
 
 # def contact_view(request):
@@ -103,9 +103,25 @@ def subscription(request):
     return render(request, "home/index.html")
 
 
-def artwork_request_form(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        message = request.POST['message']
-    ArtRequestFormMessage.create(email=email, message=message)   
-    return render(request, "home/index.html")  
+# def artwork_request_form(request):
+#     email = request.POST.get('email')
+#     message = request.POST.get('nemessagewname')
+#     ArtRequestFormMessage.create(email=email, message_text=message)   
+#     return render(request, "home/index.html")  
+
+
+def artwork_request(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+           
+            ArtRequestFormMessage.objects.create(email=from_email, message_text=message)
+            
+            return redirect('home')
+    return render(request, "home/artwork_request.html", {'form': form})
+
