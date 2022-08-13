@@ -34,26 +34,18 @@
         </div>
   
         <div class="col-md-5 offset-md-1 mb-3">
-          <form>
+          <form method="post" action="{% url 'subscription' %}">
+            {% csrf_token %}
             <h5>Subscribe to our newsletter!</h5>
             <p>Find out whenever we launch new artwork and be first in line.</p>
             <div class="d-flex flex-column flex-sm-row w-100 gap-2">
               <label for="newsletter1" class="visually-hidden">Email address</label>
-              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-              <button class="btn btn-primary" type="button">Subscribe</button>
+              <input type="email" name="email" placeholder="Enter Email to Subscribe">
+              <button class="btn btn-primary" type="submit">Subscribe</button>
             </div>
           </form>
 
-          <form method="post" action="{% url 'subscription' %}">
-            {% csrf_token %}
-      
-            <div class="form-group">
-              <label>Subscribe to get the latest Articles</label> <br>
-              <input type="email" name="email" placeholder="Enter Email to Subscribe">
-              <button class="btn btn-info" type="submit">Submit</button>
-            </div>
-      
-          </form>
+          
       
         </div>
       </div>

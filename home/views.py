@@ -6,6 +6,26 @@ from mailchimp_marketing.api_client import ApiClientError
 import env
 import os
 from django.contrib import messages
+from .models import ArtRequestFormMessage
+
+
+from .forms import RequestForm
+
+
+# def contact_view(request):
+#     form = RequestForm()
+#     context = {'form': form}
+#     return render(request, 'home/artwork_request.html', context)
+# def contact_view(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return render(request, 'contact/success.html')
+#     form = ContactForm()
+#     context = {'form': form}
+#     return render(request, 'contact/contact.html', context)
+
 
 
 # Create your views here.
@@ -38,8 +58,12 @@ def privacy_policy(request):
 
 
 def artwork_request(request):
-    """ A view to return the dashboard page """
+   
+    
 
+
+
+   
     return render(request, 'home/artwork_request.html')
 
 
@@ -77,3 +101,11 @@ def subscription(request):
         messages.success(request, "Email received. thank You! ") # message
 
     return render(request, "home/index.html")
+
+
+def artwork_request_form(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        message = request.POST['message']
+    ArtRequestFormMessage.create(email=email, message=message)   
+    return render(request, "home/index.html")  

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from blog.models import BlogPostCategory, BlogPost
 from products.models import Product, Category
 from checkout.models import Order
+from home.models import ArtRequestFormMessage
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -34,10 +35,10 @@ def manage_products(request):
 
 def manage_requests(request):
     """ A view to return the dashboard page """
-    products = Product.objects.all().order_by("name")
-    categories = Category.objects.all().order_by("name")
+    artrequests = ArtRequestFormMessage.objects.all().order_by("-date")
+    
     return render(request, 'dashboard/manage_requests.html',
-                  {"products": products, "categories": categories})
+                  {"artrequests": artrequests})
 
 
 def order_details(request, order_number):
