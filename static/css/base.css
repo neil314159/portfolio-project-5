@@ -4,6 +4,10 @@ body {
     
 }
 
+*{
+  font-family: 'Nunito Sans';
+}
+
 #jumbotron {
     /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
     background-image: url("https://res.cloudinary.com/dpsodnurd/image/upload/v1660411479/nightmuseum_c5ehvs.png");

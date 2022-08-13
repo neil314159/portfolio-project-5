@@ -117,7 +117,8 @@ def order_history(request, order_number):
 
 def user_order_history(request):
 
-    orders = request.user.orders.all()
+    orders = request.user.orders.all().order_by("-date")
+    
 
     return render(request, 'profiles/user_orders.html', {'orders': orders})
 
