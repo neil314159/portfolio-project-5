@@ -24,10 +24,8 @@ def all_products(request):
 
 def category_products(request, category):
     """ A view to return the dashboard page """
-    # newcategory = request.GET['category']
     newcat = category
     sorted_products = Product.objects.filter(category__name=newcat)
-    # sorted_products = Product.objects.all()
 
     sorted_products = sorted_products.order_by("price")
     return render(request,
@@ -51,7 +49,6 @@ def products_ranking(request):
     if 'category' in request.GET:
         categories = request.GET['category'].split(',')
         sorted_products = sorted_products.filter(category__name__in=categories)
-        # categories = Category.objects.filter(name__in=categories)
 
     if sortkey == "price_asc":
         sorted_products = sorted_products.order_by("price")
@@ -170,20 +167,7 @@ def delete_product(request, product_id):
     return HttpResponse("")
 
 
-# def delete_blog_post(request, id):
-
-#     blogpost = get_object_or_404(BlogPost, pk=id)
-#     if request.user.is_superuser:
-#         blogpost.delete()
-#         # messages.success(request, 'This post is deleted')
-#         posts = BlogPost.objects.all()
-# return render(request, 'blog/HTMXsnippets/posts-list.html', {'posts':
-# posts})
-
-
 def htmx_search_products(request):
-
-    products = Product.objects.all()
 
     products = Product.objects.all()
     query = None
