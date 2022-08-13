@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block content %}
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
@@ -9,28 +10,16 @@
         <p class="col-lg-10 fs-4">If you have any ideas or suggestions for computer generated artwork that you woulkd like to see, don't hesitate to get in touch. Let us know what themes or subjects you want to see and what styles you're interested in. Cheers!.</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <!-- <form class="p-4 p-md-5 border rounded-3 bg-light">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-            <label for="floatingInput">Email address</label>
-          </div>
-          
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Your suggestion:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Send your ideas!</button>
          
-         
-        </form> -->
-        <form method="post">
+
+        <form method="post" class="p-4 p-md-5 border rounded-3 bg-light">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }} 
             <div class="form-actions">
-              <button type="submit">Send</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Send your ideas!</button>
             </div>
         </form>
-        
+
       </div>
     </div>
   </div>

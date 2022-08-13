@@ -9,7 +9,7 @@ class ArtRequestFormMessage(models.Model):
     '''
     message_text = models.CharField(max_length=255, null=False, blank=False)
     email = models.EmailField(max_length=200, null=False, blank=False)
-    read = models.BooleanField(default=False)
+    
     date = models.DateTimeField(auto_now_add=True)
 
     

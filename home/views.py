@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from blog.models import BlogPostCategory, BlogPost
 from products.models import Product
 from mailchimp_marketing import Client
@@ -8,7 +8,7 @@ import os
 from django.contrib import messages
 from .models import ArtRequestFormMessage
 from .forms import ContactForm
-
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -60,10 +60,6 @@ def privacy_policy(request):
 def artwork_request(request):
    
     
-
-
-
-   
     return render(request, 'home/artwork_request.html')
 
 
@@ -125,3 +121,18 @@ def artwork_request(request):
             return redirect('home')
     return render(request, "home/artwork_request.html", {'form': form})
 
+
+
+@login_required
+def delete_artrequest(request, id):
+
+    art_request = get_object_or_404(ArtRequestFormMessage, pk=id)
+    if request.user.is_superuser:
+        art_request.delete()
+        # messages.success(request, 'This post is deleted')
+        # posts = BlogPost.objects.all()
+        return HttpResponse("")
+
+    else:
+        return redirect('home')
+        messages.error(request, 'You do not have permission to do this')
