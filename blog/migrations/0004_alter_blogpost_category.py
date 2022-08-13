@@ -14,6 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='blogpost',
             name='category',
-            field=models.ForeignKey(default=1, null=True, on_delete=django.db.models.deletion.SET_NULL, to='blog.blogpostcategory', verbose_name='Blog Category'),
+            field=models.ForeignKey(
+                default=1,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='blog.blogpostcategory',
+                verbose_name='Blog Category'),
         ),
     ]

@@ -51,17 +51,12 @@ def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(get_user_model(), pk=request.user.id)
     wishlist = profile.wishlistowner.all()
-   
 
     template = 'profiles/profile.html'
-  
-    # context = {
-    #     'form': form,
-    #     'orders': orders,
-    #     'on_profile_page': True
-    # }
 
-    return render(request, template, {'profile': profile, 'wishlist': wishlist})
+    return render(
+        request, template, {
+            'profile': profile, 'wishlist': wishlist})
 
 # class UserDeleteView(generic.DeleteView):
 #     """ Allows user to delete their own account"""
@@ -116,33 +111,16 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
-def user_order_history(request):
-    # profile = get_object_or_404(get_user_model(), pk=request.user.id)
-    # orders = Order.objects.filter(user__profile.get_user_model().id==request.user.id)
-    orders = request.user.orders.all()
-    # User.objects.filter(pk=user_pk).delete()
-    # orders= Order.objects.all()
-    
-    # user_pk = request.user.pk
-    # auth_logout(request)
-    # User = get_user_model()
-    # User.objects.filter(pk=user_pk).delete()
-    # return HttpResponseRedirect(reverse_lazy('home'))
 
-    # template = 'checkout/checkout_success.html'
-    # context = {
-    #     'order': order,
-    #     'from_profile': True,
-    # }
+def user_order_history(request):
+
+    orders = request.user.orders.all()
+
     return render(request, 'profiles/user_orders.html', {'orders': orders})
+
 
 def user_order_details(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
-
-    # messages.info(request, (
-    #     f'This is a past confirmation for order number {order_number}. '
-    #     'A confirmation email was sent on the order date.'
-    # ))
 
     template = 'profiles/order_details.html'
     context = {
@@ -150,7 +128,8 @@ def user_order_details(request, order_number):
     }
 
     return render(request, template, context)
-    
+
+
 def user_wishlist(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -166,6 +145,7 @@ def user_wishlist(request, order_number):
     }
 
     return render(request, template, context)
+
 
 class WishlistView(LoginRequiredMixin, generic.ListView):
     """ Creates view of wishlist page for user"""

@@ -10,23 +10,25 @@ def index(request):
     blogposts = BlogPost.objects.all().order_by('-id')[:3]
     products = Product.objects.all().order_by('-id')[:3]
 
-    return render(request, 'home/index.html', {'blogposts': blogposts, 'products': products})
+    return render(request, 'home/index.html',
+                  {'blogposts': blogposts, 'products': products})
 
 
 def dashboard(request):
     """ A view to return the dashboard page """
     BlogCategories = BlogPostCategory.objects.all()
-    
-    return render(request, 'home/dashboard.html', {'blogcategories': BlogCategories})
+
+    return render(request, 'home/dashboard.html',
+                  {'blogcategories': BlogCategories})
+
 
 def privacy_policy(request):
     """ A view to return the dashboard page """
 
     return render(request, 'home/privacy.html')
 
+
 def artwork_request(request):
     """ A view to return the dashboard page """
 
-    return render(request, 'home/artwork-request.html')
-
-      
+    return render(request, 'home/artwork_request.html')

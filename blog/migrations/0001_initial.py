@@ -17,19 +17,46 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BlogPostCategory',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                ('id',
+                 models.BigAutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('name',
+                 models.CharField(
+                     max_length=100)),
             ],
         ),
         migrations.CreateModel(
             name='BlogPost',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=250, unique=True)),
-                ('post_text', models.TextField()),
-                ('published_on', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='blogposts', to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(default=1, on_delete=django.db.models.deletion.PROTECT, to='blog.blogpostcategory', verbose_name='Blog Category')),
+                ('id',
+                 models.BigAutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('title',
+                 models.CharField(
+                     max_length=250,
+                     unique=True)),
+                ('post_text',
+                 models.TextField()),
+                ('published_on',
+                 models.DateTimeField(
+                     auto_now_add=True)),
+                ('author',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     related_name='blogposts',
+                     to=settings.AUTH_USER_MODEL)),
+                ('category',
+                 models.ForeignKey(
+                     default=1,
+                     on_delete=django.db.models.deletion.PROTECT,
+                     to='blog.blogpostcategory',
+                     verbose_name='Blog Category')),
             ],
             options={
                 'ordering': ['-published_on'],

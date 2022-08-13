@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 
-
 # Create your models here.
 
 class BlogPostCategory(models.Model):
@@ -13,23 +12,21 @@ class BlogPostCategory(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         ordering = ('name', )
+
 
 class BlogPost(models.Model):
 
     """Main model holding blog posts"""
     title = models.CharField(max_length=250, unique=True)
-  
-   
 
-  
     category = models.ForeignKey(
         BlogPostCategory, on_delete=models.SET_NULL, null=True,
         default=1, verbose_name="Blog Category")
 
-    image= CloudinaryField(
+    image = CloudinaryField(
         'image',
         blank=True,
         transformation={
@@ -44,8 +41,6 @@ class BlogPost(models.Model):
     published_on = models.DateTimeField(auto_now_add=True)
 
     # add in image code here
-    
-    
 
     class Meta:
         ordering = ["-published_on"]
@@ -56,6 +51,3 @@ class BlogPost(models.Model):
     def get_absolute_url(self):
         """ Returns address of blog post"""
         return reverse('blog_post_detail', args=[str(self.id)])
-
-
-

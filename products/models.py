@@ -12,12 +12,13 @@ STAR_RATING = (
     (5, "⭐⭐⭐⭐⭐"),
 )
 
+
 class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
         ordering = ('name', )
-        
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -29,15 +30,23 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    
-    image= CloudinaryField(
+    rating = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=True,
+        blank=True)
+
+    image = CloudinaryField(
         'image',
         blank=True,
         transformation={
@@ -53,17 +62,19 @@ class Product(models.Model):
     # need to check calculations
     @property
     def average_rating(self):
-        return self.reviews.all().aggregate(Avg('star_rating')).get('rating__avg', 0.00)
-        
+        return self.reviews.all().aggregate(
+            Avg('star_rating')).get(
+            'rating__avg', 0.00)
 
 
 class Review(models.Model):
     """ Product review model"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
-                               related_name="reviews")
+                                related_name="reviews")
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="commentauthor"
-    )
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="commentauthor")
     """ Main text of comment"""
     comment_text = models.TextField()
     published_on = models.DateTimeField(auto_now_add=True)
@@ -74,6 +85,7 @@ class Review(models.Model):
 
     def __str__(self):
         return self.comment_text
+
 
 class BoughtWithItem(models.Model):
     main_item = Product

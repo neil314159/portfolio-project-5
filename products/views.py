@@ -13,11 +13,14 @@ from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 
+
 def all_products(request):
     """ A view to return the dashboard page """
     sorted_products = Product.objects.all()
     sorted_products = sorted_products.order_by("price")
-    return render(request, 'products/products.html', {"sorted_products": sorted_products})
+    return render(request, 'products/products.html',
+                  {"sorted_products": sorted_products})
+
 
 def category_products(request, category):
     """ A view to return the dashboard page """
@@ -26,9 +29,12 @@ def category_products(request, category):
     sorted_products = Product.objects.filter(category__name=newcat)
     # sorted_products = Product.objects.all()
 
-    
     sorted_products = sorted_products.order_by("price")
-    return render(request, 'products/products.html', {"sorted_products": sorted_products,"product_category":category})
+    return render(request,
+                  'products/products.html',
+                  {"sorted_products": sorted_products,
+                   "product_category": category})
+
 
 def products_ranking(request):
     """ A view to show all products, including sorting and search queries """
@@ -36,19 +42,17 @@ def products_ranking(request):
     sorted_products = Product.objects.all()
     sort = None
     direction = None
-   
+
     sortkey = request.GET['ranking']
     sorted_products = sorted_products.order_by("price")
 
     search = request.GET.get('search')
 
     if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            sorted_products = sorted_products.filter(category__name__in=categories)
-            # categories = Category.objects.filter(name__in=categories)
-    
-        
-    
+        categories = request.GET['category'].split(',')
+        sorted_products = sorted_products.filter(category__name__in=categories)
+        # categories = Category.objects.filter(name__in=categories)
+
     if sortkey == "price_asc":
         sorted_products = sorted_products.order_by("price")
     if sortkey == 'price_desc':
@@ -63,9 +67,9 @@ def products_ranking(request):
         sorted_products = sorted_products.order_by("rating")
     if sortkey == 'rating_desc':
         sorted_products = sorted_products.order_by("-rating")
-        
 
-    return render(request, 'products/snippets/product-list.html', {"sorted_products": sorted_products})
+    return render(request, 'products/snippets/product-list.html',
+                  {"sorted_products": sorted_products})
 
 
 class ProductCategoryList(generic.ListView):
@@ -77,8 +81,8 @@ class ProductCategoryList(generic.ListView):
     def get_queryset(self):
         content = {
             'cat': self.kwargs['category'],
-            'posts': Product.objects.filter(category__name=self.kwargs['category'])
-        }
+            'posts': Product.objects.filter(
+                category__name=self.kwargs['category'])}
         return content
 
 
@@ -108,10 +112,12 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -135,7 +141,9 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -163,41 +171,35 @@ def delete_product(request, product_id):
 
 
 # def delete_blog_post(request, id):
-    
+
 #     blogpost = get_object_or_404(BlogPost, pk=id)
 #     if request.user.is_superuser:
 #         blogpost.delete()
 #         # messages.success(request, 'This post is deleted')
 #         posts = BlogPost.objects.all()
-#         return render(request, 'blog/HTMXsnippets/posts-list.html', {'posts': posts})
-
+# return render(request, 'blog/HTMXsnippets/posts-list.html', {'posts':
+# posts})
 
 
 def htmx_search_products(request):
-    
+
     products = Product.objects.all()
-    
-    
-        
-    
 
     products = Product.objects.all()
     query = None
-       
 
-    query =  request.POST.get('q')
-   
+    query = request.POST.get('q')
+
     queries = Q(name__icontains=query) | Q(description__icontains=query)
     products = products.filter(queries)
-   
-    
+
     context = {"products": products}
     return render(request, 'products/includes/search-results.html', context)
+
 
 def search_page(request):
     """ A view to return the dashboard page """
 
-    
     return render(request, 'products/search.html')
 
 
@@ -207,10 +209,10 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     added = False
     if request.user.is_authenticated:
-        if WishlistItem.objects.filter(author=request.user, product=product).count() > 0:
+        if WishlistItem.objects.filter(
+                author=request.user,
+                product=product).count() > 0:
             added = True
-    
-
 
     context = {
         'product': product,
@@ -218,7 +220,6 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
-
 
 
 def product_category_list(request):
@@ -234,31 +235,38 @@ def add_to_wishlist(request, id):
     except BaseException:
         """If not, return to the wishlist page """
         return redirect(reverse('products'))
-    
+
     if WishlistItem.objects.filter(author=request.user,
                                    product=product).count() > 0:
         WishlistItem.objects.filter(author=request.user,
-                                   product=product).delete()
-        return render( request, 'products/includes/wishlist-snippet.html', context={'product':product, 'added': False})
-
-    
+                                    product=product).delete()
+        return render(
+            request,
+            'products/includes/wishlist-snippet.html',
+            context={
+                'product': product,
+                'added': False})
 
     """ Create the wishlist item and return the user to wishlist page"""
     WishlistItem.objects.create(author=request.user, product=product)
-    return render( request, 'products/includes/wishlist-snippet.html', context={'product':product, 'added': True})
-    
+    return render(
+        request,
+        'products/includes/wishlist-snippet.html',
+        context={
+            'product': product,
+            'added': True})
 
 
 @login_required
 def delete_wishlist_item(request, id):
-    
+
     wish = get_object_or_404(WishlistItem, pk=id)
     if wish.author.id == request.user.id:
         wish.delete()
         # messages.success(request, 'This post is deleted')
-       
+
         return HttpResponse("")
-        
+
     else:
         return redirect('home')
         messages.error(request, 'You do not have permission to do this')
@@ -267,55 +275,62 @@ def delete_wishlist_item(request, id):
     #     instance = Product.objects.get(id=id)
     #     if not instance.likes.filter(id=request.user.id).exists():
     #         instance.likes.add(request.user)
-    #         instance.save() 
+    #         instance.save()
     #         return render( request, 'posts/partials/likes_area.html', context={'post':instance})
     #     else:
     #         instance.likes.remove(request.user)
-    #         instance.save() 
-    #         return render( request, 'posts/partials/likes_area.html', context={'post':instance})
+    #         instance.save()
+    # return render( request, 'posts/partials/likes_area.html',
+    # context={'post':instance})
+
 
 def add_product_category(request):
     name = request.POST.get('categoryname')
-    
+
     # add category
     category = Category.objects.get_or_create(name=name)[0]
     # BlogPostCategory.objects.create(name=name)
-   
+
     if not Category.objects.filter(name=name).exists():
         Category.objects.create(name=name)
 
-    
     # return HttpResponse("")
     categories = Category.objects.all()
 
-    return render(request, 'products/snippets/categories_list.html', {'categories': categories})
+    return render(request,
+                  'products/snippets/categories_list.html',
+                  {'categories': categories})
+
 
 def edit_product_category(request, id):
-   
+
     category = get_object_or_404(Category, id=id)
 
     if request.method == 'POST':
         if request.POST.get('newname') == '':
-            return render(request, 'products/snippets/categories_item.html', {'category': category})
+            return render(request,
+                          'products/snippets/categories_item.html',
+                          {'category': category})
         else:
             category.name = request.POST.get('newname')
-       
-        
+
         category.save()
         product_category_list = Category.objects.all()
         # return HttpResponse("here")
-        return render(request, 'products/snippets/categories_item.html', {'category': blogcat})
-    
-    return render(request, 'products/snippets/categories_edit.html', {'cat': blogcat})
+        return render(request,
+                      'products/snippets/categories_item.html',
+                      {'category': blogcat})
+
+    return render(request,
+                  'products/snippets/categories_edit.html',
+                  {'cat': blogcat})
+
 
 @require_http_methods(['DELETE'])
 @login_required
 def delete_product_category(request, pk):
-    
+
     # remove the category
     Category.objects.get(pk=pk).delete()
 
-    # return template fragment with all the categories
-    # categories = BlogPostCategory.objects.all()
-    # return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
     return HttpResponse("")

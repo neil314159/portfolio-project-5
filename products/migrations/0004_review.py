@@ -16,12 +16,41 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Review',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('comment_text', models.TextField()),
-                ('published_on', models.DateTimeField(auto_now_add=True)),
-                ('star_rating', models.IntegerField(choices=[(1, '⭐'), (2, '⭐⭐'), (3, '⭐⭐⭐'), (4, '⭐⭐⭐⭐'), (5, '⭐⭐⭐⭐⭐')], default=5)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='commentauthor', to=settings.AUTH_USER_MODEL)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to='products.product')),
+                ('id',
+                 models.BigAutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('comment_text',
+                 models.TextField()),
+                ('published_on',
+                 models.DateTimeField(
+                     auto_now_add=True)),
+                ('star_rating',
+                 models.IntegerField(
+                     choices=[
+                         (1,
+                          '⭐'),
+                         (2,
+                          '⭐⭐'),
+                         (3,
+                          '⭐⭐⭐'),
+                         (4,
+                          '⭐⭐⭐⭐'),
+                         (5,
+                          '⭐⭐⭐⭐⭐')],
+                     default=5)),
+                ('author',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     related_name='commentauthor',
+                     to=settings.AUTH_USER_MODEL)),
+                ('product',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     related_name='reviews',
+                     to='products.product')),
             ],
             options={
                 'ordering': ['published_on'],

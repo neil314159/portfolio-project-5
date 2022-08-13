@@ -18,6 +18,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='product',
             name='image',
-            field=cloudinary.models.CloudinaryField(blank=True, default='https://res.cloudinary.com/dpsodnurd/image/upload/v1652618629/zhtctppqjky78q8h760n.jpg', max_length=255, verbose_name='image'),
+            field=cloudinary.models.CloudinaryField(
+                blank=True,
+                default='https://res.cloudinary.com/dpsodnurd/image/upload/v1652618629/zhtctppqjky78q8h760n.jpg',
+                max_length=255,
+                verbose_name='image'),
         ),
     ]

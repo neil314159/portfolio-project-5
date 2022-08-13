@@ -12,10 +12,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-
 def blog(request):
     """ A view to return the blog"""
-    # categories = BlogPostCategory.objects.all()
+
     posts = BlogPost.objects.all()
 
     return render(request, 'blog/blogindex.html', {'posts': posts})
@@ -30,9 +29,10 @@ class BlogCategoryList(generic.ListView):
     def get_queryset(self):
         content = {
             'cat': self.kwargs['category'],
-            'posts': BlogPost.objects.filter(category__name=self.kwargs['category'])
-        }
+            'posts': BlogPost.objects.filter(
+                category__name=self.kwargs['category'])}
         return content
+
 
 def blog_category_list(request):
     """ Creates a list of categories to be used by dropdown menu"""
@@ -54,6 +54,7 @@ class BlogPostDetail(generic.DetailView):
     model = BlogPost
     template_name = "blog/blog_post_detail.html"
 
+
 class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     """ Create a new blogpost """
     model = BlogPost
@@ -62,6 +63,7 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = "blog/blog_post_form.html"
     success_url = reverse_lazy('blog')
 
+
 class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
     """ Edit a published review """
     model = BlogPost
@@ -69,7 +71,6 @@ class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
     fields = ['title', 'book_author', 'review_text', 'category', 'book_cover',
               'purchase_link', 'star_rating']
 
-    
 
 class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     """ Delete a post from the site"""
@@ -77,100 +78,76 @@ class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = 'blog/blog_post_delete.html'
     success_url = reverse_lazy('blog')
 
+
 @login_required
 def delete_blog_post(request, id):
-    
+
     blogpost = get_object_or_404(BlogPost, pk=id)
     if request.user.is_superuser:
         blogpost.delete()
         # messages.success(request, 'This post is deleted')
         posts = BlogPost.objects.all()
         return HttpResponse("")
-        
+
     else:
         return redirect('home')
         messages.error(request, 'You do not have permission to do this')
 
 
-# def delete_category(request, pk):
-    
-#     # remove the category
-#     BlogPostCategory.objects.get(pk=pk).delete()
-
-#     # return template fragment with all the categories
-#     # categories = BlogPostCategory.objects.all()
-#     # return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
-#     return HttpResponse("")
-
-
 def add_category(request):
     name = request.POST.get('categoryname')
-    
+
     # add category
     category = BlogPostCategory.objects.get_or_create(name=name)[0]
-    # BlogPostCategory.objects.create(name=name)
-   
+
     if not BlogPostCategory.objects.filter(name=name).exists():
         BlogPostCategory.objects.create(name=name)
 
-    
-    # return HttpResponse("")
     categories = BlogPostCategory.objects.all()
 
-    return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
-
+    return render(request,
+                  'blog/snippets/categories_list.html',
+                  {'categories': categories})
 
 
 @require_http_methods(['DELETE'])
 @login_required
 def delete_category(request, pk):
-    
+
     # remove the category
     BlogPostCategory.objects.get(pk=pk).delete()
 
-    # return template fragment with all the categories
-    # categories = BlogPostCategory.objects.all()
-    # return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
     return HttpResponse("")
 
-# def edit_category(request, pk):
-    
-#     # remove the category
-#     BlogPostCategory.objects.get(pk=pk).delete()
-
-#     # return template fragment with all the user's films
-#     categories = BlogPostCategory.objects.all()
-#     return render(request, 'blog/HTMXsnippets/categories-list.html', {'categories': categories})
-
-def student_edit_form(request, pk):
-    student = get_object_or_404(Student, pk=pk)
-    form = StudentForm(instance=student)
-    context = {'student': student, 'form': form}
-    return render(request, 'core/partials/edit-student-form.html', context)
 
 def edit_category(request, id):
-   
+
     blogcat = get_object_or_404(BlogPostCategory, id=id)
 
     if request.method == 'POST':
         if request.POST.get('newname') == '':
-            return render(request, 'blog/HTMXsnippets/categories-item.html', {'category': blogcat})
+            return render(request,
+                          'blog/snippets/categories_item.html',
+                          {'category': blogcat})
         else:
             blogcat.name = request.POST.get('newname')
-       
-        
+
         blogcat.save()
         blog_category_list = BlogPostCategory.objects.all()
-        # return HttpResponse("here")
-        return render(request, 'blog/HTMXsnippets/categories-item.html', {'category': blogcat})
-    
-    return render(request, 'blog/HTMXsnippets/categories-edit.html', {'cat': blogcat})
-    # return HttpResponse("here2")
+
+        return render(request,
+                      'blog/snippets/categories_item.html',
+                      {'category': blogcat})
+
+    return render(request,
+                  'blog/snippets/categories_edit.html',
+                  {'cat': blogcat})
 
 
 def categories_table(request):
-   
+
     categories = BlogPostCategory.objects.all()
-    
-    return render(request, 'blog/HTMXsnippets/categories_table.html', {'categories': categories})
-    
+
+    return render(request,
+                  'blog/HTMXsnippets/categories_table.html',
+                  {'categories': categories})
