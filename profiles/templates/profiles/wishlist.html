@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}
+<div class="container">
+
+    <div class="px-2 py-2 my-2 text-center">
+
+        <h1 class="display-5 fw-bold">View Your Wishlist</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Here you can see all items you have added to your wishlist.</p>
+
+        </div>
+    </div>
+
+
+
+    <div class="m-2 p-2">
+
+
+<!-- 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Remove</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                {% include "profiles/snippets/order_detail_snippet.html" %}
+                {% endfor %}
+            </tbody>
+        </table> -->
+
+
+
+        <table class="table delete-row-example">
+            <thead>
+                <tr>
+
+                    <th>Picture</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
+                {% for wish in wishlist %}
+                <tr>
+                    <td> 
+                        <a href="{% url 'product_detail' wish.product.id %}"><img class="img-fluid w-25" src="{{ wish.product.image.url }}" alt="" ></a>
+                        
+                    
+                    </td>
+
+                  
+                
+                    <td>{{ wish.product.name}}</td>
+
+                  
+
+              
+                    <td>{{ wish.product.price}}</td>
+
+                    <td>
+                        <a class="btn btn-success btn-sm" href="{% url 'product_detail' wish.product.id %}">View</a>
+                    </td>
+                   
+                    <td>
+                        <button class="btn btn-danger btn-sm" hx-delete="">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -171,10 +171,10 @@ class WishlistView(LoginRequiredMixin, generic.ListView):
     """ Creates view of wishlist page for user"""
     model = WishlistItem
     context_object_name = 'wishlist'
-    template_name = 'wishlist_view.html'
+    template_name = 'profiles/wishlist.html'
     """ Return all objects belonging to user in reverse chronological order"""
 
     def get_queryset(self):
         return WishlistItem.objects.filter(
             author=self.request.user
-        ).order_by('-published_on')
+        ).order_by('-added_on')
