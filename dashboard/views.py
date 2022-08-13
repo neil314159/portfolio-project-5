@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from blog.models import BlogPostCategory, BlogPost
 from products.models import Product, Category
