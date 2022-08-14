@@ -109,7 +109,26 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        order_form = OrderForm()
+         # Attempt to prefill the form with any info
+        # the user maintains in their profile
+        if request.user.is_authenticated:
+            try:
+                profile = CustomUser.objects.get(id=request.user.id)
+                order_form = OrderForm(initial={
+                    'full_name': request.user.get_full_name(),
+                    'email': request.user.email,
+                    'phone_number': request.user.default_phone_number,
+                    'country': request.user.default_country,
+                    'postcode': request.user.default_postcode,
+                    'town_or_city': request.user.default_town_or_city,
+                    'street_address1': request.user.default_street_address1,
+                    'street_address2': request.user.default_street_address2,
+                    'county': request.user.default_county,
+                })
+            except CustomUser.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -141,12 +160,12 @@ def checkout_success(request, order_number):
         # Save the user's info
         if save_info:
             profile.default_phone_number = order.phone_number
-            default_country: order.country
-                # 'default_postcode': order.postcode,
-                # 'default_town_or_city': order.town_or_city,
-                # 'default_street_address1': order.street_address1,
-                # 'default_street_address2': order.street_address2,
-                # 'default_county': order.county,
+            profile.default_country = order.country
+            profile.default_postcode = order.postcode,
+            profile.default_town_or_city = order.town_or_city,
+            profile.default_street_address1 = order.street_address1,
+            profile.default_street_address2 = order.street_address2,
+            profile.default_county = order.county,
             
             # user_profile_form = UserProfileForm(profile_data, instance=profile)
             # if user_profile_form.is_valid():
