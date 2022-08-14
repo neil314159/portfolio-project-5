@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
+{% load crispy_forms_tags %}
 {% block page_header %}
 
 {% endblock %}
@@ -73,15 +74,57 @@
 
 <div class="px-2 py-2 my-5 text-center bg-light">
 
-    <h1 class="display-5 fw-bold ">Reviews</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Here you can add, edit and delete products on your site.</p>
+    <h1 class=" fw-bold mt-5">Comments</h1>
+   
+<div class="container my-1">
+    <div class="row">
+    <div class="col-lg-4">
+        <h3>Leave a comment</h3>
+       
+
+
+        <form method="post" style="">
+          <!-- {{ comment_form.as_p }} -->
+          {{ comment_form|crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-primary btn-lg m-4">Submit</button>
+        </form>
+
+
 
     </div>
+    <div class="col-lg-4">
+
+                            <br>
+                            {%if not product.comments.all %}
+                            No comments . . .
+                            {%else%}
+                            {% for comment in product.comments.all %}
+                            <div class="card mb-4" >
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ comment.comment_text }}</h5>
+                                    {{ comment.author.username}} on {{comment.published_on}}
+                                    <p class="card-text"> 
+                                    {% if user == comment.author %} <a href="{%url 'delete_comment' comment.id%}" class="card-link" onclick="return confirm('Are you sure?')">Delete</a>
+                                   
+                                    
+                                </p>
+                                  
+                                    
+                                    {%endif%}
+                                    {% if user == review.author %}
+                                   
+                                    {%endif%}
+                                </div>
+                            </div>
+                            {%endfor%}
+                            {%endif%}
+    </div>
+</div>
 </div>
 
 </div>
-
+</div>
 
 
 {% endblock %}

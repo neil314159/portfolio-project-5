@@ -6,8 +6,8 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.db.models import Avg
 from django.http import HttpResponse
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, Comment
+from .forms import ProductForm, CommentForm
 from profiles.models import WishlistItem
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -200,9 +200,27 @@ def product_detail(request, product_id):
                 product=product).count() > 0:
             added = True
 
+    new_comment = None
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.product = product
+            new_comment.author = request.user
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+
     context = {
         'product': product,
         'added': added,
+        'comment_form': comment_form,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -337,3 +355,37 @@ class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = "products/product_form.html"
     fields = ['name', 'sku', 'rating', 'category', 'description', 'price', 'image']
     success_url = reverse_lazy('manage_products')
+
+def delete_comment(request, id):
+    comment =  get_object_or_404(Comment, id=id)
+    product = comment.product
+    comment.delete()
+
+    return redirect(reverse_lazy('product_detail', args=(product.id,)))
+    
+
+    # remove the category
+    # Category.objects.get(pk=id).delete()
+
+    # return HttpResponse("")
+
+    #  """ Delete a product from the store """
+    # if not request.user.is_superuser:
+    #     messages.error(request, 'Sorry, only store owners can do that.')
+    #     return redirect(reverse('home'))
+
+    # product = get_object_or_404(Product, pk=product_id)
+    # product.delete()
+    # messages.success(request, 'Product deleted!')
+    # return HttpResponse("")
+
+
+    # """ Delete a product from the store """
+    # if not request.user.is_superuser:
+    #     messages.error(request, 'Sorry, only store owners can do that.')
+    #     return redirect(reverse('home'))
+
+    # product = get_object_or_404(Product, pk=product_id)
+    # product.delete()
+    # messages.success(request, 'Product deleted!')
+    # return redirect(reverse('products'))

@@ -58,4 +58,8 @@ urlpatterns = [
         'delete_category/<int:id>/',
         views.delete_product_category,
         name='delete_product_category'),
+    path(
+        'delete_comment/<int:id>/',
+        views.delete_comment,
+        name='delete_comment'),
 ]

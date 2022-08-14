@@ -56,17 +56,13 @@ class Product(models.Model):
         return self.name
 
     # need to check calculations
-    @property
-    def average_rating(self):
-        return self.reviews.all().aggregate(
-            Avg('star_rating')).get(
-            'rating__avg', 0.00)
+   
 
 
-class Review(models.Model):
-    """ Product review model"""
+class Comment(models.Model):
+    """ Product comment model"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE,
-                                related_name="reviews")
+                                related_name="comments")
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -74,7 +70,7 @@ class Review(models.Model):
     """ Main text of comment"""
     comment_text = models.TextField()
     published_on = models.DateTimeField(auto_now_add=True)
-    star_rating = models.IntegerField(choices=STAR_RATING, default=5)
+   
 
     class Meta:
         ordering = ["published_on"]
