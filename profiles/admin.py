@@ -33,6 +33,7 @@ class CustomUserAdmin(UserAdmin):
             'Custom Field Heading',  # group heading of your choice; set to None for a blank space instead of a header
             {
                 'fields': (
+                'fullname',
                 'default_phone_number',
                 'default_country',
                 'default_postcode',

@@ -10,6 +10,8 @@ from django.conf import settings
 
 
 class CustomUser(AbstractUser):
+    fullname = models.CharField(
+        max_length=100, null=True, blank=True)
     default_phone_number = models.CharField(
         max_length=20, null=True, blank=True)
     default_country = CountryField(
