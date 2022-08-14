@@ -313,8 +313,20 @@ This footer appears at the bottom of every page on the site and provides easy ac
 
 ## Future Features
 
-There a number of potentially beneficial user features which were not implemented in this sprint. You can view the Kanban board for this project [here](https://github.com/neil314159/portfolio-project-4/projects/1) to see which items were left to be developed at a future date.
-* Book Cover API - rather than having to manually search for a book cover image, this could search and retrieve the image for the user using the Google Books or Goodreads API.
+There are a number of features which I would like to implement in the future for this website. They were left out due to being beyond the scope of this project in terms of time and features. The Kanban project board for this site tracks all the features and you can see a list of which issues have beenleft for future devleopment. [Kanban Board](https://github.com/neil314159/portfolio-project-4/projects/1) 
+
+* Product Recommendation - most large-scale e-commerce retailers owe a large part of their success to recommending additional products to users which they are likely to buy. The main additional feature I would like to implement for this project is an affective algorithm to recommend purchases based on previous purchase history and the products in the shopping cart right now. Most real-world implementations of this feature use a databse to store a matrix of all lproducts, and then look for patterns of products clustered together. Some recommendation engines are quite complex and sophisticated, but can obviously lead to extra additional profits for any retailer.
+
+* PDF generation - a feature that I really wanted to implement for this site is the ability to generate PDFs dynamically, so that the customer can download the receipt or have it emailed to them after their purchases. The generation of PDFs is dependent on a large number of third-party libraries, and while the feature worked locally on my own machine it proved unstabke and resource-hungry when deployed to Heroku. The libraries could not be guaranteed to work every time and sometimes were very slow to generate the PDF, leaving the user waiting.
+
+* Twitter API Integration - when adding new products to the site it is a good opportunity for the site owner to also automatically promote the product on social media. It is relatively easy to integrate with Twitter and send pictures and text programmatically. I signed up for the API and was able to send tweets when adding products to the database, e.g. automatically link back to the site with a picture of the newly added product, but unfortunalty due to a programming error I sent out thousands of duplicate tweets in a short time and got my developer account limited for review. I believe this would be a useful feature in the future and could be easily implemented. The Tweepy library for Django works well here. Unfortunately most other social media networks do not allow content to be posted directly via API.
+
+* Charts for Dashboard - the administrative dashboard for the site was a large part of the project, allowing management of products and blog posts. It would be possible to integrate a charting library and display a visual record of sales for the last month for example.
+
+
+
+
+
 
 
 
