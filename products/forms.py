@@ -3,8 +3,6 @@ from .widgets import CustomClearableFileInput
 from .models import Product, Category, Comment
 
 
-
-
 class ProductForm(forms.ModelForm):
 
     class Meta:
@@ -26,10 +24,8 @@ class ProductForm(forms.ModelForm):
             field.widget.attrs['class'] = 'border-black rounded-0'
 
 
-
-
-
 class CommentForm(forms.ModelForm):
+
     class Meta:
         model = Comment
         fields = ('comment_text',)

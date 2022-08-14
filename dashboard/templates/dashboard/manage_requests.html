@@ -1,24 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
-
 {% block content %}
 <div class="container">
-
+    <!-- deal with custom request messages, view and delete them  -->
     <div class="px-2 py-2 my-2 text-center">
-
         <h1 class="display-5 fw-bold">Manage Custom Requests</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">
                 Here you can view messages from customers who have ideas for new products.</p>
-
         </div>
     </div>
-
     <div class="m-2 p-2">
-
-
-
         <table class="table my-5">
             <thead>
                 <tr>
@@ -30,33 +23,20 @@
             </thead>
             <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML">
                 {% for artrequest in artrequests %}
-
                 <tr>
-
                     <td>{{ artrequest.message_text}}</td>
                     <td>{{ artrequest.date}}</td>
-
                     <td>
                         {{ artrequest.email}}
                     </td>
-
                     <td>
-                        
                         <button class="btn btn-danger btn-sm" hx-delete="{% url 'delete_artrequest' artrequest.id %}">
                             Delete
                         </button>
                     </td>
-
-                   
-               
-                {% endfor %}
+                    {% endfor %}
             </tbody>
         </table>
-
-
     </div>
-
-   
 </div>
-
 {% endblock %}

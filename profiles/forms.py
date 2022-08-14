@@ -20,20 +20,27 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    
+
     class Meta:
         model = get_user_model()
-        fields = ('default_street_address1', 'default_street_address2', 'default_town_or_city', 'default_postcode',  'default_county', 'default_country', 'default_phone_number', )
+        fields = (
+            'default_street_address1',
+            'default_street_address2',
+            'default_town_or_city',
+            'default_postcode',
+            'default_county',
+            'default_country',
+            'default_phone_number',
+        )
 
-       
-        labels  = {
-        'default_street_address1':'Address First Line', 
-        'default_street_address2':'Address Second Line', 
-        'default_town_or_city':'Town/City', 
-        'default_postcode':'Postcode', 
-        'default_county':'County',
-        'default_country':'Country',
-        'default_phone_number':'Phone'
+        labels = {
+            'default_street_address1': 'Address First Line',
+            'default_street_address2': 'Address Second Line',
+            'default_town_or_city': 'Town/City',
+            'default_postcode': 'Postcode',
+            'default_county': 'County',
+            'default_country': 'Country',
+            'default_phone_number': 'Phone'
         }
 
     def __init__(self, *args, **kwargs):
@@ -60,4 +67,3 @@ class UserProfileForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'border-black  profile-form-input'
-            # self.fields[field].label = False

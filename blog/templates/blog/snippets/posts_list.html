@@ -1,38 +1,23 @@
-
 <div id="postlist"
 hx-target="#postlist"
 hx-swap="outerHTML">
-
 <table class="table">
   <thead>
       <tr>
           <th scope="col">Post</th>
-         
       </tr>
   </thead>
   <tbody>
-
-
-
 {% for post in posts %}
-
 <tr><td>
-
 {{ post.title }}
-
 <a class="btn btn-success " href="{{ post.get_absolute_url }}">View</a>
-
 <a class="btn btn-warning" href="{% url 'edit_blog_post' post.id %}">Edit</a> 
-
-
-
 <button type="button" class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#postModal-{{ post.id}}">
   Delete
 </button>
-
 </td>
 </tr>
-
   <!-- Modal -->
   <div class="modal fade" id="postModal-{{ post.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -51,7 +36,6 @@ hx-swap="outerHTML">
       </div>
     </div>
   </div>
-
 {% endfor %}
 </tbody>
 </table>

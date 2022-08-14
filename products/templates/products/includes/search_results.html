@@ -1,33 +1,26 @@
 <div class="container">
-
-
-
-{% if products %}
-
-    {% csrf_token %}
-
-    <div class="row row-cols-1 ow-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-        {% for product in products %}
-          <div class="col">
-            <div class="card border-0">
-              <a href="{% url 'product_detail' product.id %}" class="stretched-link"><img src="{{ product.image.url }}" class="card-img-top rounded-0" alt="..."></a>
-              <div class="card-body px-0">
-                <h6 class="card-text mt-2">{{ product.name }}</h6>
-                <p class="card-text mb-1 text-warning"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
-                <h4 >€{{ product.price }}</h4>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-        
-        
+  <!-- container for live search results  -->
+  {% if products %}
+  {% csrf_token %}
+  <div class="row row-cols-1 ow-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    {% for product in products %}
+    <div class="col">
+      <div class="card border-0">
+        <a href="{% url 'product_detail' product.id %}" class="stretched-link"><img src="{{ product.image.url }}"
+            class="card-img-top rounded-0" alt="..."></a>
+        <div class="card-body px-0">
+          <h6 class="card-text mt-2">{{ product.name }}</h6>
+          <p class="card-text mb-1 text-warning"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+              class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
+          <h4>€{{ product.price }}</h4>
         </div>
-{% else %}
-<div class="col-lg-6 mx-auto">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="col-lg-6 mx-auto">
     <p class="text-center display-4">No results</p>
-
-</div>
-
-{% endif %}
-
+  </div>
+  {% endif %}
 </div>

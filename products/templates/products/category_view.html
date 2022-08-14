@@ -1,35 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
-
-
 {% block content %}
-<div class = "container">
-<div class = "my-3">
-    <label >Ranking:</label>
-    <select name="ranking" hx-get="{% url 'products_ranking' %}" hx-target="#prod-list" hx-vals='{"category": "{{ product_category }}"}' >
-        
-        <option value="price_asc">Price (low to high)</option>
-        <option value="price_desc" >Price (high to low)</option>
-        <option value="rating_asc" >Rating (low to high)</option>
-        <option value="rating_desc" >Rating (high to low)</option>
-        <option value="name_asc" >Name (A-Z)</option>
-        <option value="name_desc" >Name (Z-A)</option>
-       
+<div class="container">
+  <!-- list products by category adn allow sorting  -->
+  <div class="my-3">
+    <label>Ranking:</label>
+    <select name="ranking" hx-get="{% url 'products_ranking' %}" hx-target="#prod-list"
+      hx-vals='{"category": "{{ product_category }}"}'>
+      <option value="price_asc">Price (low to high)</option>
+      <option value="price_desc">Price (high to low)</option>
+      <option value="rating_asc">Rating (low to high)</option>
+      <option value="rating_desc">Rating (high to low)</option>
+      <option value="name_asc">Name (A-Z)</option>
+      <option value="name_desc">Name (Z-A)</option>
     </select>
   </div>
-
   <div id="prod-list">
-   
     {% include "products/snippets/product_list.html" %}
+  </div>
 </div>
-
-
-
-
-
-
-
-</div>
-   
-   
 {% endblock %}

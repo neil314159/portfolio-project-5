@@ -1,4 +1,5 @@
 <div class="container-fluid bg-dark text-light mt-5">
+  <!-- bootstrap footer  -->
   <div class="container">
     <footer class="pt-5 pb-2">
       <div class="row">
@@ -8,32 +9,33 @@
             <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted">Home</a></li>
             <li class="nav-item mb-2"><a href="{% url 'products' %}" class="nav-link p-0 text-muted">Shop</a></li>
             <li class="nav-item mb-2"><a href="{% url 'blog' %}" class="nav-link p-0 text-muted">Blog</a></li>
-            <li class="nav-item mb-2"><a href="{% url 'artrequest' %}" class="nav-link p-0 text-muted">Request Artwork</a></li>
-            
+            <li class="nav-item mb-2"><a href="{% url 'artrequest' %}" class="nav-link p-0 text-muted">Request
+                Artwork</a></li>
           </ul>
         </div>
-  
         <div class="col-6 col-md-2 mb-3">
           <h5>Resources</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="{% url 'privacy' %}" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'privacy' %}" class="nav-link p-0 text-muted">Privacy Policy</a>
+            </li>
             <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted">Sitemap</a></li>
-           
           </ul>
         </div>
-  
         <div class="col-6 col-md-2 mb-3">
           <h5>Social Media</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-facebook"></i> Facebook</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-instagram"></i> Instagram</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-twitter"></i> Twitter</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-github"></i> Github</a></li>
-
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-facebook"></i>
+                Facebook</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-instagram"></i>
+                Instagram</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-twitter"></i>
+                Twitter</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-github"></i>
+                Github</a></li>
           </ul>
         </div>
-  
         <div class="col-md-5 offset-md-1 mb-3">
+          <!-- form to subscribe to newsletter, powered by mailchimp, prefills email if avialable  -->
           <form method="post" action="{% url 'subscription' %}">
             {% csrf_token %}
             <h5>Subscribe to our newsletter!</h5>
@@ -44,16 +46,11 @@
               <button class="btn btn-primary" type="submit">Subscribe</button>
             </div>
           </form>
-
-          
-      
         </div>
       </div>
-  
       <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-4 border-top">
         <p>&copy; 2022 Electric Dreams, a project by Neil Boland.</p>
-        
       </div>
     </footer>
   </div>
-  </div>
+</div>

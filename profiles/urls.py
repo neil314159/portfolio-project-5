@@ -13,7 +13,4 @@ urlpatterns = [
          views.WishlistView.as_view(), name='user_details'),
     path('user_order_details/<order_number>',
          views.user_order_details, name='user_order_details'),
-    path('order_history/<order_number>',
-         views.order_history,
-         name='order_history'),
 ]

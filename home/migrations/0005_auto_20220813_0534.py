@@ -17,12 +17,15 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='artrequestformmessage',
             name='date',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            field=models.DateTimeField(
+                auto_now_add=True,
+                default=django.utils.timezone.now),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='artrequestformmessage',
             name='read',
-            field=models.BooleanField(default=False),
+            field=models.BooleanField(
+                default=False),
         ),
     ]

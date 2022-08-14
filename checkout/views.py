@@ -109,7 +109,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-         # Attempt to prefill the form with any info
+        # Attempt to prefill the form with any info
         # the user maintains in their profile
         if request.user.is_authenticated:
             try:
@@ -166,10 +166,6 @@ def checkout_success(request, order_number):
             profile.default_street_address1 = order.street_address1,
             profile.default_street_address2 = order.street_address2,
             profile.default_county = order.county,
-            
-            # user_profile_form = UserProfileForm(profile_data, instance=profile)
-            # if user_profile_form.is_valid():
-            #     user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \

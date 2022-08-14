@@ -76,6 +76,7 @@ def adjust_bag(request, item_id):
             messages.success(
                 request, f'Removed size {size.upper()} {product.name} from your bag')
     else:
+        # only allow ten max of each item
         if quantity > 10:
             bag[item_id] = 10
             messages.success(

@@ -1,43 +1,33 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% load cloudinary %}
-
 {% block content %}
-
-<!-- form to add new review -->
-
-
-
+<!-- form to add new post -->
 <div class="container my-5">
   <div class="row bg-light p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-    
-              <h3 class="text-center"><b>Blog Post</b></h3>
-              <br />
-              <p>Enter the details of your post here. All field with an asterisk* are mandatory. You can add an image if you choose.</p>
-                <form class="review-form" enctype="multipart/form-data" method="POST">
-                  {% csrf_token %}
-                  <fieldset class="form-group">
-                    <br />
-                   <!-- inject crispy forms -->
-                    {{ form|crispy }}
-                  </fieldset>
-                  <div class="form-group">
-                    <!-- add post -->
-                    <div class="d-grid">
-                      <button class="btn btn-primary btn-lg mt-3 mb-2" id="submitButton" type="submit">Submit</button>
-                    </div>
-                   <!-- cancel and return to reviews -->
-                    <div class="d-grid">
-                      <a class="btn btn-warning btn-lg mt-2 mb-2" href="{% url 'manage_blog' %}">Cancel</a>
-                    </div>
-                  </div>
-                </form>
-            
-            </div>
-          </div>
-       
-    
-
-
+    <h3 class="text-center"><b>Blog Post</b></h3>
+    <br />
+    <p>Enter the details of your post here. All field with an asterisk* are mandatory. You can add an image if you
+      choose.</p>
+    <form class="review-form" enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <br />
+        <!-- inject crispy forms -->
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <!-- add post -->
+        <div class="d-grid">
+          <button class="btn btn-primary btn-lg mt-3 mb-2" id="submitButton" type="submit">Submit</button>
+        </div>
+        <!-- cancel and return to blog management -->
+        <div class="d-grid">
+          <a class="btn btn-warning btn-lg mt-2 mb-2" href="{% url 'manage_blog' %}">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock content %}

@@ -1,28 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
-
 {% block content %}
-
-
+<!-- template to show blog post  -->
 <div class="px-4 py-5 my-5">
     <img class="d-block mx-auto mb-4 img-fluid" src="{{ blogpost.image.url }}" alt="" >
     <h1 class="display-5 fw-bold text-center">{{blogpost.title}}</h1>
     <div class="col-lg-6 mx-auto">
       <p class="mb-4">{{ blogpost.post_text |linebreaks }}</p>
-
-
-     
-
       <div class="m-4 text-muted text-center">
        Published: {{ blogpost.published_on }}
       </div>
     </div>
   </div>
-
-
-
-
-
-
 {% endblock %}

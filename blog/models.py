@@ -7,7 +7,7 @@ from django.urls import reverse
 # Create your models here.
 
 class BlogPostCategory(models.Model):
-    """Stores categories for book reviews"""
+    """Stores categories for blog posts"""
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -18,14 +18,11 @@ class BlogPostCategory(models.Model):
 
 
 class BlogPost(models.Model):
-
     """Main model holding blog posts"""
     title = models.CharField(max_length=250, unique=True)
-
     category = models.ForeignKey(
         BlogPostCategory, on_delete=models.SET_NULL, null=True,
         default=1, verbose_name="Blog Category")
-
     image = CloudinaryField(
         'image',
         blank=True,
@@ -39,8 +36,6 @@ class BlogPost(models.Model):
     post_text = models.TextField()
     """ Date of publication"""
     published_on = models.DateTimeField(auto_now_add=True)
-
-    # add in image code here
 
     class Meta:
         ordering = ["-published_on"]

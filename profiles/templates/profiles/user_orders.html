@@ -1,33 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
-
 {% block content %}
 <div class="container">
-
+    <!-- shows all customer orders amd their status  -->
     <div class="px-2 py-2 my-2 text-center">
-
         <h1 class="display-5 fw-bold">View Your Orders</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Here you can view all your past orders and check on their shipping status.</p>
-
         </div>
     </div>
-
-
-
     <div class="m-2 p-2">
-
-
-
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Order Date</th>
                     <th scope="col">Cost</th>
                     <th scope="col">Shipped</th>
-
-                    
                 </tr>
             </thead>
             <tbody>
@@ -36,9 +25,6 @@
                 {% endfor %}
             </tbody>
         </table>
-
-
     </div>
-
 </div>
 {% endblock %}

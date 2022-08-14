@@ -13,15 +13,18 @@ from django.http import HttpResponse
 
 
 def blog(request):
-    """ A view to return the blog"""
-
+    """
+    A view to return the blog
+    """
     posts = BlogPost.objects.all()
 
     return render(request, 'blog/blogindex.html', {'posts': posts})
 
 
 class BlogCategoryList(generic.ListView):
-    """Takes GET request, returns articles by category"""
+    """
+    Takes GET request, returns articles by category
+    """
     model = BlogPostCategory
     template_name = "blog/categoryindex.html"
     context_object_name = 'categorylist'
@@ -35,28 +38,26 @@ class BlogCategoryList(generic.ListView):
 
 
 def blog_category_list(request):
-    """ Creates a list of categories to be used by dropdown menu"""
+    """
+    Creates a list of categories to be used by dropdown menu in navbar
+    """
     blog_category_list = BlogPostCategory.objects.all()
     context = {"blog_category_list": blog_category_list, }
     return context
 
 
-class BlogPostList(generic.ListView):
-    """ Return a listview of all posts, ordered by date and paginated """
-    model = BlogPost
-    queryset = BlogPost.objects.order_by("-published_on")
-    paginate_by = 4
-    template_name = "blog/blogpostlist.html"
-
-
 class BlogPostDetail(generic.DetailView):
-    """Class based view passing to template, form is automatically generated"""
+    """
+    Class based view passing to template, form is automatically generated
+    """
     model = BlogPost
     template_name = "blog/blog_post_detail.html"
 
 
 class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
-    """ Create a new blogpost """
+    """
+    Create a new blogpost
+    """
     model = BlogPost
     """ Pass in all fields except post author"""
     fields = ['title', 'category', 'image', 'post_text']
@@ -65,14 +66,18 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
-    """ Edit a published review """
+    """
+    Edit a published post
+    """
     model = BlogPost
     template_name = "blog/blog_post_form.html"
     fields = ['title', 'category', 'image', 'post_text']
 
 
 class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
-    """ Delete a post from the site"""
+    """
+    Delete a post from the site
+    """
     model = BlogPost
     template_name = 'blog/blog_post_delete.html'
     success_url = reverse_lazy('blog')
@@ -80,28 +85,29 @@ class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def delete_blog_post(request, id):
-
+    """
+    Delete a blog post
+    """
     blogpost = get_object_or_404(BlogPost, pk=id)
     if request.user.is_superuser:
         blogpost.delete()
-        # messages.success(request, 'This post is deleted')
         posts = BlogPost.objects.all()
+        # returns empty html string to be inserted in table by HTMX
         return HttpResponse("")
-
     else:
         return redirect('home')
         messages.error(request, 'You do not have permission to do this')
 
 
 def add_category(request):
+    """
+    Add a new blog category via HTMX
+    """
     name = request.POST.get('categoryname')
-
     # add category
     category = BlogPostCategory.objects.get_or_create(name=name)[0]
-
     if not BlogPostCategory.objects.filter(name=name).exists():
         BlogPostCategory.objects.create(name=name)
-
     categories = BlogPostCategory.objects.all()
 
     return render(request,
@@ -112,17 +118,19 @@ def add_category(request):
 @require_http_methods(['DELETE'])
 @login_required
 def delete_category(request, pk):
-
-    # remove the category
+    """
+    Remove category and send back empty string to replace entry in table
+    """
     BlogPostCategory.objects.get(pk=pk).delete()
 
     return HttpResponse("")
 
 
 def edit_category(request, id):
-
+    """
+    edit category and return snippet with updated name
+    """
     blogcat = get_object_or_404(BlogPostCategory, id=id)
-
     if request.method == 'POST':
         if request.POST.get('newname') == '':
             return render(request,
@@ -130,7 +138,6 @@ def edit_category(request, id):
                           {'category': blogcat})
         else:
             blogcat.name = request.POST.get('newname')
-
         blogcat.save()
         blog_category_list = BlogPostCategory.objects.all()
 
@@ -144,7 +151,9 @@ def edit_category(request, id):
 
 
 def categories_table(request):
-
+    """
+    Provide table of all blog categories in snipett
+    """
     categories = BlogPostCategory.objects.all()
 
     return render(request,

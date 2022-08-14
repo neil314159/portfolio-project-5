@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.db.models import Avg
 
+# rating strings for product form
 STAR_RATING = (
     (1, "⭐"),
     (2, "⭐⭐"),
@@ -41,7 +42,6 @@ class Product(models.Model):
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.IntegerField(choices=STAR_RATING, default=5)
-
     image = CloudinaryField(
         'image',
         blank=True,
@@ -55,9 +55,6 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    # need to check calculations
-   
-
 
 class Comment(models.Model):
     """ Product comment model"""
@@ -70,16 +67,9 @@ class Comment(models.Model):
     """ Main text of comment"""
     comment_text = models.TextField()
     published_on = models.DateTimeField(auto_now_add=True)
-   
 
     class Meta:
         ordering = ["published_on"]
 
     def __str__(self):
         return self.comment_text
-
-
-class BoughtWithItem(models.Model):
-    main_item = Product
-    purchase_count = models.IntegerField()
-    also_bought = models.ForeignKey(Product, on_delete=models.CASCADE)

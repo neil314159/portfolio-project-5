@@ -1,32 +1,19 @@
-
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 <div class="container">
-
+    <!-- container for live search results  -->
     <div class="px-2 py-2 my-2 text-center">
-
         <h1 class="display-5 fw-bold">Search</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Type your search terms below.</p>
-
         </div>
     </div>
-<div class = "px-2 py-2 my-2 text-center" id="#searchbox">
-
-    <input type="text"
-        hx-post="{% url 'htmx_search' %}" 
-        hx-target='#results'
-        hx-trigger="keyup changed delay:200ms"
-        name="q"
-        class="form-control form-control-lg mb-4" 
-        placeholder="Search the products..." 
-        class="bg-white h-10 px-5 pr-10 rounded-full text-2xl focus:outline-none"
-        />
-    
-</div>
-<div id="results"></div>
-
+    <div class="px-2 py-2 my-2 text-center" id="#searchbox">
+        <input type="text" hx-post="{% url 'htmx_search' %}" hx-target='#results' hx-trigger="keyup changed delay:200ms"
+            name="q" class="form-control form-control-lg mb-4" placeholder="Search the products..."
+            class="bg-white h-10 px-5 pr-10 rounded-full text-2xl focus:outline-none" />
+    </div>
+    <div id="results"></div>
 </div>
 {% endblock %}

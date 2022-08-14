@@ -17,19 +17,20 @@ from django.urls import reverse_lazy
 
 
 def all_products(request):
-    """ A view to return the dashboard page """
+    """ A view to return the products page """
     sorted_products = Product.objects.all()
     sorted_products = sorted_products.order_by("price")
+
     return render(request, 'products/products.html',
-                  {"sorted_products": sorted_products, "category":None})
+                  {"sorted_products": sorted_products, "category": None})
 
 
 def category_products(request, category):
-    """ A view to return the dashboard page """
+    """ A view to return the products by category page """
     newcat = category
     sorted_products = Product.objects.filter(category__name=newcat)
-
     sorted_products = sorted_products.order_by("price")
+
     return render(request,
                   'products/category_view.html',
                   {"sorted_products": sorted_products,
@@ -37,16 +38,11 @@ def category_products(request, category):
 
 
 def products_ranking(request):
-    """ A view to show all products, including sorting and search queries """
+    """ A view to show all products, including sorting  """
 
     sorted_products = Product.objects.all()
-    sort = None
-    direction = None
-
     sortkey = request.GET['ranking']
     sorted_products = sorted_products.order_by("price")
-
-    search = request.GET.get('search')
 
     if 'category' in request.GET:
         categories = request.GET['category'].split(',')
@@ -72,7 +68,7 @@ def products_ranking(request):
 
 
 class ProductCategoryList(generic.ListView):
-    """Takes GET request, returns articles by category"""
+    """Takes GET request, returns products by category"""
     model = Product
     template_name = "blog/categoryindex.html"
     context_object_name = 'categorylist'
@@ -83,46 +79,6 @@ class ProductCategoryList(generic.ListView):
             'posts': Product.objects.filter(
                 category__name=self.kwargs['category'])}
         return content
-
-
-def product_detail(request, product_id):
-    """ A view to show individual product details """
-
-    product = get_object_or_404(Product, pk=product_id)
-
-    context = {
-        'product': product,
-    }
-
-    return render(request, 'products/product_detail.html', context)
-
-
-@login_required
-def add_product(request):
-    """ Add a product to the store """
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
-
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            product = form.save()
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(
-                request,
-                'Failed to add product. Please ensure the form is valid.')
-    else:
-        form = ProductForm()
-
-    template = 'products/add_product.html'
-    context = {
-        'form': form,
-    }
-
-    return render(request, template, context)
 
 
 @login_required
@@ -170,52 +126,47 @@ def delete_product(request, product_id):
 
 
 def htmx_search_products(request):
-
+    """ Search function for live HTMX search"""
     products = Product.objects.all()
     query = None
-
     query = request.POST.get('q')
-
     queries = Q(name__icontains=query) | Q(description__icontains=query)
     products = products.filter(queries)
-
     context = {"products": products}
+
     return render(request, 'products/includes/search_results.html', context)
 
 
 def search_page(request):
-    """ A view to return the dashboard page """
+    """ A view to return the search page """
 
     return render(request, 'products/search.html')
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product details """
+    """ A view to show individual product details and handle comments """
 
     product = get_object_or_404(Product, pk=product_id)
+    # checks to see if product on user wishlist to set initial button state
     added = False
     if request.user.is_authenticated:
         if WishlistItem.objects.filter(
                 author=request.user,
                 product=product).count() > 0:
             added = True
-    # comment_form = CommentForm()
+    # handle comment form
     new_comment = None
-    # Comment posted
+    # Comment received
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-
-            # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
-            # Assign the current post to the comment
             new_comment.product = product
             new_comment.author = request.user
-            # Save the comment to the database
             new_comment.save()
     else:
         comment_form = CommentForm()
-
+    # clear form
     comment_form = CommentForm()
     context = {
         'product': product,
@@ -263,42 +214,25 @@ def add_to_wishlist(request, id):
 
 @login_required
 def delete_wishlist_item(request, id):
-
+    """ remove wishlist object"""
     wish = get_object_or_404(WishlistItem, pk=id)
     if wish.author.id == request.user.id:
         wish.delete()
-        # messages.success(request, 'This post is deleted')
-
+        # empty HTML string for table
         return HttpResponse("")
 
     else:
         return redirect('home')
         messages.error(request, 'You do not have permission to do this')
 
-    # if request.method == "POST":
-    #     instance = Product.objects.get(id=id)
-    #     if not instance.likes.filter(id=request.user.id).exists():
-    #         instance.likes.add(request.user)
-    #         instance.save()
-    #         return render( request, 'posts/partials/likes_area.html', context={'post':instance})
-    #     else:
-    #         instance.likes.remove(request.user)
-    #         instance.save()
-    # return render( request, 'posts/partials/likes_area.html',
-    # context={'post':instance})
-
 
 def add_product_category(request):
+    """ Add new category """
     name = request.POST.get('categoryname')
-
     # add category
     category = Category.objects.get_or_create(name=name)[0]
-    # BlogPostCategory.objects.create(name=name)
-
     if not Category.objects.filter(name=name).exists():
         Category.objects.create(name=name)
-
-    # return HttpResponse("")
     categories = Category.objects.all()
 
     return render(request,
@@ -307,7 +241,7 @@ def add_product_category(request):
 
 
 def edit_product_category(request, id):
-
+    """ edit catgeory for product """
     category = get_object_or_404(Category, id=id)
 
     if request.method == 'POST':
@@ -320,7 +254,7 @@ def edit_product_category(request, id):
 
         category.save()
         product_category_list = Category.objects.all()
-        # return HttpResponse("here")
+
         return render(request,
                       'products/snippets/categories_item.html',
                       {'category': category})
@@ -333,59 +267,47 @@ def edit_product_category(request, id):
 @require_http_methods(['DELETE'])
 @login_required
 def delete_product_category(request, id):
-
-    # remove the category
+    """ delete category"""
     Category.objects.get(pk=id).delete()
 
     return HttpResponse("")
 
 
 class ProductCreateView(LoginRequiredMixin, generic.CreateView):
-    """ Create a new blogpost """
+    """ Create a new product listing """
     model = Product
-    """ Pass in all fields except post author"""
-    fields = ['name', 'sku', 'rating', 'category', 'description', 'price', 'image']
+    """ Pass in fields"""
+    fields = [
+        'name',
+        'sku',
+        'rating',
+        'category',
+        'description',
+        'price',
+        'image']
     template_name = "products/product_form.html"
     success_url = reverse_lazy('manage_products')
 
 
 class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
-    
+    """ CBV to update product listing"""
     model = Product
     template_name = "products/product_form.html"
-    fields = ['name', 'sku', 'rating', 'category', 'description', 'price', 'image']
+    fields = [
+        'name',
+        'sku',
+        'rating',
+        'category',
+        'description',
+        'price',
+        'image']
     success_url = reverse_lazy('manage_products')
 
+
 def delete_comment(request, id):
-    comment =  get_object_or_404(Comment, id=id)
+    """ Remove product comment"""
+    comment = get_object_or_404(Comment, id=id)
     product = comment.product
     comment.delete()
 
     return redirect(reverse_lazy('product_detail', args=(product.id,)))
-    
-
-    # remove the category
-    # Category.objects.get(pk=id).delete()
-
-    # return HttpResponse("")
-
-    #  """ Delete a product from the store """
-    # if not request.user.is_superuser:
-    #     messages.error(request, 'Sorry, only store owners can do that.')
-    #     return redirect(reverse('home'))
-
-    # product = get_object_or_404(Product, pk=product_id)
-    # product.delete()
-    # messages.success(request, 'Product deleted!')
-    # return HttpResponse("")
-
-
-    # """ Delete a product from the store """
-    # if not request.user.is_superuser:
-    #     messages.error(request, 'Sorry, only store owners can do that.')
-    #     return redirect(reverse('home'))
-
-    # product = get_object_or_404(Product, pk=product_id)
-    # product.delete()
-    # messages.success(request, 'Product deleted!')
-    # return redirect(reverse('products'))

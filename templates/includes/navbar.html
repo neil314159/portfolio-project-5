@@ -1,18 +1,15 @@
-
 <nav class="bg-dark border-bottom">
+  <!-- top part menu  -->
   <div class="container d-flex flex-wrap">
     <ul class="nav me-auto">
       <li class="nav-item text-white py-2 d-none d-lg-block">Free shipping when you spend €50!</li>
-      
     </ul>
     <ul class="nav">
       {% if user.is_authenticated %}
       {% if user.is_superuser %}
- 
-      
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle px-2 text-white" href="#" id="sitenavbarDropdown" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <a class="nav-link dropdown-toggle px-2 text-white" href="#" id="sitenavbarDropdown" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
           Manage Site
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -20,14 +17,11 @@
           <li><a class="dropdown-item" href="{% url 'manage_orders' %}">Customer Orders</a></li>
           <li><a class="dropdown-item" href="{% url 'manage_blog' %}">Manage Blog</a></li>
           <li><a class="dropdown-item" href="{% url 'manage_requests' %}">Custom Requests</a></li>
-         
-          
         </ul>
       </li>
       {% endif %}
       {% endif %}
       {% if user.is_authenticated %}
-    
       <li><a href="{% url 'account_logout' %}" class="nav-link px-2 text-white">Log Out</a></li>
       {% else %}
       <li><a href="{% url 'account_login' %}" class="nav-link px-2 text-white">Log In</a></li>
@@ -36,12 +30,12 @@
     </ul>
   </div>
 </nav>
-
-
+<!-- main menu  -->
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">Electric <i class="bi bi-lightning-charge-fill"></i> Dreams</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -55,20 +49,15 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item " href="{% url 'products' %}">All Products</a></li>
-           
+            <!-- get product categories from DB  -->
             {% for product_category in product_category_list %}
             <li><a class="dropdown-item" href="{% url 'product_category_view' product_category.name %}">
-              {{ product_category.name }}
-            </a>
-          </li>
+                {{ product_category.name }}
+              </a>
+            </li>
             {% endfor %}
-  
           </ul>
         </li>
-       
-      
-       
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="blognavbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -85,46 +74,35 @@
             {% endfor %}
           </ul>
         </li>
-
+        <!-- custom request form link  -->
         <li class="nav-item">
           <a class="nav-link" href="{% url 'artrequest' %}">Request Artwork</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="{% url 'wishlist' %}">My Wishlist</a>
         </li>
-       
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="profilenavbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="profilenavbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             My Profile
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{% url 'my_orders' %}">My Orders</a></li>
             <li><a class="dropdown-item" href="{% url 'profile' %}">My Details</a></li>
-           
           </ul>
         </li>
-
       </ul>
       <ul class="navbar-nav ms-auto">
-       
-     <li> <a href="{% url 'search_page' %}" class="nav-link px-2"><i class="bi bi-search"></i> Search  </a> </li>
-
-     <li><a href="{% url 'view_bag' %}" class="nav-link px-2"> Cart: <i class="bi bi-bag-fill"></i> 
-      {% if grand_total %}
-      €{{ grand_total|floatformat:2 }}
-  {% else %}
-      €0.00
-  {% endif %}
-    </a> </li>
+        <!-- search link and shopping cart  -->
+        <li> <a href="{% url 'search_page' %}" class="nav-link px-2"><i class="bi bi-search"></i> Search </a> </li>
+        <li><a href="{% url 'view_bag' %}" class="nav-link px-2"> Cart: <i class="bi bi-bag-fill"></i>
+            {% if grand_total %}
+            €{{ grand_total|floatformat:2 }}
+            {% else %}
+            €0.00
+            {% endif %}
+          </a> </li>
       </ul>
     </div>
-   
   </div>
-
 </nav>
-
-
-
-

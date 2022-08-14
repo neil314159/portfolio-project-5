@@ -10,14 +10,18 @@ from django.contrib.auth.decorators import login_required
 
 
 def manage_orders(request):
-    """ A view to return the dashboard page """
+    """
+    A view to return the order mamagemnt page
+    """
     orders = Order.objects.all().order_by("-date")
 
     return render(request, 'dashboard/manage_orders.html', {"orders": orders})
 
 
 def manage_blog(request):
-    """ A view to return the dashboard page """
+    """
+    A view to return the blog management page
+    """
     posts = BlogPost.objects.all().order_by("-published_on")
     categories = BlogPostCategory.objects.all().order_by("name")
 
@@ -26,7 +30,9 @@ def manage_blog(request):
 
 
 def manage_products(request):
-    """ A view to return the dashboard page """
+    """
+    A view to return the product dashboard page
+    """
     products = Product.objects.all().order_by("name")
     categories = Category.objects.all().order_by("name")
     return render(request, 'dashboard/manage_products.html',
@@ -34,16 +40,20 @@ def manage_products(request):
 
 
 def manage_requests(request):
-    """ A view to return the dashboard page """
+    """
+    A view to return the custom requests page
+    """
     artrequests = ArtRequestFormMessage.objects.all().order_by("-date")
-    
+
     return render(request, 'dashboard/manage_requests.html',
                   {"artrequests": artrequests})
 
 
 def order_details(request, order_number):
+    """
+    View order details
+    """
     order = get_object_or_404(Order, order_number=order_number)
-
     template = 'dashboard/order_details.html'
     context = {
         'order': order,

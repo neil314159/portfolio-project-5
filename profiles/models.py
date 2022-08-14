@@ -1,12 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-# Create your models here.
-
 from django.contrib.auth.models import AbstractUser
-from django.db import models
 from django_countries.fields import CountryField
 from products.models import Product, Category
 from django.conf import settings
+
+# instead of a profile, the AbstractUser was extended with extra fields
 
 
 class CustomUser(AbstractUser):
