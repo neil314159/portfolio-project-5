@@ -1,17 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic, View
-from .models import CustomUser, WishlistItem
+from .models import WishlistItem
 from .forms import UserProfileForm
 from django.contrib.auth import logout as auth_logout, get_user_model
 from django.http import HttpResponseRedirect
-from django.views.decorators.http import require_http_methods
 from checkout.models import Order
 from django.conf import settings
-from .models import CustomUser
 
 
 @login_required

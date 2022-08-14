@@ -50,12 +50,16 @@
         <div class="row">
             <div class="col-lg-4">
                 <h3>Leave a comment</h3>
+                {% if user.is_authenticated %}
                 <form method="post" style="">
                     <!-- {{ comment_form.as_p }} -->
                     {{ comment_form|crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-outline-primary btn-lg m-4">Submit</button>
                 </form>
+                {% else %}
+                You must be logged in to leave a comment. 
+                {% endif %}
             </div>
             <div class="col-lg-4">
                 <br>
@@ -68,7 +72,7 @@
                         <h5 class="card-title">{{ comment.comment_text }}</h5>
                         {{ comment.author.username}} on {{comment.published_on}}
                         <p class="card-text">
-                            {% if user == comment.author %} <a href="{%url 'delete_comment' comment.id%}"
+                            {% if user == comment.author or user.is_superuser %} <a href="{%url 'delete_comment' comment.id%}"
                                 class="card-link" onclick="return confirm('Are you sure?')">Delete</a>
                         </p>
                         {%endif%}

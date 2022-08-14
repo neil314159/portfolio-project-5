@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q
-from django.db.models.functions import Lower
 from django.db.models import Avg
 from django.http import HttpResponse
 from .models import Product, Category, Comment
@@ -319,10 +318,12 @@ class ProductUpdateView(
         return self.request.user.is_staff
 
 
+@login_required
 def delete_comment(request, id):
     """ Remove product comment"""
     comment = get_object_or_404(Comment, id=id)
     product = comment.product
-    comment.delete()
+    if comment.author == request.user or request.user.is_superuser:
+        comment.delete()
 
     return redirect(reverse_lazy('product_detail', args=(product.id,)))
