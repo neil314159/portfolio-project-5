@@ -199,7 +199,7 @@ def product_detail(request, product_id):
                 author=request.user,
                 product=product).count() > 0:
             added = True
-
+    # comment_form = CommentForm()
     new_comment = None
     # Comment posted
     if request.method == 'POST':
@@ -216,7 +216,7 @@ def product_detail(request, product_id):
     else:
         comment_form = CommentForm()
 
-
+    comment_form = CommentForm()
     context = {
         'product': product,
         'added': added,
