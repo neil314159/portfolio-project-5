@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.db.models import Avg
@@ -81,7 +82,7 @@ class ProductCategoryList(generic.ListView):
         return content
 
 
-@login_required
+@staff_member_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
@@ -112,7 +113,7 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
-@login_required
+@staff_member_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
@@ -145,7 +146,6 @@ def search_page(request):
 
 def product_detail(request, product_id):
     """ A view to show individual product details and handle comments """
-
     product = get_object_or_404(Product, pk=product_id)
     # checks to see if product on user wishlist to set initial button state
     added = False
@@ -184,6 +184,7 @@ def product_category_list(request):
     return context
 
 
+@login_required
 def add_to_wishlist(request, id):
     try:
         product = Product.objects.get(id=id)
@@ -226,6 +227,7 @@ def delete_wishlist_item(request, id):
         messages.error(request, 'You do not have permission to do this')
 
 
+@staff_member_required
 def add_product_category(request):
     """ Add new category """
     name = request.POST.get('categoryname')
@@ -240,6 +242,7 @@ def add_product_category(request):
                   {'categories': categories})
 
 
+@staff_member_required
 def edit_product_category(request, id):
     """ edit catgeory for product """
     category = get_object_or_404(Category, id=id)
@@ -265,7 +268,7 @@ def edit_product_category(request, id):
 
 
 @require_http_methods(['DELETE'])
-@login_required
+@staff_member_required
 def delete_product_category(request, id):
     """ delete category"""
     Category.objects.get(pk=id).delete()

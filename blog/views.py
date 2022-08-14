@@ -1,11 +1,10 @@
 
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic, View
 from .models import BlogPost, BlogPostCategory
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponse
@@ -83,22 +82,18 @@ class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('blog')
 
 
-@login_required
+@staff_member_required
 def delete_blog_post(request, id):
     """
     Delete a blog post
     """
     blogpost = get_object_or_404(BlogPost, pk=id)
-    if request.user.is_superuser:
-        blogpost.delete()
-        posts = BlogPost.objects.all()
-        # returns empty html string to be inserted in table by HTMX
-        return HttpResponse("")
-    else:
-        return redirect('home')
-        messages.error(request, 'You do not have permission to do this')
+    blogpost.delete()
+    # returns empty html string to be inserted in table by HTMX
+    return HttpResponse("")
 
 
+@staff_member_required
 def add_category(request):
     """
     Add a new blog category via HTMX
@@ -116,7 +111,7 @@ def add_category(request):
 
 
 @require_http_methods(['DELETE'])
-@login_required
+@staff_member_required
 def delete_category(request, pk):
     """
     Remove category and send back empty string to replace entry in table
@@ -126,6 +121,7 @@ def delete_category(request, pk):
     return HttpResponse("")
 
 
+@staff_member_required
 def edit_category(request, id):
     """
     edit category and return snippet with updated name

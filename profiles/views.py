@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse
-
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -8,9 +7,7 @@ from django.views import generic, View
 from .models import CustomUser, WishlistItem
 from .forms import UserProfileForm
 from django.contrib.auth import get_user_model
-
 from django.contrib.auth import logout as auth_logout, get_user_model
-
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth import get_user_model
@@ -56,6 +53,7 @@ def remove_account(request):
     return HttpResponseRedirect(reverse_lazy('home'))
 
 
+@login_required
 def user_order_history(request):
     """ shows user all their orders"""
     orders = request.user.orders.all().order_by("-date")
@@ -63,6 +61,7 @@ def user_order_history(request):
     return render(request, 'profiles/user_orders.html', {'orders': orders})
 
 
+@login_required
 def user_order_details(request, order_number):
     """ show order details"""
     order = get_object_or_404(Order, order_number=order_number)

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from blog.models import BlogPostCategory, BlogPost
+from django.contrib.admin.views.decorators import staff_member_required
 from products.models import Product
 from mailchimp_marketing import Client
 from mailchimp_marketing.api_client import ApiClientError
@@ -7,7 +8,6 @@ import os
 from django.contrib import messages
 from .models import ArtRequestFormMessage
 from .forms import ContactForm
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -41,11 +41,6 @@ def privacy_policy(request):
     """ A view to return the dashboard page """
 
     return render(request, 'home/privacy.html')
-
-
-def artwork_request(request):
-
-    return render(request, 'home/artwork_request.html')
 
 
 def subscribe(email):
@@ -99,7 +94,7 @@ def artwork_request(request):
     return render(request, "home/artwork_request.html", {'form': form})
 
 
-@login_required
+@staff_member_required
 def delete_artrequest(request, id):
     """
     Delete custom request from management page

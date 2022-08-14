@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404, HttpResponse
+from django.contrib.admin.views.decorators import staff_member_required
 from blog.models import BlogPostCategory, BlogPost
 from products.models import Product, Category
 from checkout.models import Order
@@ -9,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+@staff_member_required
 def manage_orders(request):
     """
     A view to return the order mamagemnt page
@@ -18,6 +20,7 @@ def manage_orders(request):
     return render(request, 'dashboard/manage_orders.html', {"orders": orders})
 
 
+@staff_member_required
 def manage_blog(request):
     """
     A view to return the blog management page
@@ -29,6 +32,7 @@ def manage_blog(request):
                   {"posts": posts, "categories": categories})
 
 
+@staff_member_required
 def manage_products(request):
     """
     A view to return the product dashboard page
@@ -39,6 +43,7 @@ def manage_products(request):
                   {"products": products, "categories": categories})
 
 
+@staff_member_required
 def manage_requests(request):
     """
     A view to return the custom requests page
@@ -49,6 +54,7 @@ def manage_requests(request):
                   {"artrequests": artrequests})
 
 
+@staff_member_required
 def order_details(request, order_number):
     """
     View order details
@@ -62,7 +68,7 @@ def order_details(request, order_number):
     return render(request, template, context)
 
 
-@login_required
+@staff_member_required
 def mark_order_shipped(request, id):
     """ Toggles the boolean value to show if a order is shipped or not"""
     try:
