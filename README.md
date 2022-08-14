@@ -199,7 +199,22 @@ After creating the Epics and translating them into User Stories, this now leads 
 
 #### Information Structure - Database Models
 
-In order for the site to provide full functionality to the user, a number of custom models must be defined. These models reflect the information that will be stored and used by the site. In this case, we have a custom model representing a book review, which includes information such as title, author, the author of the review, the rating and text content of the review and the date the review was published. There is also a Cloudinary field which accepts image uploads to store the cover image of the book. The review model links to the standard user model provided by Django, representing registered users on the site. Another simple model was created to represent Categories, and each review has a Category field. This means the administrator can define new categories in the site's admin section. There is a model which stores user comments, each comment linking to a review and a user and containing comment text. Finally, there is a wishlist item  which stores a book review, a user and a Boolean value indicating if the book has been read or not.
+A number of custom models were created for this project:
+
+![full model](./media/readme/models/usermodel.png)
+* Custom User model - the original project used in the course utiised a One-to-One profile model to store customer data such as telephone address etc. One of the features I really wanted to implement is the ability for a user to sign on using only their email address instead of a username. This makes things easier for the user since they don't have to remember or record an extra username. This is only possible by extending the standard Django user model and altering the authentication to use an email address instead of a username when signing up.  The user model was based off Django AbstractUSer and added extra fields to be stored in the database.
+![full model](./media/readme/models/wishlistcomment.png)
+* Wishlist item - this model links users and products and allows them to store a lost of possible future purchases
+![full model](./media/readme/models/blog.png)
+* Blog Post - for representing posts made on the website blog
+* Blog Category - to allow for categorisation of the posts
+* Comment - to allow for user comments and reviews, connected to the product model
+![full model](./media/readme/models/request.png)
+* ArtRequest - stores messages sent in by users from the comment form making suggestions or requests
+
+The entire schema is visible here:
+![full model](./media/readme/models/graphviz.png)
+
 
 Below you can see the full schema for the whole site, including the standard user models, and there is also an excerpt of the custom models found in the reviews app of the project. These images were generated using the Django-extensions package, which creates a .dot file which can then be copied into [this site](https://dreampuf.github.io/GraphvizOnline/) to generate a downloadable image.
 
@@ -226,13 +241,13 @@ Balsamiq was used to create the wireframes for this project. The initial layout 
 ### Surface
 
 * Fonts
-The Lato font was chosen for this project as it is extremely legible and suitable for a literary site, but also more visually interesting than the standard Bootstrap font of Helvetica Neue.
+Initially I wasnted to use a standard system font in keeping with the general technological theme of the site, but after user testing feedback I moved to using Nunito Sans, which provides a slightly more refined look for the user interface and works well for an ecommerce site such as this.
 
 * Images
-User feedback indicated a preference for background pictures rather than the plain coloured backgrounds I initially used. Pictures were chosen from Unsplash to be colourful and well-textured to draw the interest of the users.
+Since the purpose of the site is to sell visual posters and prints, no other extraneous images were used elsewhere as they would distract from the products for sale.
 
 * Colours
-A simple and clean colour palette was chosen using the website [Coolers](http://coolors.co). A more muted set of colours was used because there were also eye-catching photos being used, as well as book covers, and too much visual information could distract the user.
+The colour scheme was kept extremely clear and simple so as not to take away from the artwork images being displayed. A clean white background was deemed the best after testing various colour combinations to allow the images to stand out most clearly.
 
 ## Features
 
@@ -331,8 +346,6 @@ There are a number of features which I would like to implement in the future for
 
 
 
-
-
 ## Technologies Used
 
 * Python
@@ -359,6 +372,8 @@ There are a number of features which I would like to implement in the future for
        * sqlparse==0.4.2
        * stripe==4.0.2
 
+* Midjourney
+    * all of the genrative art used on the site was created using the Midjourney engine. This is a recently developed platform, similar to the more widely known Dall-e@, which allows the user to enter a prompt or description and have visual art created for them on the spot. While there are some teething issues, in general the quality is extremely high and surprising to casual users.
 * Heroku
     * The project was deployed using Heroku's cloud-based platform
 * Heroku PostgreSQL
