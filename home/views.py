@@ -117,7 +117,7 @@ def artwork_request(request):
             message = form.cleaned_data['message']
            
             ArtRequestFormMessage.objects.create(email=from_email, message_text=message)
-            
+            messages.success(request, "Message received, thank You! ")
             return redirect('home')
     return render(request, "home/artwork_request.html", {'form': form})
 

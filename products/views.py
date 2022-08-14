@@ -21,7 +21,7 @@ def all_products(request):
     sorted_products = Product.objects.all()
     sorted_products = sorted_products.order_by("price")
     return render(request, 'products/products.html',
-                  {"sorted_products": sorted_products})
+                  {"sorted_products": sorted_products, "category":None})
 
 
 def category_products(request, category):
@@ -31,7 +31,7 @@ def category_products(request, category):
 
     sorted_products = sorted_products.order_by("price")
     return render(request,
-                  'products/products.html',
+                  'products/category_view.html',
                   {"sorted_products": sorted_products,
                    "product_category": category})
 
@@ -326,7 +326,7 @@ class ProductCreateView(LoginRequiredMixin, generic.CreateView):
     """ Create a new blogpost """
     model = Product
     """ Pass in all fields except post author"""
-    fields = ['name', 'sku', 'category', 'description', 'price', 'image']
+    fields = ['name', 'sku', 'rating', 'category', 'description', 'price', 'image']
     template_name = "products/product_form.html"
     success_url = reverse_lazy('manage_products')
 
@@ -335,5 +335,5 @@ class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
     
     model = Product
     template_name = "products/product_form.html"
-    fields = ['name', 'sku', 'category', 'description', 'price', 'image']
+    fields = ['name', 'sku', 'rating', 'category', 'description', 'price', 'image']
     success_url = reverse_lazy('manage_products')

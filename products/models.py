@@ -40,11 +40,7 @@ class Product(models.Model):
     description = models.TextField()
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
-        null=True,
-        blank=True)
+    rating = models.IntegerField(choices=STAR_RATING, default=5)
 
     image = CloudinaryField(
         'image',
