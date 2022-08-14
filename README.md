@@ -12,7 +12,7 @@ Intro
 
 <br>
 
-[Visit the live website on Heroku here](https://book-barn-reviews.herokuapp.com/)
+[Visit the live website on Heroku here](https://electric-dreams.herokuapp.com/)
 
 <br>
 
@@ -203,23 +203,24 @@ A number of custom models were created for this project:
 
 ![full model](./media/readme/models/usermodel.png)
 * Custom User model - the original project used in the course utiised a One-to-One profile model to store customer data such as telephone address etc. One of the features I really wanted to implement is the ability for a user to sign on using only their email address instead of a username. This makes things easier for the user since they don't have to remember or record an extra username. This is only possible by extending the standard Django user model and altering the authentication to use an email address instead of a username when signing up.  The user model was based off Django AbstractUSer and added extra fields to be stored in the database.
+
 ![full model](./media/readme/models/wishlistcomment.png)
 * Wishlist item - this model links users and products and allows them to store a lost of possible future purchases
+
 ![full model](./media/readme/models/blog.png)
 * Blog Post - for representing posts made on the website blog
 * Blog Category - to allow for categorisation of the posts
 * Comment - to allow for user comments and reviews, connected to the product model
+
 ![full model](./media/readme/models/request.png)
 * ArtRequest - stores messages sent in by users from the comment form making suggestions or requests
 
 The entire schema is visible here:
+
 ![full model](./media/readme/models/graphviz.png)
 
 
-Below you can see the full schema for the whole site, including the standard user models, and there is also an excerpt of the custom models found in the reviews app of the project. These images were generated using the Django-extensions package, which creates a .dot file which can then be copied into [this site](https://dreampuf.github.io/GraphvizOnline/) to generate a downloadable image.
 
-![cropped model](./media/readme/models/cropped_model.png) 
-![full model](./media/readme/models/model.png)
 
 ### Skeleton
 
@@ -240,13 +241,13 @@ Balsamiq was used to create the wireframes for this project. The initial layout 
 
 ### Surface
 
-* Fonts
-Initially I wasnted to use a standard system font in keeping with the general technological theme of the site, but after user testing feedback I moved to using Nunito Sans, which provides a slightly more refined look for the user interface and works well for an ecommerce site such as this.
+* Fonts - 
+Initially I wanted to use a standard system font in keeping with the general technological theme of the site, but after user testing feedback I moved to using Nunito Sans, which provides a slightly more refined look for the user interface and works well for an ecommerce site such as this.
 
-* Images
+* Images - 
 Since the purpose of the site is to sell visual posters and prints, no other extraneous images were used elsewhere as they would distract from the products for sale.
 
-* Colours
+* Colours - 
 The colour scheme was kept extremely clear and simple so as not to take away from the artwork images being displayed. A clean white background was deemed the best after testing various colour combinations to allow the images to stand out most clearly.
 
 ## Features
