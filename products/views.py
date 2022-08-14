@@ -276,7 +276,10 @@ def delete_product_category(request, id):
     return HttpResponse("")
 
 
-class ProductCreateView(LoginRequiredMixin, generic.CreateView):
+class ProductCreateView(
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        generic.CreateView):
     """ Create a new product listing """
     model = Product
     """ Pass in fields"""
@@ -291,8 +294,14 @@ class ProductCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = "products/product_form.html"
     success_url = reverse_lazy('manage_products')
 
+    def test_func(self):
+        return self.request.user.is_staff
 
-class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
+
+class ProductUpdateView(
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        generic.UpdateView):
     """ CBV to update product listing"""
     model = Product
     template_name = "products/product_form.html"
@@ -305,6 +314,9 @@ class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
         'price',
         'image']
     success_url = reverse_lazy('manage_products')
+
+    def test_func(self):
+        return self.request.user.is_staff
 
 
 def delete_comment(request, id):

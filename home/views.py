@@ -29,14 +29,6 @@ def index(request):
                   {'blogposts': blogposts, 'products': products})
 
 
-def dashboard(request):
-    """ A view to return the dashboard page """
-    categories = BlogPostCategory.objects.all()
-
-    return render(request, 'home/dashboard.html',
-                  {'blogcategories': categories})
-
-
 def privacy_policy(request):
     """ A view to return the dashboard page """
 

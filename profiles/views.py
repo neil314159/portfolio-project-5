@@ -6,11 +6,9 @@ from django.urls import reverse_lazy
 from django.views import generic, View
 from .models import CustomUser, WishlistItem
 from .forms import UserProfileForm
-from django.contrib.auth import get_user_model
 from django.contrib.auth import logout as auth_logout, get_user_model
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth import get_user_model
 from checkout.models import Order
 from django.conf import settings
 from .models import CustomUser

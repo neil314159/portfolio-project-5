@@ -1,10 +1,9 @@
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import BlogPost, BlogPostCategory
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponse
@@ -53,7 +52,10 @@ class BlogPostDetail(generic.DetailView):
     template_name = "blog/blog_post_detail.html"
 
 
-class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
+class BlogPostCreateView(
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        generic.CreateView):
     """
     Create a new blogpost
     """
@@ -63,8 +65,14 @@ class BlogPostCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = "blog/blog_post_form.html"
     success_url = reverse_lazy('blog')
 
+    def test_func(self):
+        return self.request.user.is_staff
 
-class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
+
+class BlogPostUpdateView(
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        generic.UpdateView):
     """
     Edit a published post
     """
@@ -72,14 +80,23 @@ class BlogPostUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = "blog/blog_post_form.html"
     fields = ['title', 'category', 'image', 'post_text']
 
+    def test_func(self):
+        return self.request.user.is_staff
 
-class BlogPostDeleteView(LoginRequiredMixin, generic.DeleteView):
+
+class BlogPostDeleteView(
+        LoginRequiredMixin,
+        UserPassesTestMixin,
+        generic.DeleteView):
     """
     Delete a post from the site
     """
     model = BlogPost
     template_name = 'blog/blog_post_delete.html'
     success_url = reverse_lazy('blog')
+
+    def test_func(self):
+        return self.request.user.is_staff
 
 
 @staff_member_required
