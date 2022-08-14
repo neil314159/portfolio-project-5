@@ -34,7 +34,7 @@ class BlogPost(models.Model):
             'height': '600',
             'crop': 'fill',
             'gravity': "auto"},
-        default=("https://res.cloudinary.com/dpsodnurd/image/upload/v1652618629/zhtctppqjky78q8h760n.jpg"))
+        default=("https://res.cloudinary.com/dpsodnurd/image/upload/v1660435608/kakhmqytb3vxf0wtywow.png"))
     """ Main text of post """
     post_text = models.TextField()
     """ Date of publication"""

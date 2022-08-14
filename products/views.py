@@ -314,10 +314,10 @@ def edit_product_category(request, id):
 
 @require_http_methods(['DELETE'])
 @login_required
-def delete_product_category(request, pk):
+def delete_product_category(request, id):
 
     # remove the category
-    Category.objects.get(pk=pk).delete()
+    Category.objects.get(pk=id).delete()
 
     return HttpResponse("")
 

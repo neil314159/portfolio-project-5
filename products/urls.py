@@ -47,7 +47,7 @@ urlpatterns = [
         views.category_products,
         name='product_category_view'),
     path(
-        'add-category/',
+        'add_category/',
         views.add_product_category,
         name='add_product_category'),
     path(
@@ -55,7 +55,7 @@ urlpatterns = [
         views.edit_product_category,
         name='edit_product_category'),
     path(
-        'delete-category/<int:id>/',
+        'delete_category/<int:id>/',
         views.delete_product_category,
         name='delete_product_category'),
 ]

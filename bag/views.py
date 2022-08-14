@@ -41,6 +41,8 @@ def add_to_bag(request, item_id):
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
+            if bag[item_id] > 10:
+                bag[item_id] = 10
             messages.success(
                 request, f'Updated {product.name} quantity to {bag[item_id]}')
         else:
@@ -74,6 +76,10 @@ def adjust_bag(request, item_id):
             messages.success(
                 request, f'Removed size {size.upper()} {product.name} from your bag')
     else:
+        if quantity > 10:
+            bag[item_id] = 10
+            messages.success(
+                request, f'Updated {product.name} quantity to {bag[item_id]}')
         if quantity > 0:
             bag[item_id] = quantity
             messages.success(
