@@ -107,11 +107,30 @@ There are a number of errors that are flagged due to the use of the HTMX.js libr
 
 ## User Testing
 
-### Procedure
+During the development of the site, a third-party user was asked to navigate the menus and links while being observed. I asked them to carry out some tasks, such as purchase a product or bring up a blog post. After carrying out a number of operations, I requested feedback on the usability and aesthetics of the site.
 
-### Results
+After doing this 3 times with different users, the main feedback I noted was:
+* Most users are familiar with the idea of an online shop or blog, and don't need to have the fundamental concepts explained
+* For tasks that are similar to how most large website operate, for exmpale, adding an item to a cart and checking out, there were few problems encountered.
+* Most feedback was of an aesthetic nature. All users expressed a preference for clean fonts that were not too heavyweight in appearance. They also liked simpler colour schemes and clear contrast to indicate menu items.
+
+This feedback was noted and incorporated into the development process.
+
 
 ## Acceptance Criteria Measurement
+
+The original acceptance criteria laid out in the user stories before development began are examined here to determine if they were met in a satisfactory fashion.
+
+
+####
+
+*   USER STORY: Set up S3 Storage #23
+    * Given that I upload a file or image to the website
+    * When file is uploaded
+    * Then it is stored in secure cloud storage
+| Criteria Met       | Comments           | 
+| ------------- |:-------------:| 
+|   Yes  |  Cloudinary used in place of S3 |  
 
 ###
 
