@@ -24,7 +24,7 @@ All Python code was run through the online validator found at http://pep8online.
 | ------------- |:-------------:| -----:|
 |   admin.py   | Pass |  |
 | apps.py      |     Pass  |    |
-| models.py |   2 lines too long    | Cludinary URLS for image references, cannot be shortened   |
+| models.py |   2 lines too long    | Cloudinary URLS for image references, cannot be shortened   |
 | tests.py |   Pass    |    |
 | urls.py |   Pass    |    |
 | views.py |    Pass   |    |
@@ -71,11 +71,19 @@ All Python code was run through the online validator found at http://pep8online.
 
 
 
-
 ### HTML Validation
 
 ### CSS Validation
 
+| Filename        | Results           | Comments  |
+| ------------- |:-------------:| -----:|
+|   base.css  |  Pass, no errors |  |
+|   checkout.css  |  Pass, no errors|  |
+
+![homepage](/media/readme/testing/css/css.png)
+
+
+<br>
 
 ## User Testing
 
