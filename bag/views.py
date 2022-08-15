@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect
+from django.shortcuts import reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 
 from products.models import Product
@@ -29,15 +30,15 @@ def add_to_bag(request, item_id):
                 bag[item_id]['items_by_size'][size] += quantity
                 messages.success(
                     request,
-                    f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
+                    f'Updated to {bag[item_id]["items_by_size"][size]}')
             else:
                 bag[item_id]['items_by_size'][size] = quantity
                 messages.success(
-                    request, f'Added size {size.upper()} {product.name} to your bag')
+                    request, f'Added {size.upper()} {product.name} to bag')
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(
-                request, f'Added size {size.upper()} {product.name} to your bag')
+                request, f'Added {size.upper()} {product.name} to your bag')
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
@@ -68,13 +69,13 @@ def adjust_bag(request, item_id):
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(
                 request,
-                f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
+                f'Updated size {product.name} quantity')
         else:
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(
-                request, f'Removed size {size.upper()} {product.name} from your bag')
+                request, f'Removed size {size.upper()} {product.name}from bag')
     else:
         # only allow ten max of each item
         if quantity > 10:
@@ -108,7 +109,7 @@ def remove_from_bag(request, item_id):
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(
-                request, f'Removed size {size.upper()} {product.name} from your bag')
+                request, f'Removed size {size.upper()} {product.name} bag')
         else:
             bag.pop(item_id)
             messages.success(request, f'Removed {product.name} from your bag')
