@@ -16,7 +16,7 @@
             <h3>€{{product.price}}</h3>
             <p class=" text-warning"> <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                     class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
-            <p>{{product.description |linebreaks}}</p>
+            <p>{{product.description}}</p>
             <div class="col-lg-6 d-grid gap-2">
 
                 {% if user.is_authenticated %}
@@ -90,7 +90,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}
 {% block postloadjs %}

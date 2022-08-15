@@ -73,6 +73,26 @@ All Python code was run through the online validator found at http://pep8online.
 
 ### HTML Validation
 
+Due to the nature of Django and the tenplating used, it is not simple to test for HTML errors. I manually anvigated to each fiel path in the site and pasted the source code for each page into the HTML validator at https://validator.w3.org
+
+There are a number of errors that are flagged due to the use of the HTMX.js library. This is used for allowing user interaction without full page refreshes, and it uses a number of tags and classes that set off validation errors. On the blog page there was also an error caused by a new line symbol coming through in the blog text and being interpreted as a close paragraph tag. This would be fixable by chaging the blog post text field to use a rich text field instead.
+
+| Filepath        | Results           | Comments  |
+| ------------- |:-------------:| -----:|
+|   /  |  Pass, no errors | incorrect tag on newsletter form, fixed |
+|   /products/  |  Pass, no errors|  |
+|   /products/22  |  Pass, no errors |  |
+|   /blog/  |  Pass, no errors |  |
+|   /blog/post/27  |  Pass, no errors | newline from blog text model causing stray p tag |
+|   /artrequest/  |  Pass, no errors |  |
+|   /profile/myorders/  |  Pass, no errors | stray div tag on orders table, fixed |
+|   /profile/wishlist/  |  Pass, no errors |  |
+|   /dashboard/products/  |  Pass, no errors |  |
+|   /dashboard/orders/  |  Pass, no errors |  |
+|   /dashboard/blog/  |  Pass, no errors |  |
+|   /dashboard/customerrequests/  |  Pass, no errors |  |
+
+
 ### CSS Validation
 
 | Filename        | Results           | Comments  |
