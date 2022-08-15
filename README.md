@@ -181,34 +181,56 @@ At the beginning of the project, thirteen Epics were created and can be viewed a
 
 1. Installation and Setup
     * USER STORY: Setup and Install Django #14 - As a developer, I can set up django and the necessary software packages, so that I can deploy the site and begin development
+    
     * USER STORY: Set up environmental variables securely #15- As a developer, I want to set up the Django secret key and database variables in the env.py file, so that they are kept secure during deployment and not accidentally exposed
+
     * USER STORY: Deploy early to Heroku #16 - As a developer, I want deploy the site to Heroku soon after installation, so that I can ensure that the development pipeline is functioning and I can work on the main features of the site
+
     * USER STORY: Set up S3 Storage #23 - As a developer, I can store my static images and files in the cloud, so that they can be quickly accesses and served to website users
+
 1.  Profiles
     * USER STORY: Create User Profile #17- As a user, I can create a profile on the site, so that I can save my personal details such as addresses, use the wishlist and commenting features, and view past orders
+
     * USER STORY: Email Login instead of Username #18 - As a user, I can register and use an account with just my email address, so that I don't have to remember and manage a username as well
+
     * USER STORY: View User Profile #19 - As a user, I can log into the site and view my own profile page, so that I can see past orders, my address, my wishlist
+
     * USER STORY: Update User Profile #20 - As a user, I can view my own profile page, so that I can edit my own personal details such as email address and shipping or billing address
-    * USER STORY: Delete User Profile #21 - As a user, I can delete my profile from the site, so that ** I can remove or protect my personal information**
+
+    * USER STORY: Delete User Profile #21 - As a user, I can delete my profile from the site, so that ** I can remove or protect my personal information
+
     * USER STORY: Store Multiple Addresses #22 - As a user, I can store multiple addresses on the site, so that I can select my desired shipping or billing address at the time of checkout
+
 1.  Authentication
     * USER STORY: Authenticate User Login/Logout #24 - As a user, I can log and and log out of the site, so that my personal information is secure
     * USER STORY: Social Media Login #25 - As a user, I can use my social accounts such as Twitter or Facebook or Google to sign in, so that I can consolidate my accounts and avoid creating new passwords
     * USER STORY: Reset User Password #26 - As a user, I can reset my password, so that can regain access my account if my password is lost or forgotten
+
     * USER STORY: Authenticate User Actions #27 - As a developer, I want to only allow certain actions to be carried out when the correct user is logged in, so that users are restricted to accessing and updating their own information and not that of others
+
 1.  Product Display
     * USER STORY: View Store Items #28 - As a user, I can view all items for sale, so that I can choose the items I want and add them to my cart
+
     * USER STORY: View Product Details #29 - As a user, I can click on the thumbnail of a product, so that I can see in-depth information on the product and add it to my cart
+
     * USER STORY: Edit Products #30 - As a site owner, I can edit the details of any product on the site, so that product information can be updated or corrected when necessary
+
     * USER STORY: Delete Products #31 - As a site owner, I can delete products from the site, so that old products can be removed
+
     * USER STORY: Add New Product #32 - As a site owner, I can add products to the site, so that new items are made available for sale to customers
+
     * USER STORY: Search Functionality #33 - As a user, I can search for products on the site, so that find the products I wish to purchase
+
 1.  Shopping Cart
     * USER STORY: Add Product to Cart #34 - As a user, I can add products from the store to my shopping cart, so that I can purchase them later
     * USER STORY: Edit/Remove Shopping Cart Items #35 - As a user, I can update the quantity of, or remove items from the shopping cart, so that I can purchase the products I wish in the correct quantity
+
     * USER STORY: View Shopping Cart #36 - As a user, I can **view all the items in my shopping cart, so that ensure I purchase the correct products
+
     * USER STORY: Coupon Code #60 - As a user, I can enter a coupon code at the checkout, so that I can receive a discount on my order
+
     * USER STORY: Purchase Recommendations #61 - As a user on the site, I can view items that other customers also purchased when viewing a product page, so that I can be advised abut products that go well together and I might like to purchase
+
 1.  Payment
     * USER STORY: Checkout Page #37 - As a user, I can use the checkout page to pay for my purchases, so that I can receive the products
 
@@ -285,22 +307,19 @@ An agile approach was taken to development. First the epics were devloped and po
 
 ![kanban](./media/readme/agile/kanban.png)
 
-<br>
 
-![milestone](./media/readme/agile/milestone.png)
 
 
 ### Scope
 
-After creating the Epics and translating them into User Stories, this now leads to a list of concrete features to implement
-* Reviews - can be viewed by all users
-* Reviews - can be created, viewed, edited and deleted by users
-* Categories - can be created by an administrator and applied by users to their reviews
-* Comments - can be created, viewed, edited and deleted by users
-* Wishlist - items can be added, removed and edited by users
-* Users - can register, login, change password and reset password
-* Users - can search the site
-* Users - all operations can only be carried out with proper permissions
+AFter going through the process of creating and refining the epics, and then translating into user stories, this provided a high-level view of the project where the discrete technical features could be defined. These were as follows:
+* Products - can be created, viewed, edited and deleted by site owner, viewed and purchased by users
+* Blog - can be created and managed by site owner
+* Comments - can be left and deleted by users
+* Wishlist - items can be added and removed  by users
+* Requests - users can make custom request thorugh feedback forms
+* Dashboard - central area for managing operation of site
+
 
 ### Structure
 
@@ -557,8 +576,7 @@ Keywords, tags, content stratgy
 
 ## Testing
 
-
-A comprehensive manual testing plan was used for this project. A full description of all of the procedures and methods used can be found in the [testing.md file here](TESTING.md). All functionality relating to user actions and CRUD operations was carefully examined. Wherever possible, testing was also related back to the acceptance criteria in the original Epics defined before development began.
+A manual tetsing plan was developed for this project. A spreadsheet was used to define all the paths that could be taken through the software by a user. This list of scenarios was used throughout development to check for errors and guide bug-fixing when problems were revealed. The acceptance criteria as defined in the user stories were also examined to ensure compliance. A full overview of the testing process can be found here in [TESTING](TESTING.md). 
 
 
 ## Notable Bugs

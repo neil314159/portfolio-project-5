@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /admin/
+Disallow: /profiles/
+Disallow: /dashboard/
+Sitemap: https://electric-dreams.herokuapp.com/sitemap.xml
