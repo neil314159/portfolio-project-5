@@ -63,17 +63,25 @@ The ideal user is excited about reading, looking for new books to read, willing 
 
 #### Epics
 
-At the beginning of the project, ten Epics were created and can be viewed at the [Kanban board here](https://github.com/neil314159/portfolio-project-4/projects/1).
-* Installation and Setup
+At the beginning of the project, ten Epics were created and can be viewed at the [Kanban board here](https://github.com/users/neil314159/projects/1/views/1).
+* Installation and Setup #1
+    * As a **developer**, I can **set up django, the necessary software packages and the development environment**, so that **I can deploy the site and begin development**
+    1. Use the Code Institute template to create a Gitpod workspace
+    1. Install Django and libraries for database and web server
+    1. Set up environmental variables in a secure fashion using env.py
+    1. Deploy to Heroku to test deployment pipeline
 * Profiles
-* User Authentication
-* Reviews
-* Comments
+* Authentication
+* Product Display
+* Shopping Cart
+* Payment
+* Product Reviews
+* Blog
 * Wishlist
-* Search
-* Site Interface
-* Admin Features
-* Testing Strategy
+* Admin Dashboard
+* User Interface and Features
+* Social Media and Marketing
+* Testing
 
 #### Translation to User Stories
 
@@ -256,173 +264,97 @@ The colour scheme was kept extremely clear and simple so as not to take away fro
 
 ### User Features
 
-#### Homepage
+#### * Homepage
 The homepage has eye-catching visuals to grab the user's attention. It explains the purpose of the site and links them to the shop so they can start browsing right away.
 
 ![homepage](/media/readme/features/homepage.png)
 
-#### Dynamic Updating Elements
+#### * Dynamic Updating Elements
 The homepage automatically pulls in the latest products and blog posts that have been created. The home page dynamically updates so that the content doesn't become stale, users can always see the newest products and content posted on the site.
 
 ![homepage](/media/readme/features/updatedcontent.png)
 
-#### Product Listing
+#### * Product Listing
 The shop page lists all of the products available on the site at a glance. it can be viewed by category from the navbar menu if the customer wishes. It shows an overview of the product along with the price and rating. The products can be ranked by price, name and rating and the content updates instantly without refreshing the page.
 
 ![homepage](/media/readme/features/productlisting.png)
 
-#### Product Detail
+#### * Product Detail
 This page shows the detailed information about the product to the user. It allows them add the product to their shopping cart, add it to their wishlist if they are logged in, and to leave a comment below the listing. The wishlist button toggles to reflect the state of being added or removed.
 
 ![homepage](/media/readme/features/productdetail.png)
 
-#### Live Search
+#### * Live Search
 The search Page searches through all the products on the site,  looking at their names and descriptions. The search page is live, so it instantly updates the search after a user keypress.
 ![homepage](/media/readme/features/livesearch.png)
 
-#### Navigation Menu
+#### * Navigation Menu
 The nav menu lets customer log in or register in the top portion. The bottom half offers shortcuts to the various pages on the site, such as the shop, the blog, their wishlist etc.
 
 ![homepage](/media/readme/features/navbar.png)
 
-#### Footer with Newsletter Signup
+#### * Footer with Newsletter Signup
 The footer offers shortcut links to the various pages on the site. It allows users to visit the company social media pages. There is a signup form connected with a Mailchimp newsletter.
 
 ![homepage](/media/readme/features/footer.png)
 
-#### Blog
+#### * Blog
 The blog page, accessed from the navbar menu shows an overview of all blog posts available on the site. They can also be browsed by category.
 
 ![homepage](/media/readme/features/blog.png)
 
-#### Blog Post
+#### * Blog Post
 The blog post page shows each individual log post for the customer to read.
 
 ![homepage](/media/readme/features/blogpost.png)
 
-#### Custom Request Form
+#### * Custom Request Form
 The request form allows the user to make suggestions or come up with ideas for new artwork on the site..
 
 ![homepage](/media/readme/features/requestform.png)
 
-#### Privacy Policy
+#### * Privacy Policy
 The privacy policy explains the rights of the user under current legislation..
 
-#### Comments
+#### * Comments
 The comments section allows users to leave feedback and reviews on products. A logged in user can delete their own comments.
 
 ![homepage](/media/readme/features/comments.png)
 
-#### Wishlist
+#### * Wishlist
 The wishlist view shows all of the products the user has added to their wishlist.
 
 ![homepage](/media/readme/features/wishlist.png)
 
-#### Orders Page
+#### * Orders Page
 The orders page lets the user see all past orders and note whether it has been shipped or not by visual indicators..
 
 ![homepage](/media/readme/features/orderlist.png)
 
 ### Admin Features
 
-#### Admin menu
+#### * Admin menu
 The admin menu is accessed from the top right beside the login/register button.
 
-#### Product Management Page
+#### * Product Management Page
 This page allows the site ownder to directly add, edit and remove product categories. They can be edited in place without refreshing. They can also see links to view, edit or delete products in the store directly.
 
 ![homepage](/media/readme/features/manageproducts.png)
 
-#### Order Management Page
+#### * Order Management Page
 The order page shows all orders made on the site ranked by date. It shows if they are shipped or not, and there is a button to toggle this state, which is reflected right away..
 
 ![homepage](/media/readme/features/manageorders.png)
 
-#### Blog Management Page
+#### * Blog Management Page
 The blog management page functions similarly to the product page and offers shortcuts for managing the blog contents.
 
 
-#### Request Management Page
+#### * Request Management Page
 This page shows all requests that have been made through the feedback form, they can slso be deleted from here.
 
 ![homepage](/media/readme/features/managerequests.png)
 
-
-
-
-
-#### Static Homepage
-The homepage explains the purpose of the site to new users, and explains that they can register for an account for extra advantages, or else start browsing the site directly.
-
-![homepage](/media/readme/features/screenshotfrontpage.png)
-
-#### Navbar
-The navbar appears at the top of every page on the site, giving users access to every section of the site. Only logged in users will see the links for adding a review, the profile page and the wishlist page. Logged out users will see links to register and login instead of the logout link here.
-
-![navbar](/media/readme/features/navbar2.png)
-
-#### Dropdown and Search Menu
-On the right hand side of the navbar are the drop-down category list and the search box. The category list is populated from the database and directs users to a page showing books from each genre. The search box takes the user's search term when they hit enter and provides a page of matching results.
-
-![navbar](/media/readme/features/dropdown_search.png)
-
-#### Reviews Index
-This page provides the main functionality of the site, it shows a paginated list of all the reviews published on the site in reverse chronological order. The user can see all the reviews available here at a glance. The use of the cover images from the books makes the page more engaging and attractive.
-
-![index](/media/readme/features/indexpage.png)
-
-#### Create Review
-This form allows the user to create their own review for publication on the site. The instructions at the top let them know which fields are mandatory. They enter the book details, upload a photo of the cover if they wish and click submit.
-
-![index](/media/readme/features/create_review.png)
-
-#### Book Review Card
-This UI element gathers all the data about a book and presents it to the user in a variety of contexts, for example in the reviews index, in the search page, in the category listing. It shows the book cover, the author and title of the book, the reviewer and the number of stars the reviewer gave the book. Both the cover image and the Read Review button provide a link to a detailed view of the book review.
-
-![index](/media/readme/features/book_card.png)
-
-#### Detailed Review
-When the user clicks on an individual review, this page shows them the full details including the text of the review. The user is also given the option to add the book to their wishlist or purchase it if the reviewer included a link. If the user is logged in and looking at one of their own reviews, they will also be presented with buttons to edit or delete the review.
-
-![index](/media/readme/features/review_detail.png)
-
-#### Login/Signup
-These two forms let unregistered users sign up for a new account, or registered users log back in. If the user forgets their password, there is a link for them to reset it if they have supplied an email account.
-
-![index](/media/readme/features/signup.png)
-
-![index](/media/readme/features/login.png)
-
-#### Search and Category Views
-These pages have a similar layout and function. They display the results of the user clicking on a category view from the drop down menu in the navbar, or from searching for a term in the search box in the navbar.
-
-![index](/media/readme/features/search_results.png)
-![index](/media/readme/features/category.png)
-
-#### Profile Page
-This page has two main functions. First, it allows the user to manage their email and password preferences. They can change their email address and their password. The user can also choose to delete their own account.
-
-Below this section the user can also see a table listing all of the articles they have written, which can be clicked on to bring them to the article.
-
-![index](/media/readme/features/profile.png)
-
-#### Wishlist Page
-Here the user can see a listing of all the books they have added to their wishlist. They can remove the book if they choose. If the original reviewer included a purchase link in their form, then the link will appear here and will be opened in a new window. 
-
-Books in this list can also be marked as read or unread. Toggling this state with the Mark as Read button will add a strikethrough to the title to signal that the book has been read.
-
-![index](/media/readme/features/wishlist.png)
-
-#### Comments
-The commenting system appears on individual review pages. Any logged in user can leave a comment on any review. They can also later edit or delete this comment. Additionally, the original author of any review page has the ability to remove comments on their pages if they wish, in order to provide a level of user moderation.
-
-![index](/media/readme/features/comments.png)
-![index](/media/readme/features/add_comment.png)
-
-#### Footer
-This footer appears at the bottom of every page on the site and provides easy access to the social media links for the project.
-
-![index](/media/readme/features/footer.png)
 
 
 
