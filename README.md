@@ -10,7 +10,7 @@ The site is designed using Django, HTML, CSS and Javascript. It is the fifth pro
 There is full functionality for the site owner to add, edit and remove products and blog posts, for users to purchase artworks, leave comments and suggestions. Users can add items to a wishlist for purchase at a later date, and here is also a  management dashboard area for the site owner to oversee the status of orders.
 <br>
 
-![Screenshot of homepage](./media/readme/screenshotfrontpage.png)
+![Screenshot of homepage](./media/readme/homepage.png)
 
 <br>
 
@@ -43,7 +43,8 @@ View information about testing in the [testing.md file here](TESTING.md)
   * [Technologies Used](#technologies-used)
   * [Testing](#testing)
   * [Notable Bugs](#notable-bugs)
-  * [Security](#security)
+  * [Security](#social-media-strategy)
+  * [SEO](#seo)
 - [Deployment](#deployment)
 - [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
@@ -514,7 +515,7 @@ Social media channels are a vital part of any marketing strategy.  A website suc
 
 ![homepage](/media/readme/features/twitter.png)
 
-![homepage](/media/readme/features/facebook.png)
+![homepage](/media/readme/features/facebook.jpg)
 
 ### SEO
 

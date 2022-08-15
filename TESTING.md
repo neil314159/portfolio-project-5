@@ -111,7 +111,7 @@ During the development of the site, a third-party user was asked to navigate the
 
 After doing this 3 times with different users, the main feedback I noted was:
 * Most users are familiar with the idea of an online shop or blog, and don't need to have the fundamental concepts explained
-* For tasks that are similar to how most large website operate, for exmpale, adding an item to a cart and checking out, there were few problems encountered.
+* For tasks that are similar to how most large website operate, for example, adding an item to a cart and checking out, there were few problems encountered.
 * Most feedback was of an aesthetic nature. All users expressed a preference for clean fonts that were not too heavyweight in appearance. They also liked simpler colour schemes and clear contrast to indicate menu items.
 
 This feedback was noted and incorporated into the development process.
@@ -334,7 +334,7 @@ Then I am redirected to the login page
 
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
-|   Yes  | Edit funcionality is present, although moved from product page to the management dashboard |  
+|   Yes  | Edit functionality is present, although moved from product page to the management dashboard |  
 
 #### USER STORY: Delete Products #31
 * Acceptance Criteria 1
@@ -348,7 +348,7 @@ Then I am redirected to the login page
 
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
-|   Yes  | Products are deleted from th eproduct overview page rather than the detail page |  
+|   Yes  | Products are deleted from the product overview page rather than the detail page |  
 
 #### USER STORY: Add New Product #32
 * Acceptance Criteria 1
@@ -616,7 +616,7 @@ Then I am redirected to the login page
 * Acceptance Criteria 1
     * Given that I am a logged in admin user
     * When I click the admin link in the navbar
-    * Then I am presented with an admin dahsboard for the site
+    * Then I am presented with an admin dashboard for the site
 * Acceptance Criteria 2
     * Given that I am viewing the admin dashboard
     * Then I can see shortcut buttons for adding, editing and removing blog posts or categories
@@ -691,7 +691,7 @@ Then I am redirected to the login page
 
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
-|   No  | Was working as a proof-of-concept, but mydevleoper account was locked for review due to accidentally sending too many tweets due to a bug, so couldn't be sure it would work when deployed |
+|   No  | Was functioning as a proof-of-concept, but my developer account was locked for review due to accidentally sending too many tweets due to a bug, so couldn't be sure it would work when deployed |
 
 
 ## Test Cases
