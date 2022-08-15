@@ -202,7 +202,7 @@ After creating the Epics and translating them into User Stories, this now leads 
 A number of custom models were created for this project:
 
 ![full model](./media/readme/models/usermodel.png)
-* Custom User model - the original project used in the course utiised a One-to-One profile model to store customer data such as telephone address etc. One of the features I really wanted to implement is the ability for a user to sign on using only their email address instead of a username. This makes things easier for the user since they don't have to remember or record an extra username. This is only possible by extending the standard Django user model and altering the authentication to use an email address instead of a username when signing up.  The user model was based off Django AbstractUSer and added extra fields to be stored in the database.
+* Custom User model - the original project used in the course utilised a One-to-One profile model to store customer data such as telephone address etc. One of the features I really wanted to implement is the ability for a user to sign on using only their email address instead of a username. This makes things easier for the user since they don't have to remember or record an extra username. This is only possible by extending the standard Django user model and altering the authentication to use an email address instead of a username when signing up.  The user model was based off Django AbstractUSer and added extra fields to be stored in the database.
 
 ![full model](./media/readme/models/wishlistcomment.png)
 * Wishlist item - this model links users and products and allows them to store a lost of possible future purchases

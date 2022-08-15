@@ -3,35 +3,35 @@
   <div class="container">
     <footer class="pt-5 pb-2">
       <div class="row">
-        <div class="col-6 col-md-2 mb-3">
+        <div class="col-6 col-md-2 mb-3 text-white">
           <h5>Site</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted">Home</a></li>
-            <li class="nav-item mb-2"><a href="{% url 'products' %}" class="nav-link p-0 text-muted">Shop</a></li>
-            <li class="nav-item mb-2"><a href="{% url 'blog' %}" class="nav-link p-0 text-muted">Blog</a></li>
-            <li class="nav-item mb-2"><a href="{% url 'artrequest' %}" class="nav-link p-0 text-muted">Request
+          <ul class="nav flex-column text-white">
+            <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-white">Home</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'products' %}" class="nav-link p-0 text-white">Shop</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'blog' %}" class="nav-link p-0 text-white">Blog</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'artrequest' %}" class="nav-link p-0 text-white">Request
                 Artwork</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-2 mb-3">
           <h5>Resources</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="{% url 'privacy' %}" class="nav-link p-0 text-muted">Privacy Policy</a>
+            <li class="nav-item mb-2"><a href="{% url 'privacy' %}" class="nav-link p-0 text-white">Privacy Policy</a>
             </li>
-            <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted">Sitemap</a></li>
+            <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-white">Sitemap</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-2 mb-3">
           <h5>Social Media</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-facebook"></i>
+            <li class="nav-item mb-2"><a href="https://www.facebook.com" target="_blank" aria-label="Visit our facebook page in a new tab" rel="noopener" class="nav-link p-0 text-white"><i class="bi bi-facebook"></i>
                 Facebook</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-instagram"></i>
+              
+        
+            <li class="nav-item mb-2"><a href="https://www.instagram.com" target="_blank" aria-label="Visit our instagram page in a new tab" rel="noopener" class="nav-link p-0 text-white"><i class="bi bi-instagram"></i>
                 Instagram</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-twitter"></i>
+            <li class="nav-item mb-2"><a href="https://www.twitter.com" target="_blank" aria-label="Visit our twitter page in a new tab" rel="noopener" class="nav-link p-0 text-white"><i class="bi bi-twitter"></i>
                 Twitter</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted"><i class="bi bi-github"></i>
-                Github</a></li>
           </ul>
         </div>
         <div class="col-md-5 offset-md-1 mb-3">
@@ -41,7 +41,7 @@
             <h5>Subscribe to our newsletter!</h5>
             <p>Find out whenever we launch new artwork and be first in line.</p>
             <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <label for="email" class="visually-hidden">Email address</label>
               <input type="email" name="email" placeholder="{{ request.user.email }}">
               <button class="btn btn-primary" type="submit">Subscribe</button>
             </div>

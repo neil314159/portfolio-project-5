@@ -12,7 +12,7 @@
           data-bs-toggle="dropdown" aria-expanded="false">
           Manage Site
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <ul class="dropdown-menu" aria-labelledby="sitenavbarDropdown">
           <li><a class="dropdown-item" href="{% url 'manage_products' %}">Manage Products</a></li>
           <li><a class="dropdown-item" href="{% url 'manage_orders' %}">Customer Orders</a></li>
           <li><a class="dropdown-item" href="{% url 'manage_blog' %}">Manage Blog</a></li>
@@ -63,7 +63,7 @@
             aria-expanded="false">
             Blog
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu" aria-labelledby="blognavbarDropdown">
             <li><a class="dropdown-item" href="{% url 'blog' %}">All Posts</a></li>
             <!-- get list of categories from database -->
             {% for blog_category in blog_category_list %}
@@ -86,7 +86,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">
             My Profile
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu" aria-labelledby="profilenavbarDropdown">
             <li><a class="dropdown-item" href="{% url 'my_orders' %}">My Orders</a></li>
             <li><a class="dropdown-item" href="{% url 'profile' %}">My Details</a></li>
           </ul>
