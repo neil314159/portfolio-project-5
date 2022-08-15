@@ -95,6 +95,8 @@ There are a number of errors that are flagged due to the use of the HTMX.js libr
 
 ### CSS Validation
 
+CSS validation was carried out using https://jigsaw.w3.org/css-validator/
+
 | Filename        | Results           | Comments  |
 | ------------- |:-------------:| -----:|
 |   base.css  |  Pass, no errors |  |
@@ -102,6 +104,8 @@ There are a number of errors that are flagged due to the use of the HTMX.js libr
 
 
 ### JS Validation
+
+JS files were evaluated on https://jshint.com
 
 | Filename        | Results           | Comments  |
 | ------------- |:-------------:| -----:|
@@ -141,7 +145,7 @@ The original acceptance criteria laid out in the user stories before development
 |   Yes  |  Cloudinary used in place of S3 |  
 
 
-![Screenshot](./media/testing/screenshot/17.png)
+
 
  #### USER STORY: Create User Profile #17
  * Acceptance Criteria 1
@@ -162,6 +166,7 @@ The original acceptance criteria laid out in the user stories before development
 |   Yes  |   |  
 
 
+
  #### USER STORY: Email Login instead of Username #18
  * Acceptance Criteria 1
     * Given that I register for an account on the site
@@ -171,6 +176,8 @@ The original acceptance criteria laid out in the user stories before development
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
 |   Yes  |   |  
+
+
 
 #### USER STORY: View User Profile #19
 * Acceptance Criteria 1
@@ -186,7 +193,7 @@ The original acceptance criteria laid out in the user stories before development
 | ------------- |:-------------:| 
 |   Yes  |   |  
 
-![Screenshot](./media/testing/screenshot/20.png)
+
 
 #### USER STORY: Update User Profile #20
 * Acceptance Criteria 1
@@ -206,7 +213,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  | Only one address is stored rather than multiple  |  
 
-![Screenshot](./media/testing/screenshot/21.png)
+
 
 #### USER STORY: Delete User Profile #21
 * Acceptance Criteria 1
@@ -226,6 +233,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  | Implemented to satisfy GDPR compliance  |  
 
+
+
 #### USER STORY: Store Multiple Addresses #22
 * Acceptance Criteria 1
     * Given that I am checking out my cart on the site
@@ -240,7 +249,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   No  | Deferred for future development |  
 
-![Screenshot](./media/testing/screenshot/24.png)
+
 
 #### USER STORY: Authenticate User Login/Logout #24
 * Acceptance Criteria 1
@@ -256,6 +265,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
+
+
 #### USER STORY: Social Media Login #25
 * Acceptance Criteria 1
     * Given that I select the register account button on the navbar
@@ -270,7 +281,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   No  | For future release |  
 
-![Screenshot](./media/testing/screenshot/26.png)
+
 
 #### USER STORY: Reset User Password #26
 * Acceptance Criteria 1
@@ -290,6 +301,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
+
+
 #### USER STORY: Authenticate User Actions #27
 * Acceptance Criteria 1
     * Given that a user is not logged in
@@ -304,7 +317,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
-![Screenshot](./media/testing/screenshot/28.png)
+
 
 #### USER STORY: View Store Items #28
 * Acceptance Criteria 1
@@ -324,7 +337,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
-![Screenshot](./media/testing/screenshot/29.png)
+
 
 #### USER STORY: View Product Details #29
 * Acceptance Criteria 1
@@ -340,7 +353,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
-![Screenshot](./media/testing/screenshot/30.png)
+
 
 #### USER STORY: Edit Products #30
 * Acceptance Criteria 1
@@ -359,7 +372,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  | Edit functionality is present, although moved from product page to the management dashboard |  
 
-![Screenshot](./media/testing/screenshot/31.png)
+
 
 #### USER STORY: Delete Products #31
 * Acceptance Criteria 1
@@ -375,7 +388,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  | Products are deleted from the product overview page rather than the detail page |  
 
-![Screenshot](./media/testing/screenshot/32.png)
+
 
 #### USER STORY: Add New Product #32
 * Acceptance Criteria 1
@@ -394,7 +407,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
-![Screenshot](./media/testing/screenshot/33.png)
+
 
 #### USER STORY: Search Functionality #33
 * Acceptance Criteria 1
@@ -410,7 +423,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  | Live search was implemented for instant user feedback |  
 
-![Screenshot](./media/testing/screenshot/34.png)
+
 
 #### USER STORY: Add Product to Cart #34
 * Acceptance Criteria 1
@@ -426,7 +439,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |  
 
-![Screenshot](./media/testing/screenshot/35.png)
+
 
 #### USER STORY: Edit/Remove Shopping Cart Items #35
 * Acceptance Criteria 1
@@ -445,6 +458,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Partial  | Edit and delete are working, undo delete was deferred for future development |  
 
+
+
 #### USER STORY: View Shopping Cart #36
 * Acceptance Criteria 1
     * Given that I am user on the site
@@ -454,6 +469,7 @@ Then I am redirected to the login page
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
 |   Yes  |  |  
+
 
 
 #### USER STORY: Coupon Code #60
@@ -471,6 +487,7 @@ Then I am redirected to the login page
 |   No  | Deferred for future development | 
 
 
+
 #### USER STORY: Purchase Recommendations #61
 * Acceptance Criteria 1
     * Given that I am a customer on the site
@@ -485,7 +502,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   No  | To be implemented at a later date  | 
 
-![Screenshot](./media/testing/screenshot/37.png)
+
+
 
 #### USER STORY: Checkout Page #37
 * Acceptance Criteria 1
@@ -497,7 +515,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  | 
 
-![Screenshot](./media/testing/screenshot/38.png)
+
+
 
 #### USER STORY: View Order Details #38
 * Acceptance Criteria 1
@@ -528,7 +547,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   No  | PDF generation worked on local machine, but has many dependencies and did work reliably on heroku, often hanging, so feature was removed | 
 
-![Screenshot](./media/testing/screenshot/40.png)
+
 
 #### USER STORY: Add Product Review #40
 * Acceptance Criteria 1
@@ -543,6 +562,7 @@ Then I am redirected to the login page
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
 |   Yes  |  | 
+
 
 
 #### USER STORY: Edit/Delete Reviews #41
@@ -563,6 +583,7 @@ Then I am redirected to the login page
 |   Partial  | Comments left on the site can be deleted but not edited |
 
 
+
 #### USER STORY: Calculate Product Ratings #42
 * Acceptance Criteria 1
     * Given that I am a user on the site
@@ -577,7 +598,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   No  | Reviews were switched so comments, with no rating elemnt |
 
-![Screenshot](./media/testing/screenshot/43.png)
+
 
 #### USER STORY: Read Blog #43
 * Acceptance Criteria 1
@@ -596,7 +617,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |
 
-![Screenshot](./media/testing/screenshot/44.png)
+
 
 #### USER STORY: Create, Edit, Delete Blog Entries #44
 * Acceptance Criteria 1
@@ -616,7 +637,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |
 
-![Screenshot](./media/testing/screenshot/45.png)
+
 
 #### USER STORY: Add, Edit and Delete Blog Categories #45
 * Acceptance Criteria 1
@@ -635,7 +656,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |
 
-![Screenshot](./media/testing/screenshot/46.png)
+
 
 #### USER STORY: Add/Remove Wishlist Items #46
 * Acceptance Criteria 1
@@ -651,7 +672,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |
 
-![Screenshot](./media/testing/screenshot/47.png)
+
 
 #### USER STORY: View Wishlist on Profile Page #47
 * Acceptance Criteria 1
@@ -667,7 +688,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |
 
-![Screenshot](./media/testing/screenshot/48.png)
+
 
 #### USER STORY: Admin Dashboard #48
 * Acceptance Criteria 1
@@ -688,7 +709,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  | Dashboard switched to admin menu in navbar with direct links to admin functions |
 
-![Screenshot](./media/testing/screenshot/49.png)
+
 
 #### USER STORY: Set Order Status #49
 * Acceptance Criteria 1
@@ -704,6 +725,8 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Yes  |  |
 
+
+
 #### USER STORY: Order Chart #50
 * Acceptance Criteria 1
     * Given that I am a logged in admin user
@@ -713,6 +736,8 @@ Then I am redirected to the login page
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
 |   No  | Feature left for future development |
+
+
 
 #### USER STORY: Printable Shipping Labels #51
 * Acceptance Criteria 1
@@ -724,7 +749,7 @@ Then I am redirected to the login page
 | ------------- |:-------------:| 
 |   Partial  | Had same problem as above with PDF receipts, but switched to visual indicator on order overview page showing shipped/unshipped orders |
 
-![Screenshot](./media/testing/screenshot/53.png)
+
 
 #### USER STORY: Custom Product Form #53
 * Acceptance Criteria 1
@@ -739,6 +764,8 @@ Then I am redirected to the login page
 | Criteria Met       | Comments           | 
 | ------------- |:-------------:| 
 |   Yes  |  |
+
+
 
 #### USER STORY: Twitter API Integration #56
 * Acceptance Criteria 1
@@ -755,6 +782,4 @@ Then I am redirected to the login page
 |   No  | Was functioning as a proof-of-concept, but my developer account was locked for review due to accidentally sending too many tweets due to a bug, so couldn't be sure it would work when deployed |
 
 
-## Test Cases
 
-###
