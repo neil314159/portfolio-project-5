@@ -251,53 +251,103 @@ Since the purpose of the site is to sell visual posters and prints, no other ext
 The colour scheme was kept extremely clear and simple so as not to take away from the artwork images being displayed. A clean white background was deemed the best after testing various colour combinations to allow the images to stand out most clearly.
 
 
+
 ## Features
 
 ### User Features
 
 #### Homepage
+The homepage has eye-catching visuals to grab the user's attention. It explains the purpose of the site and links them to the shop so they can start browsing right away.
+
+![homepage](/media/readme/features/homepage.png)
 
 #### Dynamic Updating Elements
+The homepage automatically pulls in the latest products and blog posts that have been created. The home page dynamically updates so that the content doesn't become stale, users can always see the newest products and content posted on the site.
+
+![homepage](/media/readme/features/updatedcontent.png)
 
 #### Product Listing
+The shop page lists all of the products available on the site at a glance. it can be viewed by category from the navbar menu if the customer wishes. It shows an overview of the product along with the price and rating. The products can be ranked by price, name and rating and the content updates instantly without refreshing the page.
+
+![homepage](/media/readme/features/productlisting.png)
+
+#### Product Detail
+This page shows the detailed information about the product to the user. It allows them add the product to their shopping cart, add it to their wishlist if they are logged in, and to leave a comment below the listing. The wishlist button toggles to reflect the state of being added or removed.
+
+![homepage](/media/readme/features/productdetail.png)
 
 #### Live Search
+The search Page searches through all the products on the site,  looking at their names and descriptions. The search page is live, so it instantly updates the search after a user keypress.
+![homepage](/media/readme/features/livesearch.png)
 
 #### Navigation Menu
+The nav menu lets customer log in or register in the top portion. The bottom half offers shortcuts to the various pages on the site, such as the shop, the blog, their wishlist etc.
+
+![homepage](/media/readme/features/navbar.png)
 
 #### Footer with Newsletter Signup
+The footer offers shortcut links to the various pages on the site. It allows users to visit the company social media pages. There is a signup form connected with a Mailchimp newsletter.
 
-#### Category View
+![homepage](/media/readme/features/footer.png)
 
 #### Blog
+The blog page, accessed from the navbar menu shows an overview of all blog posts available on the site. They can also be browsed by category.
+
+![homepage](/media/readme/features/blog.png)
+
+#### Blog Post
+The blog post page shows each individual log post for the customer to read.
+
+![homepage](/media/readme/features/blogpost.png)
 
 #### Custom Request Form
+The request form allows the user to make suggestions or come up with ideas for new artwork on the site..
+
+![homepage](/media/readme/features/requestform.png)
 
 #### Privacy Policy
-
-#### Product View
+The privacy policy explains the rights of the user under current legislation..
 
 #### Comments
+The comments section allows users to leave feedback and reviews on products. A logged in user can delete their own comments.
+
+![homepage](/media/readme/features/comments.png)
 
 #### Wishlist
+The wishlist view shows all of the products the user has added to their wishlist.
 
-#### Profile Page
+![homepage](/media/readme/features/wishlist.png)
 
 #### Orders Page
+The orders page lets the user see all past orders and note whether it has been shipped or not by visual indicators..
+
+![homepage](/media/readme/features/orderlist.png)
 
 ### Admin Features
 
 #### Admin menu
+The admin menu is accessed from the top right beside the login/register button.
 
 #### Product Management Page
+This page allows the site ownder to directly add, edit and remove product categories. They can be edited in place without refreshing. They can also see links to view, edit or delete products in the store directly.
+
+![homepage](/media/readme/features/manageproducts.png)
 
 #### Order Management Page
+The order page shows all orders made on the site ranked by date. It shows if they are shipped or not, and there is a button to toggle this state, which is reflected right away..
+
+![homepage](/media/readme/features/manageorders.png)
 
 #### Blog Management Page
+The blog management page functions similarly to the product page and offers shortcuts for managing the blog contents.
+
 
 #### Request Management Page
+This page shows all requests that have been made through the feedback form, they can slso be deleted from here.
 
-#### Homepage
+![homepage](/media/readme/features/managerequests.png)
+
+
 
 
 
