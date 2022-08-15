@@ -250,7 +250,56 @@ Since the purpose of the site is to sell visual posters and prints, no other ext
 * Colours - 
 The colour scheme was kept extremely clear and simple so as not to take away from the artwork images being displayed. A clean white background was deemed the best after testing various colour combinations to allow the images to stand out most clearly.
 
+
 ## Features
+
+### User Features
+
+#### Homepage
+
+#### Dynamic Updating Elements
+
+#### Product Listing
+
+#### Live Search
+
+#### Navigation Menu
+
+#### Footer with Newsletter Signup
+
+#### Category View
+
+#### Blog
+
+#### Custom Request Form
+
+#### Privacy Policy
+
+#### Product View
+
+#### Comments
+
+#### Wishlist
+
+#### Profile Page
+
+#### Orders Page
+
+### Admin Features
+
+#### Admin menu
+
+#### Product Management Page
+
+#### Order Management Page
+
+#### Blog Management Page
+
+#### Request Management Page
+
+#### Homepage
+
+
 
 #### Static Homepage
 The homepage explains the purpose of the site to new users, and explains that they can register for an account for extra advantages, or else start browsing the site directly.
@@ -342,6 +391,13 @@ There are a number of features which I would like to implement in the future for
 * Charts for Dashboard - the administrative dashboard for the site was a large part of the project, allowing management of products and blog posts. It would be possible to integrate a charting library and display a visual record of sales for the last month for example.
 
 
+## SEO & Marketing
+
+### Social Media Strategy
+facebook, twitter, instagram
+
+### SEO
+Keywords, tags, content stratgy
 
 
 
