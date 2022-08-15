@@ -176,6 +176,7 @@ At the beginning of the project, thirteen Epics were created and can be viewed a
     4. Perform validation of all HTML, JS and CSS code
     5. Format all Python code to conform with standards
 <br>
+
 #### Translation to User Stories
 
 1. Installation and Setup
@@ -209,73 +210,57 @@ At the beginning of the project, thirteen Epics were created and can be viewed a
     * USER STORY: Coupon Code #60 - As a user, I can enter a coupon code at the checkout, so that I can receive a discount on my order
     * USER STORY: Purchase Recommendations #61 - As a user on the site, I can view items that other customers also purchased when viewing a product page, so that I can be advised abut products that go well together and I might like to purchase
 1.  Payment
-    * USER STORY: Checkout Page #37
+    * USER STORY: Checkout Page #37 - As a user, I can use the checkout page to pay for my purchases, so that I can receive the products
 
-    * USER STORY: View Order Details #38
+    * USER STORY: View Order Details #38 - As a user, I can view the details of my order, so that I can see that my order has been processed successfuly
 
-    * USER STORY: PDF Receipt #39
+    * USER STORY: PDF Receipt #39 - As a user, I can download a PDF receipt for my order, so that I can save it for future reference
+
 1.  Product Reviews
-    * As a **customer**, I can **write reviews on products I have purchased**, so that **I can inform other potential customers about the product**
-    * Potential User Stories:
-    1. Customers can add a new review to a product they have purchased
-    2. Customers can edit their reviews
-    3. Customers can view their reviews on the product page
-    4. Customers can remove their reviews
-    5. Site administrators can remove reviews
-    7. Customers can use text and ratings in their review
-    8. Ratings will be averaged among all reviews and displayed on the product page
+    * USER STORY: Add Product Review #40 - As a user, I can write a review for a product I have previously purchased, so that other users may see my feedback on these products
+
+    * USER STORY: Edit/Delete Reviews #41 - As a user on the site who has written a review, I can edit or delete the reviews, so that I can update my reviews with new information or remove personal information
+
+    * USER STORY: Calculate Product Ratings #42 - As a user, I can see the average score of all reviews left on a product, so that **make an informed decision about my purchase
+
+
 1.  Blog
-    * As a **customer**, I can **read articles on the blog section**, so that **I can understand more about the products and the shop selling them**
-    * Potential User Stories:
-    1. Create blog section for website
-    2. Implement blog posts and categories
-    3. Add rich text and images to post
-    4. Allow user comments on blog posts
-    5. Add full CRUD functionality for blog posts and comments
+    * USER STORY: Read Blog #43 - As a user, I can read the blog section of the site, so that learn and understand more about the products for sale on the site
+
+    * USER STORY: Create, Edit, Delete Blog Entries #44 - As a site owner, I can add, update and delete blog entries on the site, so that customers can benefit from accurate and up-to-date information
+
+    * USER STORY: Add, Edit and Delete Blog Categories #45 - As a site owner, I can add, edit and remove blog categories, so that blog posts are correctly categorised and easily accessed
+
 1.  Wishlist
-    * As a **user**, I can **add products to my wishlist**, so that **I can purchase them at a later date**
-    * Potential User Stories:
-    1. Customers can add/remove products to the wishlist by clicking an icon on the product page
-    2. By logging in to their profile page users can see their wishlist     
+    * USER STORY: Add/Remove Wishlist Items #46 - As a user, I can add or remove items from my wishlist, so that I can keep track of products I wish to purchase in the future
+ 
+    * USER STORY: View Wishlist on Profile Page #47 - As a user, I can click on the link to my profile page, so that I can see at a glance all the items stored in my wishlist
+
 1.  Admin Dashboard
-    * As a **site administrator**, I can **log in to the admin dashboard**, so that **I can manage products, orders and blog posts for the site**
-    * Potential User Stories:
-    1. Add, edit and delete products
-    2. Add, edit and delete blog posts
-    3. Add, edit and delete blog categories
-    4. View all orders, shipped and unshipped
-    5. Mark orders as shipped
-    6. View graph of past orders    
+    * USER STORY: Admin Dashboard #48 - As a site owner, I can view a dashboard outlining admin functions, so that I can save time and effectively manage the site
+
+    * USER STORY: Set Order Status #49 - As a site owner, I can log into the admin dashboard of the site, so that I can update the status of each order to reflect if it has been shipped
+
+    * USER STORY: Order Chart #50 - As a site owner, I can see a chart representing all recent orders, so that I can see at a glance the relative number of sales made on the site
+
+    * USER STORY: Printable Shipping Labels #51 - As a site owner, I can print a list of shipping labels for all unshipped orders, so that customers can receive their orders quickly
+
 1.  User Interface and Features
-    * As a **site owner**, I can **ensure that the site design is functional and pleasing, and that all necessary e-commerce features are present**, so that **customers can get the maximum benefit from visiting and using the site**
-    * Potential User Stories:
-    1. Create colour scheme
-    2. Choose typography
-    3. Implement bootstrap theme
-    4. Add XML sitemap
-    5. Add privacy policy
-    6. Add 404 page
-    7. Add newsletter signup form
-    8. Add custom order contact form
+    * USER STORY: Site Requirements #52 - As a site owner, I can ensure that all necessary pages are added to the e-commerce site, so that customers can benefit from the full functionality of the site
+
+    * USER STORY: Custom Product Form #53 - As a customer, I can send a request for a product to be added to the site, so that I can purchase a product customised to my needs
 
 1.  Social Media and Marketing
-    * As a **site owner**, I can **advertise my site using social media and other techniques**, so that **customers will hear about the site and purchase products**
-    * Potential User Stories:
-    1. Perform keyword research for marketing efforts and use in meta tags
-    2. Create Facebook page
-    3. Create Twitter account
-    4. Create Instagram account
-    5. Create newsletter signup form
-    6. Connect to Twitter API to automatically post new products to the shop's Twitter feed
+    * USER STORY: Keyword Research and SEO #54 - As a site owner, I can research relevant keywords for my site, so that I can carry out effective SEO and social media marketing
+
+    * USER STORY: Social Media Marketing #55 - As a site owner, I can create pages on major social media outlets, so that customers can learn about the store and products offered for sale
+
+    * USER STORY: Twitter API Integration #56 - As a site owner, I can automatically post new products and blog posts to Twitter, so that customers can tay up-to-date on everything offered by the store
 
 1.  Testing
-    * As a **developer**, I can **perform automated and manual testing**, so that **I can reduce the number of bugs and protect the data of my customers**
-    * Potential User Stories:
-    1. Create automated test suites for main Python functions
-    2. Draw up and carry out a manual testing plan for all functional aspects of the site
-    3. Enlist a 3rd Party user to test out the site and offer feedback
-    4. Perform validation of all HTML, JS and CSS code
-    5. Format all Python code to conform with standards
+    * USER STORY: User Testing #57 - As a developer, I can ask a person who has never used the site before to test it while I watch, so that **I can gather feedback about the usability and functionality of the site
+
+    * USER STORY: Manual Testing #58 - As a developer, I can develop a plan to manually test every aspect of the site's functionality, so that users can have a bug-free experience
 
 
 
@@ -286,11 +271,11 @@ All of the completed user stories are available on the Kanban board found [here]
 
 
 #### Agile Management
-Throughout the development process, these epics and user stories were managed using the Kanban Board functionality built into Github. The Epics were created, developed into user stories using the Project interface in Github. The User Stories were created as issues with attached task lists and acceptance criteria, and were moved between columns to designate progress on a particular task. Once an issue was completed it was closed and moved to the Done column. The milestone tracker was also used to indicate overall progress and the project backlog.
 
-The label function for Github issues was used to assign Must Have, Could Have and Should Have status, and unfinished tasks were assigned Won't Have at the end of the sprint. Labels were also used to indicate the number of user points assigned to each User Story.
+An agile approach was taken to development. First the epics were devloped and potential user stories were created from that basis. Then the user stories were defined, and each was assigned acceptance criteria and task lists to be completed. The Kanban tracking board was used to manage the user stories and bugs that arose. Each task was also assigned a priority label of Must Have, Could Have and Should Have, with unfinished or future tasks being marked as Won't Have. User points were also set for each User Story.
 
-Overall, 82% of issues/User Stories were completed and marked closed, with a number of features remaining for future sprints.
+
+
 
 <br>
 
@@ -298,7 +283,7 @@ Overall, 82% of issues/User Stories were completed and marked closed, with a num
 
 <br>
 
-![kanban](./media/readme/agile/kanban_board.png)
+![kanban](./media/readme/agile/kanban.png)
 
 <br>
 
