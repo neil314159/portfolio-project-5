@@ -63,107 +63,225 @@ The ideal user is excited about reading, looking for new books to read, willing 
 
 #### Epics
 
-At the beginning of the project, ten Epics were created and can be viewed at the [Kanban board here](https://github.com/users/neil314159/projects/1/views/1).
-* Installation and Setup #1
+At the beginning of the project, thirteen Epics were created and can be viewed at the [Kanban board here](https://github.com/users/neil314159/projects/1/views/1).
+* Installation and Setup 
     * As a **developer**, I can **set up django, the necessary software packages and the development environment**, so that **I can deploy the site and begin development**
+    * Potential User Stories:
     1. Use the Code Institute template to create a Gitpod workspace
     1. Install Django and libraries for database and web server
     1. Set up environmental variables in a secure fashion using env.py
     1. Deploy to Heroku to test deployment pipeline
 * Profiles
+    * As a **site user**, I can **create, edit, and delete my account**, so that **I can use the site by logging in**
+    * Potential User Stories:
+    1. Create a new user account
+    2. Log in and view user account
+    3. Edit user account details
+    4. Delete my own information and account
+    5. Reset or update password
+    6. Have a profile page showing past orders and Wishlist items
+    7. Store multiple addresses for delivery
 * Authentication
+    * As a **user**, I can **log in and log out**, so that **I can securely access my profile and create, read, edit and delete my own information**
+    * Potential User Stories:
+    1. Login/logout of account
+    2. Verify my email for my new account
+    3. I can log in using my social accounts such as twitter or google
+    4. My actions are restricted to only allow editing and deleting my own content and not other users
+    5. The proper menus are presented to me if I am a customer or admin user of the site
 * Product Display
+    * As a **user**, I can **view all the products available for purchase**, so that **I can select the items that interest me and view them in more detail**
+    * Potential User Stories:
+    1. Display all products for sale on the shop page
+    2. View products arranged by price, rating, popularity, name
+    3. Select a product to view in more detail
+    4. View images and a description of the item on a product card
 * Shopping Cart
+    * As a **user**, I can **add, remove and update items in the shopping cart**, so that **I can decide which products to purchase and the quantity of each product required**
+    * Potential User Stories:
+    1. Add item to shopping cart
+    2. Remove product from cart
+    3. Update the quantity of items in the cart
+    4. View the total cost of the products in the cart
+    5. Go to the checkout page
 * Payment
+    * As a **user**, I can **pay for the items in my shopping cart**, so that **I can place my order and receive my purchases**
+    * Potential User Stories:
+    1. Create checkout page
+    2. Save the delivery and billing addresses
+    3. Use my previously saved addresses
+    4. Create a new user account to save customer info
+    5. Accept card details and show payment confirmation
+    6. Send email with order details to customer
 * Product Reviews
+    * As a **customer**, I can **write reviews on products I have purchased**, so that **I can inform other potential customers about the product**
+    * Potential User Stories:
+    1. Customers can add a new review to a product they have purchased
+    2. Customers can edit their reviews
+    3. Customers can view their reviews on the product page
+    4. Customers can remove their reviews
+    5. Site administrators can remove reviews
+    7. Customers can use text and ratings in their review
+    8. Ratings will be averaged among all reviews and displayed on the product page
 * Blog
+    * As a **customer**, I can **read articles on the blog section**, so that **I can understand more about the products and the shop selling them**
+    * Potential User Stories:
+    1. Create blog section for website
+    2. Implement blog posts and categories
+    3. Add rich text and images to post
+    4. Allow user comments on blog posts
+    5. Add full CRUD functionality for blog posts and comments
 * Wishlist
+    * As a **user**, I can **add products to my wishlist**, so that **I can purchase them at a later date**
+    * Potential User Stories:
+    1. Customers can add/remove products to the wishlist by clicking an icon on the product page
+    2. By logging in to their profile page users can see their wishlist     
 * Admin Dashboard
+    * As a **site administrator**, I can **log in to the admin dashboard**, so that **I can manage products, orders and blog posts for the site**
+    * Potential User Stories:
+    1. Add, edit and delete products
+    2. Add, edit and delete blog posts
+    3. Add, edit and delete blog categories
+    4. View all orders, shipped and unshipped
+    5. Mark orders as shipped
+    6. View graph of past orders    
 * User Interface and Features
-* Social Media and Marketing
-* Testing
+    * As a **site owner**, I can **ensure that the site design is functional and pleasing, and that all necessary e-commerce features are present**, so that **customers can get the maximum benefit from visiting and using the site**
+    * Potential User Stories:
+    1. Create colour scheme
+    2. Choose typography
+    3. Implement bootstrap theme
+    4. Add XML sitemap
+    5. Add privacy policy
+    6. Add 404 page
+    7. Add newsletter signup form
+    8. Add custom order contact form
 
+* Social Media and Marketing
+    * As a **site owner**, I can **advertise my site using social media and other techniques**, so that **customers will hear about the site and purchase products**
+    * Potential User Stories:
+    1. Perform keyword research for marketing efforts and use in meta tags
+    2. Create Facebook page
+    3. Create Twitter account
+    4. Create Instagram account
+    5. Create newsletter signup form
+    6. Connect to Twitter API to automatically post new products to the shop's Twitter feed
+
+* Testing
+    * As a **developer**, I can **perform automated and manual testing**, so that **I can reduce the number of bugs and protect the data of my customers**
+    * Potential User Stories:
+    1. Create automated test suites for main Python functions
+    2. Draw up and carry out a manual testing plan for all functional aspects of the site
+    3. Enlist a 3rd Party user to test out the site and offer feedback
+    4. Perform validation of all HTML, JS and CSS code
+    5. Format all Python code to conform with standards
+<br>
 #### Translation to User Stories
 
 1. Installation and Setup
-    * US11: Setup and Install Django - As a developer, I can set up django and the necessary software packages, so that I can deploy the site and begin development
-    * US12: Set up environmental variables securely - As a developer, I want to set up the secret keys and database variable in a secure manner, so that they are kept hidden when deployed and not accidentally exposed through github
-    * US13: Deploy to Heroku - As a developer, I want to ensure that the deployment pipeline is functioning, so that I can commence development on the project and test on heroku as well as the local environment
-1. Profiles
-    * US14: Create a User Profile - As a user, I can create a new account on the Book Barn website, so that I have the permissions required to publish my own reviews on the site
-    * US15: View User Profile - As a user, I can log into the site and view my own profile page, so that I can see a list of all reviews I have written and edit or delete them
-    * US16: Update User Profile - As a user, I can view my own profile page and edit my username, so that I can change the name displayed on my reviews that is displayed to other users and site visitors
-    * US17: Delete User Profile - As a user, I can delete my own account, so that I can remove my information and content from the site if I desire
-    * US18: Change User Password - As a user, I can change my password, so that my account remains secure
-    * US19: Reset USer Password - As a user, I can reset my password, so that can access my account if my password is forgotten
-1. User Authentication
-    * US20: Authenticate user login/logout - As a user, I can log and and out of the site, so that my personal details and content are kept secure
-    * US21: Restrict actions to allowed users - As a developer, I want to only allow certain actions when the user is logged in, so that users are unable to access data from other users
-    * US22: Social Login - As a user, I can sign into the site using another account such as Google or Facebook, so that do not have to sign up for a new account and remember another password
-1. Reviews
-    * US45: Create new book review - As a user, I can write and save a new book review on the site, so that other users may see it and get ideas about new books to read
-    * US46: Edit review - As a user, I can edit my published book reviews, so that update my reviews with new information or correct any errors
-    * US47: Display Reviews - As a user, I can view articles reviewing books on the site, so that I can learn about new books I might like to read
-    * US48: Delete reviews - As a user, I can delete a review that I have written, so that it is removed from the site
-    * US49: Book cover image - As a user, I can upload a cover image for the book review, so that the book cover can be shown on the site when users browse or search for reviews
-    * US50: Book cover API - As a user, I can search books by title, so that a book cover image is automatically found and added to my review
-    * US51: AJAX category editing - As a user, I can create a new category when writing a review, so that my article is published under the most suitable genre
-1. Comments
-    * US26: Leave user comments on reviews - As a user, I can write a comment on my own or other reviews, so that I can interact with other users on the site
-    * US27: Moderation for comments in admin panel - As a site owner, I can view all comments on the site through the admin interface and delete them if required, so that inappropriate comments are not publicly displayed
-    * US28: Allow users to manage comments on their own reviews - As a user, I can delete comments left by other users on my own reviews, so that inappropriate comments are not displayed next to content I have written and the administrative burden is lightened for the site owner
-1. Wishlist
-    * US23: Add/remove books from wishlist - s a user, I can click on a like button on each review, so that the book is saved to my wishlist and I can keep track of new books to read
-    * US24: View wishlist on profile page - As a user, I can click on my wishlist link, so that I can see at a glance a list of all the books on my wishlist
-    * US25: External purchase link - As a user, I can view my wishlist of saved books and click on a purchase link, so that I can easily buy books I am interested in
-1. Search
-    * US29: Sitewide search - As a user, I can type text into the search box in the navigation bar, so that I can find matching text in any reviews on the site
-    * US30: AJAX live search - As a user, I can type text into the search box in the navigation bar, so that I see a continuously updated set of search results as I type
-    * US31: Category-based view - As a user, I can select a category from a drop-down menu in the navbar, so that I can view books that interest me the most in a particular genre
-1. Site Interface
-    * US39: Install and configure Bootstrap - As a developer, I want to use a flexible framework, so that the user interface of the site can be made consistent and usable
-    * US40: Night Mode - As a user, I can select the choice between normal and dark mode, so that I can use the site with the colour scheme I prefer
-    * US41: Responsive layout on different devices - As a user, I want to have the site be responsive across different devices, so that I can enjoy a consistent experience and access the site from laptop, phone or tablet
-    * US42: Form styling - As a site owner, I want all forms on the site to be styled in a similar fashion, so that the user interface is consistent across the whole site
-    * US43: Accessibility - As a user, I can make use of accessibility features on the site, so that I can navigate and use the site without difficulty
-    * US44: User feedback messages - As a user, I can receive clear and unambiguous feedback about my actions, so that I can be sure that each operation was carried out successfully
-1. Admin Features
-    * US32: Admin area data formatting - As a site owner, I can log into the admin area and see all comments, reviews and wishlists, so that I can monitor the overall operation of the site and keep an overview of all content posted
-    * US33: Category Managment - As a site owner, I can log into the admin area and add, edit and delete the categories for book reviews, so that book reviews on the site are properly organised
-    * US34: Review of the week - As a site owner, I can select a book review to be highlighted on the main home page, so that high quality content is presented to new users
-1. Testing Strategy
-    * US35: Automated Testing - As a developer, I want to deploy automated testing with high code coverage, so that I can reduce the number of bugs in the site and improve the user experience
-    * US36: Manual testing - As a developer, I want to manually test every aspect of the interface and functionality of the site, so that users can have a bug-free and consistent experience 
-    * US37: Third party testing - As a developer, I can ask an independent person to test out the site while I watch, so that note any bugs or any part of the interface which is not easily understood
-    * US38: Code Validation - As a developer, I want all of the code in the site to conform to best practices, so that it is clear, readable and bug-free
+    * USER STORY: Setup and Install Django #14 - As a developer, I can set up django and the necessary software packages, so that I can deploy the site and begin development
+    * USER STORY: Set up environmental variables securely #15- As a developer, I want to set up the Django secret key and database variables in the env.py file, so that they are kept secure during deployment and not accidentally exposed
+    * USER STORY: Deploy early to Heroku #16 - As a developer, I want deploy the site to Heroku soon after installation, so that I can ensure that the development pipeline is functioning and I can work on the main features of the site
+    * USER STORY: Set up S3 Storage #23 - As a developer, I can store my static images and files in the cloud, so that they can be quickly accesses and served to website users
+1.  Profiles
+    * USER STORY: Create User Profile #17- As a user, I can create a profile on the site, so that I can save my personal details such as addresses, use the wishlist and commenting features, and view past orders
+    * USER STORY: Email Login instead of Username #18 - As a user, I can register and use an account with just my email address, so that I don't have to remember and manage a username as well
+    * USER STORY: View User Profile #19 - As a user, I can log into the site and view my own profile page, so that I can see past orders, my address, my wishlist
+    * USER STORY: Update User Profile #20 - As a user, I can view my own profile page, so that I can edit my own personal details such as email address and shipping or billing address
+    * USER STORY: Delete User Profile #21 - As a user, I can delete my profile from the site, so that ** I can remove or protect my personal information**
+    * USER STORY: Store Multiple Addresses #22 - As a user, I can store multiple addresses on the site, so that I can select my desired shipping or billing address at the time of checkout
+1.  Authentication
+    * USER STORY: Authenticate User Login/Logout #24 - As a user, I can log and and log out of the site, so that my personal information is secure
+    * USER STORY: Social Media Login #25 - As a user, I can use my social accounts such as Twitter or Facebook or Google to sign in, so that I can consolidate my accounts and avoid creating new passwords
+    * USER STORY: Reset User Password #26 - As a user, I can reset my password, so that can regain access my account if my password is lost or forgotten
+    * USER STORY: Authenticate User Actions #27 - As a developer, I want to only allow certain actions to be carried out when the correct user is logged in, so that users are restricted to accessing and updating their own information and not that of others
+1.  Product Display
+    * USER STORY: View Store Items #28 - As a user, I can view all items for sale, so that I can choose the items I want and add them to my cart
+    * USER STORY: View Product Details #29 - As a user, I can click on the thumbnail of a product, so that I can see in-depth information on the product and add it to my cart
+    * USER STORY: Edit Products #30 - As a site owner, I can edit the details of any product on the site, so that product information can be updated or corrected when necessary
+    * USER STORY: Delete Products #31 - As a site owner, I can delete products from the site, so that old products can be removed
+    * USER STORY: Add New Product #32 - As a site owner, I can add products to the site, so that new items are made available for sale to customers
+    * USER STORY: Search Functionality #33 - As a user, I can search for products on the site, so that find the products I wish to purchase
+1.  Shopping Cart
+    * USER STORY: Add Product to Cart #34 - As a user, I can add products from the store to my shopping cart, so that I can purchase them later
+    * USER STORY: Edit/Remove Shopping Cart Items #35 - As a user, I can update the quantity of, or remove items from the shopping cart, so that I can purchase the products I wish in the correct quantity
+    * USER STORY: View Shopping Cart #36 - As a user, I can **view all the items in my shopping cart, so that ensure I purchase the correct products
+    * USER STORY: Coupon Code #60 - As a user, I can enter a coupon code at the checkout, so that I can receive a discount on my order
+    * USER STORY: Purchase Recommendations #61 - As a user on the site, I can view items that other customers also purchased when viewing a product page, so that I can be advised abut products that go well together and I might like to purchase
+1.  Payment
+    * USER STORY: Checkout Page #37
+
+    * USER STORY: View Order Details #38
+
+    * USER STORY: PDF Receipt #39
+1.  Product Reviews
+    * As a **customer**, I can **write reviews on products I have purchased**, so that **I can inform other potential customers about the product**
+    * Potential User Stories:
+    1. Customers can add a new review to a product they have purchased
+    2. Customers can edit their reviews
+    3. Customers can view their reviews on the product page
+    4. Customers can remove their reviews
+    5. Site administrators can remove reviews
+    7. Customers can use text and ratings in their review
+    8. Ratings will be averaged among all reviews and displayed on the product page
+1.  Blog
+    * As a **customer**, I can **read articles on the blog section**, so that **I can understand more about the products and the shop selling them**
+    * Potential User Stories:
+    1. Create blog section for website
+    2. Implement blog posts and categories
+    3. Add rich text and images to post
+    4. Allow user comments on blog posts
+    5. Add full CRUD functionality for blog posts and comments
+1.  Wishlist
+    * As a **user**, I can **add products to my wishlist**, so that **I can purchase them at a later date**
+    * Potential User Stories:
+    1. Customers can add/remove products to the wishlist by clicking an icon on the product page
+    2. By logging in to their profile page users can see their wishlist     
+1.  Admin Dashboard
+    * As a **site administrator**, I can **log in to the admin dashboard**, so that **I can manage products, orders and blog posts for the site**
+    * Potential User Stories:
+    1. Add, edit and delete products
+    2. Add, edit and delete blog posts
+    3. Add, edit and delete blog categories
+    4. View all orders, shipped and unshipped
+    5. Mark orders as shipped
+    6. View graph of past orders    
+1.  User Interface and Features
+    * As a **site owner**, I can **ensure that the site design is functional and pleasing, and that all necessary e-commerce features are present**, so that **customers can get the maximum benefit from visiting and using the site**
+    * Potential User Stories:
+    1. Create colour scheme
+    2. Choose typography
+    3. Implement bootstrap theme
+    4. Add XML sitemap
+    5. Add privacy policy
+    6. Add 404 page
+    7. Add newsletter signup form
+    8. Add custom order contact form
+
+1.  Social Media and Marketing
+    * As a **site owner**, I can **advertise my site using social media and other techniques**, so that **customers will hear about the site and purchase products**
+    * Potential User Stories:
+    1. Perform keyword research for marketing efforts and use in meta tags
+    2. Create Facebook page
+    3. Create Twitter account
+    4. Create Instagram account
+    5. Create newsletter signup form
+    6. Connect to Twitter API to automatically post new products to the shop's Twitter feed
+
+1.  Testing
+    * As a **developer**, I can **perform automated and manual testing**, so that **I can reduce the number of bugs and protect the data of my customers**
+    * Potential User Stories:
+    1. Create automated test suites for main Python functions
+    2. Draw up and carry out a manual testing plan for all functional aspects of the site
+    3. Enlist a 3rd Party user to test out the site and offer feedback
+    4. Perform validation of all HTML, JS and CSS code
+    5. Format all Python code to conform with standards
 
 
 
-All of the completed user stories are available on the Kanban board found [here](https://github.com/users/neil314159/projects/1), where the acceptance criteria and implementation actions for each story are visible by clicking on each individual issue. For example, the user story [US14](https://github.com/neil314159/portfolio-project-5/issues/14) is as follows:
+All of the completed user stories are available on the Kanban board found [here](https://github.com/users/neil314159/projects/1), where the acceptance criteria and implementation criteria for each story are visible by clicking on each individual issue. 
 <br>
-<br>
-Title: US49: Book Cover Image
 
-User Story: As a user, I can upload a cover image for the book review, so that the book cover can be shown on the site when users browse or search for reviews
-
-Acceptance Criteria:
-- Acceptance Criteria 1
-	Given that I am logged in and registered on the site
-	When I am creating a review
-	Then I will see a field to upload an image for the book cover
-- Acceptance Criteria 2
-	Given that I have written a book review on the site
-	When I do not upload an accompanying cover
-	Then a default image is provided
-
-Tasks:
-- [x] link cloudinary API in the templates and setting files
-- [x] resize the image to appropriate dimensions and ration before using
-- [x] add a default cover if no image is uploaded
-
-Epic: #4 
-
-<br>
 <br>
 
 
@@ -426,9 +544,9 @@ Keywords, tags, content stratgy
 * Mailchimp
     * In contrast to Sendgrid, which is used for large-volume transactional email, Mailchimp is used fo rnewsletter managemnt. It is capable of quite sophisticated stratgeies to segment customer lists, send out automated marketing and offers conditonal on user behaviour.
 * Cloudinary
-    * used fo rhandling static storage and well-known for their image-processing abilities
+    * used for handling static storage and well-known for their image-processing abilities
 * AllAuth
-    * used fo rhandling user registration and authorisation management. It takes over these tasks from the Django native impelementation, and makes it much easier to handle tasks such as verifying email addresses  and resetting passwords.
+    * used for handling user registration and authorisation management. It takes over these tasks from the Django native impelementation, and makes it much easier to handle tasks such as verifying email addresses  and resetting passwords.
 * HTML
     * HTML was used mainly to style the templates used by Django for displaying the front end of the site.
 * CSS
@@ -460,17 +578,8 @@ A comprehensive manual testing plan was used for this project. A full descriptio
 
 ## Notable Bugs
 
-1. Slug Creation
-    * P
-
-1. Slug Creation
-    * P
-
-1. Slug Creation
-    * P
-
-
-
+1. User Model
+    * Early in the project, I decided to use a custom user model. The main reason for choosing this model was so that a user could use their email address to sign on rather than a username. I didn't appreciate at the time that changing the user model can have downstream effects, and once the project is started, is difficult to roll back. I had some problems integrating the code for the checkout and payment system after changing to the new model These kinks were eventually worked out, but in the future I would think more carefully about the best model to represent user data and how it will interact with rest of the system.
 
 
 # Deployment
