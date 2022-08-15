@@ -526,6 +526,15 @@ It is also useful to measure keyword search volume as an indicator of the level 
 ![homepage](/media/readme/features/keyword.png)
 
 
+### Newsletter
+
+
+The Mailchimp API was connected to the sign-up form in the footer of the site. This allows for email marketing campaigns to be carried out. SInce you can't send welcome emails without a paid account, I've attached a screenshot of the dashboard from Mailchimp showing that the form is working:
+
+
+![homepage](/media/readme/features/mailchimp.png)
+
+
 
 ## Technologies Used
 
@@ -660,6 +669,7 @@ The project was deployed on the Heroku site by using these steps:
 [William Vincent Django for Professionals](https://wsvincent.com/) - His book Django for Professional gives a good overview of how to implement custom user models and incorporate them into the signup flow for the website.<br>
 [Bootstrap Examples](https://getbootstrap.com/docs/5.2/examples/) - The example code provided here gave ideas on how to lay out and refine the presentation of the site. <br>
 [Stack Overflow](https://stackoverflow.com/questions/65365131/letting-users-delete-their-own-accounts-in-django) - this was used for many queries relating to jungle, for example this question on how to allow the user to delete their own account.
+[This article](https://www.pythonstacks.com/blog/post/integrating-mailchimp-django/) on integrating the Mailchimp API into Djnago was useful.
 
 # Acknowledgements
 
