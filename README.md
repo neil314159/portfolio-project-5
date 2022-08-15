@@ -181,7 +181,7 @@ At the beginning of the project, thirteen Epics were created and can be viewed a
 
 1. Installation and Setup
     * USER STORY: Setup and Install Django #14 - As a developer, I can set up django and the necessary software packages, so that I can deploy the site and begin development
-    
+
     * USER STORY: Set up environmental variables securely #15- As a developer, I want to set up the Django secret key and database variables in the env.py file, so that they are kept secure during deployment and not accidentally exposed
 
     * USER STORY: Deploy early to Heroku #16 - As a developer, I want deploy the site to Heroku soon after installation, so that I can ensure that the development pipeline is functioning and I can work on the main features of the site
@@ -301,7 +301,15 @@ An agile approach was taken to development. First the epics were devloped and po
 
 <br>
 
-![points chart](./media/readme/agile/Chart.png)
+There were a total of 48 user stories and the points allocated broke down as follows:
+* Must Have: 53 points, 40% of the total
+* Should Have: 30 points, 23% of the total
+* Could Have: 48, 37% of the total
+
+Overall, 109 out of 131 points were completed, a rate of 83%.
+
+The outstanding stories were all from the Could Have category, as can be seen on the Kanba board.
+
 
 <br>
 
@@ -355,19 +363,17 @@ The entire schema is visible here:
 ### Skeleton
 
 #### Wireframes
-Balsamiq was used to create the wireframes for this project. The initial layout of the site remained largely the same during the development process, except for the profile page and the wishlist being separated into two pages rather than combined into one. The wireframe for the review index page was also used for the search results and category view pages as they are functionally very similar.
+The inital layout and structure of the site was developed using wireframes created in Balsamiq. They were used to refine the layout of the home page, with the hero image header, integrated poroducts and blog post listings, and newsletter signup form in the footer. The wireframe structure was followed closely, althoug the design and colour scheme was refined during development and testing. The wireframes were useful for guiding the initial templates and user interaction pathways.
 
 * Homepage
 ![homepage](/media/readme/wireframes/homepage.png)
 
-* Review Listing
-![homepage](/media/readme/wireframes/review_list.png)
+* Product Listing
+![homepage](/media/readme/wireframes/products.png)
 
-* Review Detail
-![homepage](/media/readme/wireframes/review_detail.png)
+* Product Detail
+![homepage](/media/readme/wireframes/detail.png)
 
-* Profile/Wishlist Page
-![homepage](/media/readme/wireframes/profile_page.png)
 
 ### Surface
 
@@ -498,12 +504,22 @@ There are a number of features which I would like to implement in the future for
 ## SEO & Marketing
 
 ### Social Media Strategy
-facebook, twitter, instagram
+
+Social media channels are a vital part of any marketing strategy.  A website such as this one, which is highly visual nature, is particularly suited to making use of such social media outlets as Twitter and Instagram. A Facebook business page was created, along with a Twitter and Instagram profile to begin posting. There are a number of other vaible outlets for visual content such as reddit, Dribbble and even Youtube and TikTok when presented as videos.
+
+![homepage](/media/readme/features/insta.png)
+
+![homepage](/media/readme/features/twitter.png)
+
+![homepage](/media/readme/features/facebook.png)
 
 ### SEO
-Keywords, tags, content stratgy
 
+In the early stages of the project, a keyword analysis was undertaken using the tools provided by Google and Wordtracker. These suggestions were used to inform the copywriting on the site, as well as helping to define the meta tags. Additionaly, these keyword lists will be useful for future marketing efforts, paid or unpaid, as they will help to target content and marketing efforts more strongly towards interested users.
 
+It is also useful to measure keyword search volume as an indicator of the level of interest in a particular market or topic. As can be seen in this screenshot, the number of searches for AI art generator, the topic of this site, are up nearly 10,000% year-on-year.
+
+![homepage](/media/readme/features/keyword.png)
 
 
 
